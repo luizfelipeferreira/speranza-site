@@ -24,6 +24,8 @@ export const NAP = {
 
 export const WHATSAPP_MESSAGES = {
   default: "Olá! Gostaria de saber mais sobre o Speranza Eventos.",
+  hero_orcamento: "Olá! Gostaria de solicitar um orçamento para o meu evento no Speranza.",
+  hero_visita: "Olá! Gostaria de agendar uma visita ao Speranza.",
   casamentos: "Olá! Gostaria de saber mais sobre o Speranza para o meu casamento.",
   debutantes: "Olá! Gostaria de saber mais sobre a festa de 15 anos no Speranza.",
   corporativo: "Olá! Gostaria de solicitar uma proposta para um evento corporativo no Speranza.",

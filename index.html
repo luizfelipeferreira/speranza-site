@@ -21,6 +21,13 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#6e1b2e" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
@@ -57,10 +64,13 @@
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
 
   <!-- SYNCED FROM index.html — header canônico, replicado nas outras 6 páginas -->
-  <header class="site-header">
+  <!-- Logo em wordmark (Fraunces) enquanto não existe um arquivo de marca real em
+       /assets/images/brand/ — trocar por <img> do logo assim que a arte estiver pronta. -->
+  <header class="site-header site-header--overlay" data-header>
     <div class="container site-header__bar">
       <a class="site-header__logo" href="/" aria-label="Speranza Eventos — página inicial">
-        <img src="/assets/images/brand/logo.svg" alt="Speranza Eventos" width="160" height="40" />
+        <span class="site-header__logo-mark">Speranza</span>
+        <span class="site-header__logo-sub">Eventos</span>
       </a>
 
       <nav class="site-nav" aria-label="Navegação principal">
@@ -102,8 +112,8 @@
   <!-- /SYNCED -->
 
   <main id="main">
-    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § HOME (11 seções). Esqueleto de fase seguinte:
-      1. Hero — headline + subheadline + CTA primário/secundário
+    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § HOME (11 seções). Implementado até aqui:
+      1. Hero ✓ (headline + subheadline + CTA primário/secundário + indicador de rolagem)
       2. Barra de confiança — indicadores (anos, nº de eventos, avaliação Google)
       3. Escolha seu tipo de evento — 4 cards (Casamentos/Debutantes/Corporativo/Aniversários)
       4. Sobre o Speranza — narrativa de marca
@@ -115,15 +125,31 @@
       10. Localização — mapa
       11. CTA final
     -->
-    <section class="hero" data-reveal>
-      <div class="container hero__content">
-        <h1><!-- TODO: headline de posicionamento --></h1>
-        <p class="hero__subheadline"><!-- TODO: subheadline com Jundiaí + proposta de valor --></p>
-        <div class="cta-group">
-          <a class="btn btn--primary" data-wa="hero" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20Eventos." target="_blank" rel="noopener">Fale no WhatsApp</a>
-          <a class="btn btn--secondary" href="/espaco/">Conheça o espaço</a>
+    <section class="hero" aria-labelledby="hero-heading">
+      <!-- Fundo provisório (gradiente + brilho, tons do bordô/dourado) enquanto não há
+           sessão fotográfica profissional do espaço (ver docs/ESTRATEGIA.md §5). Trocar
+           por <img>/picture do salão real assim que as fotos estiverem prontas. -->
+      <div class="hero__media" aria-hidden="true"></div>
+      <!-- Sentinela de 1px no topo do Hero: o header vira sólido assim que ela sai da
+           faixa do header (ver assets/js/hero.js), independente da altura do Hero. -->
+      <div class="hero__header-sentinel" data-header-sentinel aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="container hero__content">
+          <p class="hero__eyebrow">Salão de festas premium em Jundiaí</p>
+          <h1 id="hero-heading">Elegância de capital,<br />endereço de Jundiaí.</h1>
+          <p class="hero__subheadline">Casamentos, debutantes e eventos corporativos em um espaço premium no Bairro Caxambú.</p>
+          <div class="cta-group hero__cta-group">
+            <a class="btn btn--primary" data-wa="hero-orcamento" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20evento%20no%20Speranza." target="_blank" rel="noopener">Solicitar orçamento</a>
+            <a class="btn btn--secondary" data-wa="hero-visita" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agendar uma visita</a>
+          </div>
         </div>
       </div>
+
+      <button type="button" class="hero__scroll-cue" data-scroll-cue aria-label="Rolar para ver mais">
+        <span class="hero__scroll-label">Role para descobrir</span>
+        <span class="hero__scroll-line"><span class="hero__scroll-dot" aria-hidden="true"></span></span>
+      </button>
     </section>
   </main>
 

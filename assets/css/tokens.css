@@ -2,6 +2,7 @@
   Design tokens — Speranza Eventos
   Base creme/off-white + vinho/bordô como cor de apoio autoral (ver docs/ESTRATEGIA.md §5).
   Dourado aparece só como acento pontual (bordas finas, ícones), nunca como cor dominante.
+  Fonte de verdade completa da identidade visual: docs/DESIGN_SYSTEM.md.
 */
 
 :root {
@@ -40,10 +41,10 @@
   --color-accent-soft: var(--color-bordeaux-100);
   --color-on-accent: var(--color-cream);
 
-  /* Tipografia — pilhas system-safe agora; troca para webfont self-hosted (ex.: serifada
-     autoral + sans-serif limpa) é um único ponto de ajuste aqui, sem redesenho. */
-  --font-heading: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Tipografia — Google Fonts (ver <link> em <head>): Fraunces para títulos/Hero,
+     Manrope para corpo/UI. Fallbacks system-safe cobrem o instante antes do webfont carregar. */
+  --font-heading: "Fraunces", Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
   --font-size-base: 1rem;
   --line-height-base: 1.6;
@@ -56,6 +57,7 @@
   --step-2: clamp(1.44rem, 1.3rem + 0.7vw, 1.9rem);
   --step-3: clamp(1.8rem, 1.5rem + 1.2vw, 2.6rem);
   --step-4: clamp(2.2rem, 1.7rem + 2vw, 3.4rem);
+  --step-5: clamp(2.6rem, 2rem + 3vw, 4.2rem); /* Hero — usado só na headline da primeira dobra */
 
   /* Espaçamento — escala em rem, base 8px */
   --space-2xs: 0.25rem;

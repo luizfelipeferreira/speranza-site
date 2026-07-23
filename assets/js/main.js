@@ -4,6 +4,7 @@
 import { initNav } from "./nav.js";
 import { initScrollObserver } from "./scroll-observer.js";
 import { initWhatsAppTracking } from "./whatsapp.js";
+import { initHero } from "./hero.js";
 
 document.documentElement.classList.remove("no-js");
 document.documentElement.classList.add("js");
@@ -11,6 +12,7 @@ document.documentElement.classList.add("js");
 initNav();
 initScrollObserver();
 initWhatsAppTracking();
+initHero();
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();

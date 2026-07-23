@@ -20,25 +20,83 @@ section {
 /* Header */
 
 .site-header {
+  --header-fg: var(--color-ink);
+  --header-logo-color: var(--color-accent-strong);
+  --header-underline: var(--color-accent);
   position: sticky;
   top: 0;
   z-index: var(--z-header);
   background-color: var(--color-bg-elevated);
   box-shadow: var(--shadow-sm);
+  transition: background-color var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+/* Variante usada na Home: flutua transparente sobre o Hero em tela cheia e só
+   ganha fundo sólido depois que o Hero sai da viewport (ver assets/js/hero.js). */
+.site-header--overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(21, 14, 11, 0.55) 0%, rgba(21, 14, 11, 0) 100%);
+  box-shadow: none;
+  --header-fg: var(--color-cream);
+  --header-logo-color: var(--color-cream);
+  --header-underline: var(--color-gold);
+}
+
+.site-header--overlay.is-scrolled {
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+  --header-fg: var(--color-ink);
+  --header-logo-color: var(--color-accent-strong);
+  --header-underline: var(--color-accent);
+}
+
+/* Sem JS não há troca de estado no scroll — parte direto do fundo sólido e seguro. */
+.no-js .site-header--overlay {
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+  --header-fg: var(--color-ink);
+  --header-logo-color: var(--color-accent-strong);
+  --header-underline: var(--color-accent);
 }
 
 .site-header__bar {
+  position: relative; /* fica acima de .site-nav--mobile, que é irmã dentro do header */
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
   padding-block: var(--space-sm);
-  min-height: 64px;
+  min-height: 72px;
 }
 
-.site-header__logo img {
-  height: 40px;
-  width: auto;
+.site-header__logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  color: var(--header-logo-color);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-standard);
+}
+
+.site-header__logo-mark {
+  font-family: var(--font-heading);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.site-header__logo-sub {
+  margin-top: 0.2rem;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.75;
 }
 
 .site-nav {
@@ -60,16 +118,18 @@ section {
   }
 
   .site-nav__link {
+    color: var(--header-fg);
     text-decoration: none;
     font-weight: 500;
     padding-block: var(--space-xs);
     border-bottom: 2px solid transparent;
-    transition: border-color var(--duration-fast) var(--ease-standard);
+    transition: color var(--duration-base) var(--ease-standard),
+      border-color var(--duration-fast) var(--ease-standard);
   }
 
   .site-nav__link:hover,
   .site-nav__link[aria-current="page"] {
-    border-color: var(--color-accent);
+    border-color: var(--header-underline);
   }
 }
 
@@ -101,8 +161,10 @@ section {
   display: block;
   width: 22px;
   height: 2px;
-  background-color: var(--color-ink);
-  transition: transform var(--duration-fast) var(--ease-standard), opacity var(--duration-fast) var(--ease-standard);
+  background-color: var(--header-fg, var(--color-ink));
+  transition: transform var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-base) var(--ease-standard);
 }
 
 .nav-toggle__icon::before,
@@ -116,14 +178,36 @@ section {
 }
 
 .nav-toggle__icon::after {
-  top: -8px;
+  top: 6px;
 }
 
+/* Menu aberto: as três barras viram um X — nunca dois ícones diferentes cortando. */
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before {
+  top: 0;
+  transform: rotate(45deg);
+  background-color: var(--header-fg, var(--color-ink));
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background-color: var(--header-fg, var(--color-ink));
+}
+
+/* Painel mobile: tela cheia em bordô escuro (mesma "cortina" do footer), links grandes
+   em Fraunces, revelados em leve cascata — evita a estética de offcanvas genérico. */
 .site-nav--mobile {
   position: fixed;
-  inset: 64px 0 0 0;
-  background-color: var(--color-bg-elevated);
-  padding: var(--space-lg) var(--container-padding);
+  inset: 0;
+  z-index: 1; /* abaixo de .site-header__bar (z-index:2), acima do resto da página */
+  display: flex;
+  align-items: center;
+  background-color: var(--color-accent-strong);
+  padding: var(--space-2xl) var(--container-padding);
   overflow-y: auto;
 }
 
@@ -133,11 +217,42 @@ section {
 
 .site-nav--mobile .site-nav__list {
   list-style: none;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  font-size: var(--step-1);
+  width: 100%;
+}
+
+.site-nav--mobile .site-nav__list li {
+  border-bottom: 1px solid rgba(247, 241, 232, 0.14);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: nav-mobile-item-in var(--duration-slow) var(--ease-standard) forwards;
+}
+
+.site-nav--mobile .site-nav__list li:nth-child(1) { animation-delay: 40ms; }
+.site-nav--mobile .site-nav__list li:nth-child(2) { animation-delay: 80ms; }
+.site-nav--mobile .site-nav__list li:nth-child(3) { animation-delay: 120ms; }
+.site-nav--mobile .site-nav__list li:nth-child(4) { animation-delay: 160ms; }
+.site-nav--mobile .site-nav__list li:nth-child(5) { animation-delay: 200ms; }
+.site-nav--mobile .site-nav__list li:nth-child(6) { animation-delay: 240ms; }
+.site-nav--mobile .site-nav__list li:nth-child(7) { animation-delay: 280ms; }
+
+.site-nav--mobile .site-nav__link {
+  display: block;
+  padding-block: var(--space-md);
+  font-family: var(--font-heading);
+  font-size: var(--step-2);
+  font-weight: 500;
+  color: var(--color-ink-on-dark);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.site-nav--mobile .site-nav__link:hover,
+.site-nav--mobile .site-nav__link[aria-current="page"] {
+  color: var(--color-gold-soft);
 }
 
 @media (min-width: 1024px) {
