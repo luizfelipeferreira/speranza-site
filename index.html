@@ -117,8 +117,11 @@
       2. Barra de confiança — indicadores (anos, nº de eventos, avaliação Google)
       3. Escolha seu tipo de evento — 4 cards (Casamentos/Debutantes/Corporativo/Aniversários)
       4. Sobre o Speranza — narrativa de marca
-      5. Estrutura em destaque — 6-8 dos 12 itens de estrutura
-      6. Galeria (prévia)
+      5. Estrutura em destaque ✓ (implementada fora de ordem, a pedido — narrativa em 4
+         capítulos em vez de grade de ícones; ver .structure em assets/css/home.css)
+      6. Galeria (prévia) ✓ (implementada fora de ordem, a pedido — composição editorial
+         assimétrica, não o .gallery-grid genérico já existente em assets/css/gallery.css,
+         que fica reservado para a galeria completa dentro de /espaco/)
       7. Como funciona — passos
       8. Depoimentos
       9. FAQ
@@ -150,6 +153,114 @@
         <span class="hero__scroll-label">Role para descobrir</span>
         <span class="hero__scroll-line"><span class="hero__scroll-dot" aria-hidden="true"></span></span>
       </button>
+    </section>
+
+    <section class="structure" aria-labelledby="structure-heading">
+      <div class="container structure__intro" data-reveal>
+        <p class="section-eyebrow">Estrutura do Speranza</p>
+        <h2 id="structure-heading">Uma estrutura pensada para sustentar cada momento da sua celebração.</h2>
+      </div>
+
+      <div class="container">
+        <ol class="structure__list">
+          <li class="structure__chapter" data-reveal>
+            <span class="structure__index" aria-hidden="true">01</span>
+            <div class="structure__body">
+              <h3>Antes de tudo começar</h3>
+              <p>Chegar já é simples: <strong>estacionamento gratuito</strong> para todos os convidados, e um <strong>camarim privativo</strong> para os últimos retoques antes de abrir as portas.</p>
+            </div>
+          </li>
+          <li class="structure__chapter" data-reveal>
+            <span class="structure__index" aria-hidden="true">02</span>
+            <div class="structure__body">
+              <h3>O coração da festa</h3>
+              <p>Dentro, o <strong>salão climatizado</strong> garante conforto do primeiro ao último brinde. Do lado de fora, a <strong>estrutura para cerimônias ao ar livre</strong> transforma a cerimônia em um momento à parte, sob o céu de Jundiaí.</p>
+            </div>
+          </li>
+          <li class="structure__chapter" data-reveal>
+            <span class="structure__index" aria-hidden="true">03</span>
+            <div class="structure__body">
+              <h3>Para que ninguém se preocupe</h3>
+              <p>Enquanto os pequenos brincam no <strong>espaço kids</strong>, a <strong>equipe de segurança</strong> cuida de cada detalhe — para os pais aproveitarem a festa sem pausas.</p>
+            </div>
+          </li>
+          <li class="structure__chapter" data-reveal>
+            <span class="structure__index" aria-hidden="true">04</span>
+            <div class="structure__body">
+              <h3>Sabores que fecham a noite</h3>
+              <p>Na cozinha, tudo pronto para operar em grande escala: <strong>cozinha equipada</strong> e parceria com o <strong>Combinatto Buffet</strong>, referência de sabor na região.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="gallery-editorial" aria-labelledby="gallery-heading">
+      <div class="container gallery-editorial__intro" data-reveal>
+        <div>
+          <p class="section-eyebrow">Galeria</p>
+          <h2 id="gallery-heading">O espaço, em detalhe.</h2>
+          <p class="gallery-editorial__lede">Uma curadoria de ambientes, montagens e detalhes reais do Speranza, em Jundiaí.</p>
+        </div>
+        <a class="gallery-editorial__cta" href="/espaco/">Ver o espaço completo <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="container">
+        <!-- Fundo de cada prancha é um gradiente provisório (mesmo recurso do Hero) —
+             não há sessão fotográfica profissional ainda (ver docs/ESTRATEGIA.md §5).
+             Trocar .gallery-editorial__media por <img loading="lazy" alt="…"> real
+             mantendo a legenda (figcaption) quando as fotos existirem. -->
+        <ul class="gallery-editorial__grid">
+          <li class="gallery-editorial__plate gallery-editorial__plate--lead" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">01</span><span class="gallery-editorial__label">O salão</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--table" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">02</span><span class="gallery-editorial__label">Mesa posta</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--detail" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">03</span><span class="gallery-editorial__label">Detalhes</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--backstage" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">04</span><span class="gallery-editorial__label">Camarim</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--wide" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">05</span><span class="gallery-editorial__label">Cerimônia ao ar livre</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--night" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">06</span><span class="gallery-editorial__label">Luz da noite</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--catering" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">07</span><span class="gallery-editorial__label">Buffet</span></figcaption>
+            </figure>
+          </li>
+          <li class="gallery-editorial__plate gallery-editorial__plate--crowd" data-reveal>
+            <figure>
+              <div class="gallery-editorial__media" aria-hidden="true"></div>
+              <figcaption><span class="gallery-editorial__index">08</span><span class="gallery-editorial__label">A festa</span></figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
     </section>
   </main>
 

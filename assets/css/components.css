@@ -1,5 +1,19 @@
 /* Componentes reutilizáveis — botões, cards, trust-bar, passos, depoimentos, FAQ */
 
+/* Eyebrow — rótulo pequeno acima de um título de seção, sobre fundo claro.
+   Usa --color-accent (bordô), nunca dourado: ver docs/DESIGN_SYSTEM.md, dourado
+   sobre creme reprova contraste AA. Para fundos escuros, ver .hero__eyebrow. */
+.section-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
 /* Botões / CTA */
 
 .btn {
