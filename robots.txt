@@ -1,0 +1,5 @@
+# TODO: confirmar domínio de produção antes do lançamento
+User-agent: *
+Allow: /
+
+Sitemap: https://www.speranzaeventos.com.br/sitemap.xml

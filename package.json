@@ -1,0 +1,12 @@
+{
+  "name": "speranza-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Site institucional da Speranza Eventos (Jundiaí-SP) — HTML5/CSS3/JS vanilla, sem framework, sem build step.",
+  "scripts": {
+    "start": "serve . -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

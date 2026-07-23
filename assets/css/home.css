@@ -1,0 +1,64 @@
+/* Específico da Home — hero + grid de 4 cards de segmentação de evento */
+
+body.page-home .hero {
+  position: relative;
+  min-height: 80svh;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-cream);
+  background-color: var(--color-accent-strong);
+  background-size: cover;
+  background-position: center;
+}
+
+body.page-home .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(60, 15, 26, 0.2) 0%, rgba(60, 15, 26, 0.85) 100%);
+}
+
+body.page-home .hero__content {
+  position: relative;
+  padding-block: var(--space-2xl);
+}
+
+body.page-home .hero h1 {
+  color: var(--color-cream);
+  max-width: 20ch;
+}
+
+body.page-home .hero__subheadline {
+  max-width: 45ch;
+  font-size: var(--step-1);
+  margin-top: var(--space-md);
+}
+
+body.page-home .event-type-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  body.page-home .event-type-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  body.page-home .event-type-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body.page-home .about-section {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  body.page-home .about-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}

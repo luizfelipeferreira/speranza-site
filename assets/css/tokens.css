@@ -1,0 +1,99 @@
+/*
+  Design tokens — Speranza Eventos
+  Base creme/off-white + vinho/bordô como cor de apoio autoral (ver docs/ESTRATEGIA.md §5).
+  Dourado aparece só como acento pontual (bordas finas, ícones), nunca como cor dominante.
+*/
+
+:root {
+  /* Cor — base neutra */
+  --color-cream: #f7f1e8;
+  --color-cream-soft: #fbf8f3;
+  --color-white: #ffffff;
+
+  /* Cor — apoio (vinho/bordô) */
+  --color-bordeaux-900: #3c0f1a;
+  --color-bordeaux-700: #6e1b2e;
+  --color-bordeaux-600: #7f2236;
+  --color-bordeaux-500: #8c2a40;
+  --color-bordeaux-100: #f3e2e6;
+
+  /* Cor — acento pontual */
+  --color-gold: #b08d57;
+  --color-gold-soft: #d9c49a;
+
+  /* Cor — texto */
+  --color-ink: #2a2320;
+  --color-ink-soft: #5c5450;
+  --color-ink-on-dark: #f7f1e8;
+
+  /* Cor — feedback/estado (uso mínimo: foco, links, erro de formulário curto) */
+  --color-focus: #2a6bd9;
+  --color-error: #b3261e;
+
+  /* Papéis semânticos */
+  --color-bg: var(--color-cream);
+  --color-bg-elevated: var(--color-white);
+  --color-text: var(--color-ink);
+  --color-text-soft: var(--color-ink-soft);
+  --color-accent: var(--color-bordeaux-700);
+  --color-accent-strong: var(--color-bordeaux-900);
+  --color-accent-soft: var(--color-bordeaux-100);
+  --color-on-accent: var(--color-cream);
+
+  /* Tipografia — pilhas system-safe agora; troca para webfont self-hosted (ex.: serifada
+     autoral + sans-serif limpa) é um único ponto de ajuste aqui, sem redesenho. */
+  --font-heading: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --font-size-base: 1rem;
+  --line-height-base: 1.6;
+  --line-height-heading: 1.15;
+
+  /* Escala tipográfica (mobile-first; ver breakpoints abaixo para ajustes em telas maiores) */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  --step-2: clamp(1.44rem, 1.3rem + 0.7vw, 1.9rem);
+  --step-3: clamp(1.8rem, 1.5rem + 1.2vw, 2.6rem);
+  --step-4: clamp(2.2rem, 1.7rem + 2vw, 3.4rem);
+
+  /* Espaçamento — escala em rem, base 8px */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Layout */
+  --container-max: 72rem;
+  --container-padding: var(--space-md);
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* Elevação */
+  --shadow-sm: 0 1px 2px rgba(42, 35, 32, 0.08);
+  --shadow-md: 0 8px 24px rgba(42, 35, 32, 0.12);
+  --shadow-lg: 0 16px 48px rgba(42, 35, 32, 0.16);
+
+  /* Movimento */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+
+  /* Empilhamento */
+  --z-header: 100;
+  --z-whatsapp-float: 110;
+  --z-lightbox: 200;
+
+  /* Alvo de toque mínimo (acessibilidade) */
+  --tap-target-min: 44px;
+}
+
+/* Breakpoints de referência (usados como comentário — CSS não suporta var() em media query):
+   sm: 480px · md: 768px · lg: 1024px · xl: 1280px */

@@ -1,0 +1,51 @@
+/* Específico de O Espaço — ficha técnica + tour por ambientes */
+
+body.page-espaco .ambiente-tour {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  body.page-espaco .ambiente-tour {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body.page-espaco .ambiente-card__media {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+body.page-espaco .spec-sheet {
+  display: grid;
+  gap: var(--space-sm) var(--space-xl);
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  body.page-espaco .spec-sheet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body.page-espaco .spec-sheet__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-block: var(--space-xs);
+  border-bottom: 1px solid var(--color-accent-soft);
+}
+
+body.page-espaco .map-embed {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+body.page-espaco .map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

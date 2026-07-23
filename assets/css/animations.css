@@ -1,0 +1,28 @@
+/* Scroll-reveal sutil (acionado via IntersectionObserver em scroll-observer.js) */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow) var(--ease-standard),
+    transform var(--duration-slow) var(--ease-standard);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sem JS ou com prefers-reduced-motion: conteúdo sempre visível, nunca preso em opacity:0 */
+.no-js [data-reveal],
+[data-reveal].no-observer {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

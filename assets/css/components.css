@@ -1,0 +1,216 @@
+/* Componentes reutilizáveis — botões, cards, trust-bar, passos, depoimentos, FAQ */
+
+/* Botões / CTA */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: var(--tap-target-min);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent-strong);
+}
+
+.btn--gold-outline {
+  background-color: transparent;
+  border-color: var(--color-gold);
+  color: var(--color-accent-strong);
+}
+
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* Cards de segmentação (Casamentos / Debutantes / Corporativo / Aniversários) */
+
+.event-card {
+  display: block;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.event-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.event-card__media {
+  aspect-ratio: 4 / 3;
+}
+
+.event-card__body {
+  padding: var(--space-lg);
+}
+
+.event-card__title {
+  margin-bottom: var(--space-2xs);
+}
+
+/* Barra de confiança */
+
+.trust-bar {
+  display: grid;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .trust-bar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.trust-bar__number {
+  font-family: var(--font-heading);
+  font-size: var(--step-3);
+  color: var(--color-accent);
+}
+
+/* Como funciona — passos numerados */
+
+.steps {
+  display: grid;
+  gap: var(--space-lg);
+  counter-reset: step;
+}
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.step {
+  position: relative;
+  padding-top: var(--space-xl);
+}
+
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold);
+  font-family: var(--font-heading);
+  color: var(--color-accent-strong);
+}
+
+/* Depoimentos */
+
+.testimonial {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-elevated);
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial__quote {
+  font-family: var(--font-heading);
+  font-size: var(--step-1);
+  font-style: italic;
+}
+
+.testimonial__author {
+  margin-top: var(--space-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.testimonial__meta {
+  font-size: var(--step--1);
+  color: var(--color-text-soft);
+}
+
+/* placeholder explícito enquanto não há depoimentos reais — nunca fabricar nome/evento */
+.testimonial--placeholder {
+  border: 1px dashed var(--color-gold);
+}
+
+/* FAQ — usa <details>/<summary> nativo, sem JS */
+
+.faq-item {
+  border-bottom: 1px solid var(--color-accent-soft);
+  padding-block: var(--space-sm);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  min-height: var(--tap-target-min);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-size: var(--step-1);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.faq-item[open] summary::after {
+  content: "\2212"; /* sinal de menos */
+}
+
+.faq-item__answer {
+  padding-top: var(--space-sm);
+  color: var(--color-text-soft);
+}
+
+/* Badges / selos de confiança */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  font-size: var(--step--1);
+  font-weight: 600;
+}

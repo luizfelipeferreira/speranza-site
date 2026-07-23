@@ -1,0 +1,23 @@
+{
+  "name": "Speranza Eventos",
+  "short_name": "Speranza",
+  "description": "Salão de festas em Jundiaí-SP para casamentos, debutantes, eventos corporativos e sociais.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "pt-BR",
+  "background_color": "#F7F1E8",
+  "theme_color": "#6E1B2E",
+  "icons": [
+    {
+      "src": "/assets/images/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
