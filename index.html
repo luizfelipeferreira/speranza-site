@@ -19,7 +19,7 @@
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#6e1b2e" />
+  <meta name="theme-color" content="#31473a" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,7 +86,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20Eventos." target="_blank" rel="noopener">
+        <a class="btn btn--secondary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20Eventos." target="_blank" rel="noopener">
           <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-whatsapp"></use></svg>
           Fale no WhatsApp
         </a>
@@ -129,9 +129,9 @@
       11. CTA final
     -->
     <section class="hero" aria-labelledby="hero-heading">
-      <!-- Fundo provisório (gradiente + brilho, tons do bordô/dourado) enquanto não há
-           sessão fotográfica profissional do espaço (ver docs/ESTRATEGIA.md §5). Trocar
-           por <img>/picture do salão real assim que as fotos estiverem prontas. -->
+      <!-- Fundo provisório (campo sólido de verde escuro + grain, sem gradiente
+           decorativo) enquanto não há sessão fotográfica profissional do espaço (ver
+           docs/ESTRATEGIA.md §5). Trocar por <img>/picture do salão real quando pronto. -->
       <div class="hero__media" aria-hidden="true"></div>
       <!-- Sentinela de 1px no topo do Hero: o header vira sólido assim que ela sai da
            faixa do header (ver assets/js/hero.js), independente da altura do Hero. -->
@@ -142,9 +142,9 @@
           <p class="hero__eyebrow">Salão de festas premium em Jundiaí</p>
           <h1 id="hero-heading">Elegância de capital,<br />endereço de Jundiaí.</h1>
           <p class="hero__subheadline">Casamentos, debutantes e eventos corporativos em um espaço premium no Bairro Caxambú.</p>
-          <div class="cta-group hero__cta-group">
+          <div class="hero__cta-group">
             <a class="btn btn--primary" data-wa="hero-orcamento" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20evento%20no%20Speranza." target="_blank" rel="noopener">Solicitar orçamento</a>
-            <a class="btn btn--secondary" data-wa="hero-visita" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agendar uma visita</a>
+            <a class="hero__cta-link" data-wa="hero-visita" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">ou agende uma visita <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -206,8 +206,8 @@
       </div>
 
       <div class="container">
-        <!-- Fundo de cada prancha é um gradiente provisório (mesmo recurso do Hero) —
-             não há sessão fotográfica profissional ainda (ver docs/ESTRATEGIA.md §5).
+        <!-- Fundo de cada prancha é uma cor sólida provisória da paleta (sem gradiente)
+             — não há sessão fotográfica profissional ainda (ver docs/ESTRATEGIA.md §5).
              Trocar .gallery-editorial__media por <img loading="lazy" alt="…"> real
              mantendo a legenda (figcaption) quando as fotos existirem. -->
         <ul class="gallery-editorial__grid">

@@ -2,7 +2,9 @@
 
 /* Eyebrow — rótulo pequeno acima de um título de seção, sobre fundo claro.
    Usa --color-accent (bordô), nunca dourado: ver docs/DESIGN_SYSTEM.md, dourado
-   sobre creme reprova contraste AA. Para fundos escuros, ver .hero__eyebrow. */
+   sobre creme reprova contraste AA. Para fundos escuros, ver .hero__eyebrow.
+   O traço fino antes do texto repete a assinatura do Hero (.hero__content::before)
+   em toda abertura de seção — um selo visual único do site, não um bloco a mais. */
 .section-eyebrow {
   display: block;
   font-family: var(--font-body);
@@ -14,21 +16,33 @@
   margin-bottom: var(--space-md);
 }
 
+.section-eyebrow::before {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 2.25rem;
+  margin-bottom: var(--space-sm);
+  background-color: var(--color-gold);
+}
+
 /* Botões / CTA */
 
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
   min-height: var(--tap-target-min);
   padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
   font-weight: 600;
+  white-space: nowrap;
   text-decoration: none;
   border: 1px solid transparent;
   transition: transform var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard);
+    background-color var(--duration-base) var(--ease-standard);
 }
 
 .btn:hover {
@@ -38,6 +52,12 @@
 .btn--primary {
   background-color: var(--color-accent);
   color: var(--color-on-accent);
+}
+
+/* Hover sólido troca de tom (não só levanta) — feedback mais deliberado que o
+   translateY genérico usado em todo botão. */
+.btn--primary:hover {
+  background-color: var(--color-accent-strong);
 }
 
 .btn--secondary {
@@ -50,6 +70,27 @@
   background-color: transparent;
   border-color: var(--color-gold);
   color: var(--color-accent-strong);
+}
+
+/* Botões outline "preenchem" sutilmente da esquerda no hover (currentColor a 8% de
+   opacidade) — mais considerado que uma simples troca de cor de fundo, e reaproveita
+   a cor de texto do próprio botão em qualquer contexto (claro ou escuro). */
+.btn--secondary::before,
+.btn--gold-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: currentColor;
+  opacity: 0.08;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+.btn--secondary:hover::before,
+.btn--gold-outline:hover::before {
+  transform: scaleX(1);
 }
 
 .cta-group {

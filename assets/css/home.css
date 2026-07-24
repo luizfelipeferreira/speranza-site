@@ -20,16 +20,26 @@ body.page-home .hero__inner {
   min-height: 0;
 }
 
-/* Fundo provisório: gradiente em tons de bordô/carvão com um brilho dourado sutil —
-   evoca luz ambiente de um salão de festas real sem depender de foto de banco de imagens
-   (ver docs/ESTRATEGIA.md §5). Trocar por foto/vídeo do espaço quando existir. */
+/* Fundo provisório: campo sólido de verde bem escuro — sem gradiente decorativo —
+   enquanto não há sessão fotográfica profissional do espaço (ver docs/ESTRATEGIA.md §5).
+   Trocar por foto/vídeo do espaço quando existir. O grain abaixo é textura, não
+   gradiente: dá tato sem simular um "brilho" de iluminação artificial. */
 body.page-home .hero__media {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(120% 70% at 14% -8%, rgba(176, 141, 87, 0.16), transparent 55%),
-    radial-gradient(90% 60% at 100% 100%, rgba(110, 27, 46, 0.35), transparent 60%),
-    linear-gradient(160deg, var(--color-bordeaux-900) 0%, #241713 55%, #150e0b 100%);
+  background-color: var(--color-accent-strong);
+}
+
+/* Grain sutil sobre o campo de cor — tira a leitura de "cor chapada digital" e
+   aproxima de textura fotográfica/impressa. Ruído gerado via SVG, sem imagem externa. */
+body.page-home .hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbikiLz48L3N2Zz4=");
 }
 
 /* Posicionada à altura do header (não no topo do Hero): fica visível na viewport
@@ -93,18 +103,29 @@ body.page-home .hero__subheadline {
   opacity: 0.88;
 }
 
+/* Um CTA sólido + um link de texto — não dois botões pill lado a lado. Hierarquia
+   clara em vez de "sopa de botões", no mesmo espírito do link da Galeria. */
 body.page-home .hero__cta-group {
   margin-top: var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
 }
 
-body.page-home .hero .btn--secondary {
-  border-color: var(--color-cream);
+body.page-home .hero__cta-link {
+  font-weight: 600;
   color: var(--color-cream);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(248, 246, 242, 0.4);
+  padding-bottom: 0.2rem;
+  transition: color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
 }
 
-body.page-home .hero .btn--secondary:hover {
-  border-color: var(--color-gold);
+body.page-home .hero__cta-link:hover {
   color: var(--color-gold-soft);
+  border-color: var(--color-gold);
 }
 
 /* Indicador de rolagem — traço fino + ponto animado, sem ícone de seta/mouse genérico.
@@ -139,7 +160,7 @@ body.page-home .hero__scroll-line {
   position: relative;
   width: 1px;
   height: 2.5rem;
-  background-color: rgba(247, 241, 232, 0.35);
+  background-color: rgba(248, 246, 242, 0.35);
   overflow: hidden;
 }
 
@@ -160,13 +181,16 @@ body.page-home .hero__scroll-dot {
    dois diferenciais reais numa frase corrida, alternando lado a lado da linha. */
 
 body.page-home .structure {
-  padding-block: var(--space-3xl);
+  /* Menos respiro no topo (o Hero já termina com folga própria) e mais no fim,
+     antes da Galeria — ritmo deliberado, não um padding uniforme repetido. */
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
 }
 
+/* Introdução alinhada à esquerda — mesmo idioma editorial da Galeria, não um
+   bloco de texto centralizado (o reflexo automático de qualquer template). */
 body.page-home .structure__intro {
   max-width: 34rem;
-  margin-inline: auto;
-  text-align: center;
   margin-bottom: var(--space-3xl);
 }
 
@@ -200,21 +224,22 @@ body.page-home .structure__chapter {
   align-items: start;
 }
 
+/* Numeral de "prancha editorial" — sem badge/círculo, para não repetir o mesmo
+   componente de stepper de UI já usado em .steps (Como funciona). A linha dourada
+   passa atrás do número; o fundo creme só mascara o traço onde o algarismo está. */
 body.page-home .structure__index {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
+  display: inline-flex;
   justify-content: center;
   width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
+  padding-block: 0.15rem;
   background-color: var(--color-bg);
-  border: 1px solid var(--color-gold);
   font-family: var(--font-heading);
-  font-size: var(--step--1);
-  font-weight: 600;
-  color: var(--color-accent-strong);
+  font-size: var(--step-1);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-gold);
 }
 
 body.page-home .structure__body h3 {
@@ -273,7 +298,10 @@ body.page-home .structure__body strong {
    que ocupa mais área visual; texto fica restrito à legenda no rodapé de cada prancha. */
 
 body.page-home .gallery-editorial {
-  padding-block: var(--space-3xl);
+  /* Seção mais densa visualmente — mantém o respiro generoso dos dois lados,
+     diferente do topo mais contido da Estrutura. */
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
 }
 
 body.page-home .gallery-editorial__intro {
@@ -320,14 +348,15 @@ body.page-home .gallery-editorial__grid {
   gap: var(--space-md);
 }
 
+/* Cantos retos, não arredondados — fotos "impressas" numa revista, não cards de
+   app. Arredondamento é o vocabulário visual que este site está evitando. */
 body.page-home .gallery-editorial__plate figure {
   margin: 0;
   position: relative;
   height: 100%;
   aspect-ratio: 3 / 4;
-  border-radius: var(--radius-md);
   overflow: hidden;
-  background-color: var(--color-bordeaux-900);
+  background-color: var(--color-accent-strong);
 }
 
 /* Prancha de destaque e faixas largas rompem o par de colunas no mobile também —
@@ -348,25 +377,25 @@ body.page-home .gallery-editorial__media {
   position: absolute;
   inset: 0;
   transition: transform var(--duration-slow) var(--ease-standard);
-  background:
-    radial-gradient(130% 100% at var(--plate-glow-x, 20%) var(--plate-glow-y, 0%), rgba(176, 141, 87, var(--plate-glow-o, 0.16)), transparent 60%),
-    linear-gradient(var(--plate-angle, 155deg), var(--plate-from, var(--color-bordeaux-900)) 0%, var(--plate-mid, #241713) 55%, var(--plate-to, #150e0b) 100%);
+  background-color: var(--plate-color, var(--color-accent));
 }
 
 body.page-home .gallery-editorial__plate:hover .gallery-editorial__media {
   transform: scale(1.045);
 }
 
-/* Um "grading" distinto por prancha (ângulo + posição do brilho), como fotos reais
-   de uma mesma sessão editada com consistência — nunca cores fora da paleta da marca. */
-body.page-home .gallery-editorial__plate--lead      { --plate-angle: 155deg; --plate-glow-x: 12%; --plate-glow-y: -10%; --plate-glow-o: 0.16; }
-body.page-home .gallery-editorial__plate--table      { --plate-angle: 205deg; --plate-glow-x: 88%; --plate-glow-y: 105%; --plate-glow-o: 0.24; }
-body.page-home .gallery-editorial__plate--detail     { --plate-angle: 180deg; --plate-glow-x: 50%; --plate-glow-y: 0%;   --plate-glow-o: 0.14; }
-body.page-home .gallery-editorial__plate--backstage  { --plate-angle: 115deg; --plate-glow-x: 8%;  --plate-glow-y: 90%;  --plate-glow-o: 0.18; }
-body.page-home .gallery-editorial__plate--wide       { --plate-angle: 95deg;  --plate-glow-x: 50%; --plate-glow-y: -10%; --plate-glow-o: 0.20; }
-body.page-home .gallery-editorial__plate--night      { --plate-angle: 200deg; --plate-glow-x: 92%; --plate-glow-y: 8%;   --plate-glow-o: 0.08; --plate-from: #170f0c; --plate-mid: #1c1310; --plate-to: #0f0a08; }
-body.page-home .gallery-editorial__plate--catering   { --plate-angle: 165deg; --plate-glow-x: 30%; --plate-glow-y: 105%; --plate-glow-o: 0.26; }
-body.page-home .gallery-editorial__plate--crowd      { --plate-angle: 148deg; --plate-glow-x: 72%; --plate-glow-y: 15%;  --plate-glow-o: 0.18; }
+/* Cor sólida por prancha — nunca gradiente. Alterna entre os tons já existentes na
+   paleta (verde primário, verde mais escuro, tinta quase-preta) para dar ritmo entre
+   as 8 pranchas, como uma sessão fotográfica real com exposições distintas, sem
+   inventar cores fora do sistema. */
+body.page-home .gallery-editorial__plate--lead      { --plate-color: var(--color-accent); }
+body.page-home .gallery-editorial__plate--table      { --plate-color: var(--color-accent-strong); }
+body.page-home .gallery-editorial__plate--detail     { --plate-color: var(--color-ink); }
+body.page-home .gallery-editorial__plate--backstage  { --plate-color: var(--color-accent); }
+body.page-home .gallery-editorial__plate--wide       { --plate-color: var(--color-accent-strong); }
+body.page-home .gallery-editorial__plate--night      { --plate-color: var(--color-ink); }
+body.page-home .gallery-editorial__plate--catering   { --plate-color: var(--color-accent-strong); }
+body.page-home .gallery-editorial__plate--crowd      { --plate-color: var(--color-accent); }
 
 body.page-home .gallery-editorial__plate figcaption {
   position: absolute;
@@ -378,7 +407,7 @@ body.page-home .gallery-editorial__plate figcaption {
   align-items: baseline;
   gap: var(--space-sm);
   padding: var(--space-md);
-  background: linear-gradient(to top, rgba(21, 14, 11, 0.6), transparent);
+  background: linear-gradient(to top, rgba(36, 52, 43, 0.65), transparent);
   color: var(--color-cream);
 }
 

@@ -1,31 +1,34 @@
 /*
   Design tokens — Speranza Eventos
-  Base creme/off-white + vinho/bordô como cor de apoio autoral (ver docs/ESTRATEGIA.md §5).
-  Dourado aparece só como acento pontual (bordas finas, ícones), nunca como cor dominante.
+  Base off-white + verde oliva profundo como cor de apoio autoral — hospitalidade de
+  alto padrão (Fasano, Rosewood, Six Senses, Aman), não convite de casamento.
+  Dourado/latão aparece só como acento pontual (bordas finas, ícones, numerais), nunca
+  como cor dominante nem de texto corrido.
   Fonte de verdade completa da identidade visual: docs/DESIGN_SYSTEM.md.
 */
 
 :root {
   /* Cor — base neutra */
-  --color-cream: #f7f1e8;
-  --color-cream-soft: #fbf8f3;
+  --color-cream: #f8f6f2;
+  --color-cream-soft: #fbfaf7;
   --color-white: #ffffff;
 
-  /* Cor — apoio (vinho/bordô) */
-  --color-bordeaux-900: #3c0f1a;
-  --color-bordeaux-700: #6e1b2e;
-  --color-bordeaux-600: #7f2236;
-  --color-bordeaux-500: #8c2a40;
-  --color-bordeaux-100: #f3e2e6;
+  /* Cor — apoio (verde oliva profundo) */
+  --color-primary: #31473a;
+  --color-primary-hover: #24342b;
+  --color-primary-soft: #e3e8e2;
 
-  /* Cor — acento pontual */
-  --color-gold: #b08d57;
-  --color-gold-soft: #d9c49a;
+  /* Cor — acento pontual (latão) */
+  --color-gold: #b6935c;
+  --color-gold-soft: #d8c39d;
 
   /* Cor — texto */
-  --color-ink: #2a2320;
-  --color-ink-soft: #5c5450;
-  --color-ink-on-dark: #f7f1e8;
+  --color-ink: #222222;
+  --color-ink-soft: #66615a;
+  --color-ink-on-dark: #f8f6f2;
+
+  /* Cor — borda (hairline neutro, ver docs/DESIGN_SYSTEM.md) */
+  --color-border: #e5e0d7;
 
   /* Cor — feedback/estado (uso mínimo: foco, links, erro de formulário curto) */
   --color-focus: #2a6bd9;
@@ -36,9 +39,9 @@
   --color-bg-elevated: var(--color-white);
   --color-text: var(--color-ink);
   --color-text-soft: var(--color-ink-soft);
-  --color-accent: var(--color-bordeaux-700);
-  --color-accent-strong: var(--color-bordeaux-900);
-  --color-accent-soft: var(--color-bordeaux-100);
+  --color-accent: var(--color-primary);
+  --color-accent-strong: var(--color-primary-hover);
+  --color-accent-soft: var(--color-primary-soft);
   --color-on-accent: var(--color-cream);
 
   /* Tipografia — Google Fonts (ver <link> em <head>): Fraunces para títulos/Hero,
@@ -77,10 +80,11 @@
   --radius-lg: 20px;
   --radius-pill: 999px;
 
-  /* Elevação */
-  --shadow-sm: 0 1px 2px rgba(42, 35, 32, 0.08);
-  --shadow-md: 0 8px 24px rgba(42, 35, 32, 0.12);
-  --shadow-lg: 0 16px 48px rgba(42, 35, 32, 0.16);
+  /* Elevação — extremamente discreta, quase imperceptível (hospitalidade de alto
+     padrão sinaliza hierarquia com espaço e linha fina, não com sombra de card) */
+  --shadow-sm: 0 1px 2px rgba(34, 34, 34, 0.05);
+  --shadow-md: 0 6px 16px rgba(34, 34, 34, 0.07);
+  --shadow-lg: 0 12px 32px rgba(34, 34, 34, 0.09);
 
   /* Movimento */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);

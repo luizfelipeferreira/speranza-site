@@ -23,13 +23,14 @@ section {
   --header-fg: var(--color-ink);
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
+  --header-invert: var(--color-bg-elevated);
   position: sticky;
   top: 0;
   z-index: var(--z-header);
   background-color: var(--color-bg-elevated);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--color-border);
   transition: background-color var(--duration-base) var(--ease-standard),
-    box-shadow var(--duration-base) var(--ease-standard);
+    border-color var(--duration-base) var(--ease-standard);
 }
 
 /* Variante usada na Home: flutua transparente sobre o Hero em tela cheia e só
@@ -39,28 +40,31 @@ section {
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, rgba(21, 14, 11, 0.55) 0%, rgba(21, 14, 11, 0) 100%);
-  box-shadow: none;
+  background: linear-gradient(to bottom, rgba(36, 52, 43, 0.6) 0%, rgba(36, 52, 43, 0) 100%);
+  border-bottom-color: transparent;
   --header-fg: var(--color-cream);
   --header-logo-color: var(--color-cream);
   --header-underline: var(--color-gold);
+  --header-invert: var(--color-ink);
 }
 
 .site-header--overlay.is-scrolled {
   background: var(--color-bg-elevated);
-  box-shadow: var(--shadow-sm);
+  border-bottom-color: var(--color-border);
   --header-fg: var(--color-ink);
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
+  --header-invert: var(--color-bg-elevated);
 }
 
 /* Sem JS não há troca de estado no scroll — parte direto do fundo sólido e seguro. */
 .no-js .site-header--overlay {
   background: var(--color-bg-elevated);
-  box-shadow: var(--shadow-sm);
+  border-bottom-color: var(--color-border);
   --header-fg: var(--color-ink);
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
+  --header-invert: var(--color-bg-elevated);
 }
 
 .site-header__bar {
@@ -72,6 +76,14 @@ section {
   gap: var(--space-md);
   padding-block: var(--space-sm);
   min-height: 72px;
+  transition: min-height var(--duration-base) var(--ease-standard);
+}
+
+/* O header encolhe sutilmente ao ficar sólido — não é só uma troca de cor, ele
+   reage à rolagem. Único no site: nenhum outro componente muda de tamanho. */
+.site-header--overlay.is-scrolled .site-header__bar,
+.no-js .site-header--overlay .site-header__bar {
+  min-height: 60px;
 }
 
 .site-header__logo {
@@ -89,47 +101,72 @@ section {
   font-weight: 600;
 }
 
+/* Cor própria (não opacity) — um lockup em duas cores deliberadas, como um
+   logotipo desenhado, não um rótulo esmaecido por conveniência. */
 .site-header__logo-sub {
   margin-top: 0.2rem;
   font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  opacity: 0.75;
+  color: var(--header-underline);
+  transition: color var(--duration-base) var(--ease-standard);
 }
 
 .site-nav {
   display: none;
 }
 
-@media (min-width: 1024px) {
+/* 1280px (Desktop), não 1024px (Notebook): sete itens em versalete rastreada +
+   botão do WhatsApp não cabem com folga numa faixa mais estreita — testado e
+   corrigido após o menu cortar o botão em 1024px. */
+@media (min-width: 1280px) {
   .site-nav {
     display: flex;
     align-items: center;
-    gap: var(--space-lg);
+    gap: var(--space-md);
   }
 
   .site-nav__list {
     display: flex;
     list-style: none;
-    gap: var(--space-lg);
+    gap: var(--space-md);
     padding: 0;
   }
 
   .site-nav__link {
+    position: relative;
+    display: block;
+    white-space: nowrap;
     color: var(--header-fg);
     text-decoration: none;
-    font-weight: 500;
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     padding-block: var(--space-xs);
-    border-bottom: 2px solid transparent;
-    transition: color var(--duration-base) var(--ease-standard),
-      border-color var(--duration-fast) var(--ease-standard);
+    transition: color var(--duration-base) var(--ease-standard);
   }
 
-  .site-nav__link:hover,
-  .site-nav__link[aria-current="page"] {
-    border-color: var(--header-underline);
+  /* Sublinhado que "desenha" da esquerda no hover, em vez de só trocar de cor —
+     a mesma ideia do preenchimento dos botões outline, aplicada à navegação. */
+  .site-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--header-underline);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-base) var(--ease-standard);
+  }
+
+  .site-nav__link:hover::after,
+  .site-nav__link[aria-current="page"]::after {
+    transform: scaleX(1);
   }
 }
 
@@ -137,6 +174,27 @@ section {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+}
+
+/* O CTA do header é discreto (outline, versalete rastreado) — a logo continua
+   sendo o elemento de maior peso na barra, não um botão de ação. */
+.site-header__actions .btn {
+  background-color: transparent;
+  border-color: var(--header-fg);
+  color: var(--header-fg);
+  padding-inline: var(--space-md);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.site-header__actions .btn:hover {
+  background-color: var(--header-fg);
+  color: var(--header-invert);
 }
 
 /* Menu hambúrguer (mobile) */
@@ -149,7 +207,7 @@ section {
   height: var(--tap-target-min);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .nav-toggle {
     display: none;
   }
@@ -225,7 +283,7 @@ section {
 }
 
 .site-nav--mobile .site-nav__list li {
-  border-bottom: 1px solid rgba(247, 241, 232, 0.14);
+  border-bottom: 1px solid rgba(248, 246, 242, 0.14);
   opacity: 0;
   transform: translateY(10px);
   animation: nav-mobile-item-in var(--duration-slow) var(--ease-standard) forwards;
@@ -255,7 +313,7 @@ section {
   color: var(--color-gold-soft);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .site-nav--mobile {
     display: none !important;
   }
@@ -324,7 +382,7 @@ section {
 .site-footer__bottom {
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1px solid rgba(247, 241, 232, 0.2);
+  border-top: 1px solid rgba(248, 246, 242, 0.2);
   font-size: var(--step--1);
   opacity: 0.8;
 }

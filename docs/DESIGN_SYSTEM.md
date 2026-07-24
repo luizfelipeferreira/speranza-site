@@ -19,63 +19,62 @@ A referência real é **hotelaria boutique e arquitetura de interiores de alto p
 
 ## Cores
 
-A paleta é intencionalmente **restrita**: uma cor de apoio autoral (vinho/bordô) carrega a identidade, o dourado aparece só em doses pequenas e pontuais, e o resto é neutro. Isso é uma decisão de marca, não uma limitação — é o que separa Speranza do salão de festas genérico "dourado por toda parte".
+**Revisão de direção (substitui a paleta original bordô/vinho).** A paleta é intencionalmente **restrita**: um verde oliva profundo carrega a identidade, o latão/dourado aparece só em doses mínimas e pontuais, e o resto é neutro. Isso é uma decisão de marca — a referência deixou de ser "salão de festas premium" e passou a ser hospitalidade de alto padrão (Fasano, Rosewood, Six Senses, Aman): tons de matéria natural (folhagem, latão, pedra clara) em vez de cores com conotação de convite de casamento (o bordô/vinho, mesmo bem executado, ainda carregava esse peso cultural).
 
 | Papel | Cor | Hex | Por quê |
 |---|---|---|---|
-| **Primary** | Bordô / Vinho | `#6e1b2e` | Cor autoral de apoio que carrega a identidade da marca. Substitui o dourado-dominante clichê do segmento por uma cor mais rara em salões de festa, com profundidade emocional (calor, tradição, elegância) sem cair em "romance genérico". Usada em CTAs primários, links de destaque, ícones de numeração. |
-| **Secondary** | Creme / Off-white | `#f7f1e8` | Base neutra quente (não um branco frio de hospital). Comunica sofisticação por espaço em branco generoso — o "respiro" que hotéis boutique usam para deixar a arquitetura/fotografia ser protagonista. É o fundo padrão do site. |
-| **Accent** | Dourado | `#b08d57` | Acento **pontual apenas** — bordas finas, ícones, numeração de passos, divisores. Nunca cor dominante nem de texto corrido (ver nota de contraste abaixo). É o que resta do "dourado de salão de festas" depois de domesticado: um traço fino, não um banho de cor. |
-| **Background** | Creme | `#f7f1e8` (`--color-bg`) | Fundo padrão de página. Mesma cor do Secondary — o Secondary *é* o Background em uso; a distinção existe para nomear a função, não para introduzir uma cor nova. |
-| **Surface** | Branco | `#ffffff` (`--color-bg-elevated`) | Superfícies elevadas sobre o fundo creme: cards, header, modais/lightbox. O contraste sutil creme→branco cria hierarquia sem precisar de sombra pesada. |
-| **Text** | Ink / Ink-soft / Ink-on-dark | `#2a2320` / `#5c5450` / `#f7f1e8` | Nunca preto puro — um marrom-carvão quente que combina com a paleta terrosa em vez de um preto frio de interface de software. `ink` para texto principal, `ink-soft` para texto secundário/legendas, `ink-on-dark` (mesmo tom do creme) para texto sobre fundos escuros (footer, overlays). |
-| **Border** | Hairline neutro / Hairline dourado | `#e4dccc` / `#b08d57` | Divisores sutis. O hairline neutro é o padrão (cards, tabelas, seções); o hairline dourado é reservado para pontos de destaque intencional (ex. numeração de passos, badges), reforçando o dourado como acento raro, não onipresente. |
-| **Success** | Verde terroso | `#3f6c4e` | Confirmação (formulário enviado, disponibilidade). Um verde musgo/floresta, não o verde saturado de UI genérica — mantém a paleta terrosa mesmo em estado de feedback. |
-| **Warning** | Terracota escuro | `#96562c` | Avisos honestos de urgência (ex. "agenda com poucas datas disponíveis" — só quando for fato real, nunca escassez falsa; ver `ESTRATEGIA.md` §6). Terracota em vez de âmbar/amarelo de alerta genérico, porque o tom continua pertencendo à mesma família cromática do site. |
+| **Primary** | Verde oliva profundo | `#31473a` | Cor autoral de apoio que carrega a identidade da marca. Um verde de folhagem escura — a mesma família cromática que Aman usa na própria marca — em vez de qualquer cor com conotação romântica/nupcial. Usada em CTAs primários, links de destaque, ícones de numeração. |
+| **Primary Hover** | Verde oliva escuro | `#24342b` | Estado de hover/pressed do Primary, e superfície escura "de assinatura" (footer, painel de menu mobile) — o mesmo papel que `bordeaux-900` tinha antes. |
+| **Secondary** | Off-white | `#f8f6f2` | Base neutra quente (não um branco frio de hospital). Comunica sofisticação por espaço em branco generoso — o "respiro" que hotéis boutique usam para deixar a arquitetura/fotografia ser protagonista. É o fundo padrão do site. |
+| **Accent** | Latão / Dourado | `#b6935c` | Acento **pontual apenas** — bordas finas, ícones, numeração, divisores. Nunca cor dominante nem de texto corrido (ver nota de contraste abaixo). Ainda mais raro do que na paleta anterior: é "um detalhe elegante", não um segundo protagonista. |
+| **Background** | Off-white | `#f8f6f2` (`--color-bg`) | Fundo padrão de página. Mesma cor do Secondary — a distinção existe para nomear a função, não para introduzir uma cor nova. |
+| **Surface** | Branco | `#ffffff` (`--color-bg-elevated`) | Superfícies elevadas sobre o fundo off-white: cards, header, modais/lightbox. O contraste sutil off-white→branco cria hierarquia sem precisar de sombra pesada. |
+| **Text** | Ink / Ink-soft / Ink-on-dark | `#222222` / `#66615a` / `#f8f6f2` | Um cinza-carvão neutro (não mais um marrom quente) — mais próximo da tinta/grafite usada em identidade de arquitetura do que de um tom terroso de convite. `ink` para texto principal, `ink-soft` para texto secundário/legendas, `ink-on-dark` (mesmo tom do off-white) para texto sobre fundos escuros (footer, overlays). |
+| **Border** | Hairline neutro / Hairline dourado | `#e5e0d7` / `#b6935c` | Divisores sutis. O hairline neutro é o padrão (cards, tabelas, seções); o hairline dourado é reservado para pontos de destaque intencional (ex. numeração, badges), reforçando o dourado como acento raro. |
+| **Success** | Verde-azulado (teal) musgo | `#3b6b6b` | Confirmação (formulário enviado, disponibilidade). Deliberadamente **não** é outro verde próximo do Primary — precisa ser distinguível de "essa é a cor da marca" — por isso pende para teal, ainda dentro de uma família natural/terrosa. |
+| **Warning** | Terracota escuro | `#96562c` | Avisos honestos de urgência (ex. "agenda com poucas datas disponíveis" — só quando for fato real, nunca escassez falsa; ver `ESTRATEGIA.md` §6). Terracota permanece — já era suficientemente distinto do bordô e continua distinto do verde. |
 
 ### Notas de uso
 
-- **Dourado nunca é cor de texto corrido.** Contraste `#b08d57` sobre `#f7f1e8` ≈ **2,8:1** — abaixo do mínimo AA mesmo para texto grande (3:1). Uso exclusivo: ícones (`stroke`/`fill` decorativo, sempre `aria-hidden`), bordas finas, numeração — nunca a única forma de transmitir informação.
-- **Bordô é a cor "acionável"** — todo elemento primário de interação (CTA, link ativo, foco de marca) usa bordô, não dourado. Isso mantém o dourado raro e, por isso, elegante.
-- Success/Warning seguem o mesmo padrão de par "soft + strong" do bordô (`accent-soft`/`accent-strong`), para uso em badges e alertas com fundo tintado e texto de alto contraste — ver tokens abaixo.
+- **Dourado nunca é cor de texto corrido.** Contraste `#b6935c` sobre `#f8f6f2` ≈ **2,7:1** — abaixo do mínimo AA mesmo para texto grande (3:1). Uso exclusivo: ícones (`stroke`/`fill` decorativo, sempre `aria-hidden`), bordas finas, numeração — nunca a única forma de transmitir informação.
+- **Verde oliva é a cor "acionável"** — todo elemento primário de interação (CTA, link ativo, foco de marca) usa Primary, não dourado. Isso mantém o dourado raro e, por isso, elegante — ainda mais do que na versão anterior da paleta.
+- **Sem gradientes decorativos.** Fundos de Hero, cards de galeria e superfícies grandes usam **cor sólida chapada**, nunca um gradiente multi-tom simulando iluminação/profundidade fotográfica. A única exceção são véus de opacidade de uma única cor (ex. legibilidade de texto sobre uma superfície), que são máscara funcional, não decoração.
+- **Sombras extremamente discretas.** Hierarquia se comunica com espaço em branco e linha fina (hairline), não com `box-shadow` pronunciado — ver tokens de elevação em `tokens.css` (opacidades entre 0,05 e 0,09).
+- Success/Warning seguem o mesmo padrão de par "soft + strong" do Primary, para uso em badges e alertas com fundo tintado e texto de alto contraste.
 
 ### CSS Variables
 
-Os tokens abaixo já existem em `assets/css/tokens.css`; os marcados com 🆕 são extensões propostas para a próxima fase de implementação (ainda não presentes no arquivo).
-
 ```css
 :root {
-  /* Primary — bordô */
-  --color-bordeaux-900: #3c0f1a;
-  --color-bordeaux-700: #6e1b2e;
-  --color-bordeaux-600: #7f2236;
-  --color-bordeaux-500: #8c2a40;
-  --color-bordeaux-100: #f3e2e6;
+  /* Primary — verde oliva profundo */
+  --color-primary: #31473a;
+  --color-primary-hover: #24342b;
+  --color-primary-soft: #e3e8e2;
 
-  /* Secondary — base creme */
-  --color-cream: #f7f1e8;
-  --color-cream-soft: #fbf8f3;
+  /* Secondary — base off-white */
+  --color-cream: #f8f6f2;
+  --color-cream-soft: #fbfaf7;
   --color-white: #ffffff;
 
-  /* Accent — dourado (uso pontual) */
-  --color-gold: #b08d57;
-  --color-gold-soft: #d9c49a;
+  /* Accent — latão/dourado (uso pontual, "um detalhe elegante") */
+  --color-gold: #b6935c;
+  --color-gold-soft: #d8c39d;
 
   /* Text */
-  --color-ink: #2a2320;
-  --color-ink-soft: #5c5450;
-  --color-ink-on-dark: #f7f1e8;
+  --color-ink: #222222;
+  --color-ink-soft: #66615a;
+  --color-ink-on-dark: #f8f6f2;
 
-  /* Border 🆕 */
-  --color-border: #e4dccc;
+  /* Border */
+  --color-border: #e5e0d7;
   --color-border-accent: var(--color-gold);
 
-  /* Success 🆕 */
-  --color-success: #3f6c4e;
-  --color-success-soft: #e2ede4;
-  --color-success-strong: #24402e;
+  /* Success 🆕 (ainda não implementado em componente algum) */
+  --color-success: #3b6b6b;
+  --color-success-soft: #e1eaea;
+  --color-success-strong: #1f3d3d;
 
-  /* Warning 🆕 */
+  /* Warning 🆕 (ainda não implementado em componente algum) */
   --color-warning: #96562c;
   --color-warning-soft: #f3e6d8;
   --color-warning-strong: #6b3c1c;
@@ -89,9 +88,9 @@ Os tokens abaixo já existem em `assets/css/tokens.css`; os marcados com 🆕 s�
   --color-bg-elevated: var(--color-white);
   --color-text: var(--color-ink);
   --color-text-soft: var(--color-ink-soft);
-  --color-accent: var(--color-bordeaux-700);
-  --color-accent-strong: var(--color-bordeaux-900);
-  --color-accent-soft: var(--color-bordeaux-100);
+  --color-accent: var(--color-primary);
+  --color-accent-strong: var(--color-primary-hover);
+  --color-accent-soft: var(--color-primary-soft);
   --color-on-accent: var(--color-cream);
 }
 ```
@@ -100,15 +99,15 @@ Os tokens abaixo já existem em `assets/css/tokens.css`; os marcados com 🆕 s�
 
 | Par | Contraste | Nível |
 |---|---|---|
-| `ink` sobre `cream` (texto principal) | 13,7:1 | AAA |
-| `ink-soft` sobre `cream` (texto secundário) | 6,6:1 | AA |
-| `bordeaux-700` sobre `cream` (links/títulos) | 10,1:1 | AAA |
-| `white` sobre `bordeaux-700` (botão primário) | 11,3:1 | AAA |
-| `ink-on-dark` (creme) sobre `bordeaux-900` (footer) | 14,7:1 | AAA |
-| `success-strong` sobre `success-soft` (badge) | 9,5:1 | AAA |
+| `ink` sobre `cream` (texto principal) | 14,7:1 | AAA |
+| `ink-soft` sobre `cream` (texto secundário) | 5,7:1 | AA |
+| `primary` sobre `cream` (links/títulos) | 9,3:1 | AAA |
+| `white` sobre `primary` (botão primário) | 10,0:1 | AAA |
+| `ink-on-dark` (off-white) sobre `primary-hover` (footer) | 12,2:1 | AAA |
+| `white` sobre `success` (badge sólido) | 6,0:1 | AA |
 | `warning-strong` sobre `warning-soft` (badge) | 7,5:1 | AAA |
 | `white` sobre `warning` (botão/badge sólido) | 5,7:1 | AA |
-| `gold` sobre `cream` (texto) | 2,8:1 | **Reprovado — não usar como texto** |
+| `gold` sobre `cream` (texto) | 2,7:1 | **Reprovado — não usar como texto** |
 
 ---
 
@@ -203,12 +202,12 @@ Todos os componentes abaixo já têm uma primeira implementação em `assets/css
 
 ### Botões
 
-- **Anatomia:** pill (`--radius-pill`), altura mínima `--tap-target-min` (44px), padding `--space-sm` × `--space-lg`, ícone opcional à esquerda.
+- **Anatomia:** retangular de cantos discretos (`--radius-sm`, não mais pill — arquitetura contemporânea prefere linhas retas a formas 100% arredondadas), altura mínima `--tap-target-min` (44px), padding `--space-sm` × `--space-lg`, ícone opcional à esquerda.
 - **Variantes:**
-  - `Primary` — fundo `--color-accent` (bordô), texto `--color-on-accent` (creme). Ação principal (WhatsApp, CTA de conversão).
-  - `Secondary` — transparente, borda `--color-accent`, texto `--color-accent-strong`. Ação alternativa ("Conheça o espaço").
-  - `Gold-outline` — transparente, borda `--color-gold`, texto `--color-accent-strong`. Reservado para contextos de menor ênfase (footer) — reforça o dourado como acento raro.
-- **Hover:** `translateY(-1px)`, `--duration-fast`.
+  - `Primary` — fundo `--color-accent` (verde oliva), texto `--color-on-accent` (off-white). Ação principal (WhatsApp, CTA de conversão). Hover troca para `--color-accent-strong`, não só levanta.
+  - `Secondary` — transparente, borda `--color-accent`, texto `--color-accent-strong`. Ação alternativa. Hover preenche sutilmente com `currentColor` a 8% de opacidade (não muda de cor abruptamente).
+  - `Gold-outline` — transparente, borda `--color-gold`, texto `--color-accent-strong`. Reservado para contextos de menor ênfase (footer) — reforça o dourado como acento raro, "um detalhe elegante".
+- **Hover:** `translateY(-1px)` + preenchimento/troca de tom (ver variantes acima), `--duration-fast`/`--duration-base`.
 - **Focus:** anel `:focus-visible` em `--color-focus`, nunca removido.
 - **Disabled:** opacidade 0.5, `cursor: not-allowed`, sem hover.
 
@@ -219,14 +218,14 @@ Todos os componentes abaixo já têm uma primeira implementação em `assets/css
 
 ### Navbar
 
-- Header `sticky`, fundo `--color-bg-elevated`, `--shadow-sm`, altura mínima 64px.
-- Menu horizontal ≥1024px (Notebook+); abaixo disso, menu hambúrguer em overlay full-screen.
-- Link ativo/hover: sublinhado de 2px em `--color-accent` (não muda cor de texto — evita ruído visual).
-- CTA de WhatsApp sempre visível no header, em qualquer breakpoint — nunca escondido atrás do menu.
+- Header `sticky` (ou `fixed` transparente sobre o Hero na Home — ver `.site-header--overlay`), fundo `--color-bg-elevated`, hairline inferior `--color-border` (não sombra), altura mínima 72px — encolhe para 60px quando o header transparente vira sólido no scroll.
+- Menu horizontal ≥1280px (Desktop) em versalete rastreada; abaixo disso (incluindo Notebook), menu hambúrguer em overlay full-screen — sete itens em versalete não cabem com folga a partir de 1024px.
+- Link ativo/hover: sublinhado de 1px que "desenha" da esquerda (`scaleX`), não uma borda estática — evita o hover genérico de framework CSS.
+- CTA de WhatsApp sempre visível no header, em qualquer breakpoint — nunca escondido atrás do menu; é discreto (outline, versalete), a logo continua sendo o elemento de maior peso da barra.
 
 ### Footer
 
-- Fundo `--color-accent-strong` (bordô escuro), texto `--color-ink-on-dark`. É a única superfície do site com fundo escuro — reforça o bordô como cor de "assinatura" no fechamento de cada página.
+- Fundo `--color-accent-strong` (verde oliva escuro), texto `--color-ink-on-dark`. É a única superfície do site com fundo escuro — reforça a cor de apoio como "assinatura" no fechamento de cada página.
 - Grid de 3 colunas (contato / redes sociais / CTA) em tablet+; empilhado em mobile.
 
 ### Galeria
@@ -242,7 +241,7 @@ Todos os componentes abaixo já têm uma primeira implementação em `assets/css
 
 ### Depoimentos
 
-- Citação em Fraunces itálico, autor em bordô, metadados (tipo de evento) em `ink-soft`.
+- Citação em Fraunces itálico, autor em `--color-accent` (verde oliva), metadados (tipo de evento) em `ink-soft`.
 - **Estado placeholder obrigatório** enquanto não houver depoimentos reais: borda tracejada em `--color-gold`, nunca fabricar nome ou depoimento fictício (regra herdada de `components.css`).
 
 ### Badges
@@ -253,7 +252,7 @@ Todos os componentes abaixo já têm uma primeira implementação em `assets/css
 ### Ícones
 
 - Sprite SVG único (`assets/images/icons/icons.svg`), line icons finos (`stroke-width: 1.6–1.8`, `stroke-linecap: round`), sem preenchimento sólido exceto detalhes pequenos (ex. bolinha do Instagram).
-- Cor via `currentColor` — herda do contexto (ink, bordô ou creme conforme o fundo).
+- Cor via `currentColor` — herda do contexto (ink, verde oliva ou off-white conforme o fundo).
 - Tamanho padrão 18–24px; nunca ícones grandes decorativos (evita a estética de template genérico).
 - Sempre `aria-hidden="true"` quando acompanhado de texto visível; `aria-label` no elemento pai quando o ícone é o único conteúdo (ex. redes sociais do footer).
 
@@ -283,7 +282,7 @@ Motion é **sutil e funcional** — nunca decorativo por si só. Isso é uma dec
 |---|---|---|
 | **Mobile** | `< 480px` | Smartphones — layout de coluna única, menu hambúrguer, galeria 2 colunas |
 | **Tablet** | `480px – 1023px` | Tablets e mobile grande — grids de 2–3 colunas, `section` já usa padding `--space-3xl` a partir de 768px |
-| **Notebook** | `1024px – 1279px` | Menu horizontal completo passa a aparecer (breakpoint atual de `.site-nav` em `layout.css`), grids de 3–4 colunas |
+| **Notebook** | `1024px – 1279px` | Ainda usa o menu hambúrguer (o menu horizontal completo só aparece em Desktop, ≥1280px — ver `.site-nav` em `layout.css`); grids de 3–4 colunas |
 | **Desktop** | `≥ 1280px` | Largura de conteúdo estabiliza no `--container-max` (72rem); ganho de espaço vira margem lateral, não mais colunas |
 
 Mobile-first em toda a base: estilos default assumem a tela menor, `min-width` adiciona complexidade progressivamente (padrão já seguido em `layout.css`/`gallery.css`).
