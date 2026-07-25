@@ -30,17 +30,29 @@ section {
   background-color: var(--color-bg-elevated);
   border-bottom: 1px solid var(--color-border);
   transition: background-color var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard);
+    border-color var(--duration-base) var(--ease-standard),
+    backdrop-filter var(--duration-base) var(--ease-standard);
+}
+
+/* Ao rolar, o header ganha vidro fosco — translúcido + blur — em vez de branco
+   opaco: a "profundidade por espaçamento", não por sombra, aplicada ao próprio
+   header. Vale em qualquer página (ver assets/js/hero.js, que agora governa o
+   estado de scroll do header mesmo fora da Home). */
+.site-header.is-scrolled {
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(var(--header-blur));
+  -webkit-backdrop-filter: blur(var(--header-blur));
+  border-bottom-color: var(--color-border);
 }
 
 /* Variante usada na Home: flutua transparente sobre o Hero em tela cheia e só
-   ganha fundo sólido depois que o Hero sai da viewport (ver assets/js/hero.js). */
+   ganha o vidro fosco depois que o Hero sai da viewport (ver assets/js/hero.js). */
 .site-header--overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, rgba(36, 52, 43, 0.6) 0%, rgba(36, 52, 43, 0) 100%);
+  background: linear-gradient(to bottom, rgba(36, 36, 36, 0.45) 0%, rgba(36, 36, 36, 0) 100%);
   border-bottom-color: transparent;
   --header-fg: var(--color-cream);
   --header-logo-color: var(--color-cream);
@@ -48,9 +60,9 @@ section {
   --header-invert: var(--color-ink);
 }
 
+/* Só troca a paleta de cores do lockup — o fundo translúcido/blur já vem da
+   regra .is-scrolled acima, compartilhada com as páginas internas. */
 .site-header--overlay.is-scrolled {
-  background: var(--color-bg-elevated);
-  border-bottom-color: var(--color-border);
   --header-fg: var(--color-ink);
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
@@ -177,24 +189,21 @@ section {
 }
 
 /* O CTA do header é discreto (outline, versalete rastreado) — a logo continua
-   sendo o elemento de maior peso na barra, não um botão de ação. */
+   sendo o elemento de maior peso na barra, não um botão de ação. Hover herda o
+   preenchimento suave de .btn--secondary (currentColor a 8%, ver components.css)
+   em vez de trocar de cor abruptamente — mesma microinteração em todo o site. */
 .site-header__actions .btn {
   background-color: transparent;
   border-color: var(--header-fg);
   color: var(--header-fg);
   padding-inline: var(--space-md);
   font-size: var(--step--1);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: background-color var(--duration-base) var(--ease-standard),
+  transition: border-color var(--duration-base) var(--ease-standard),
     color var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard),
     transform var(--duration-fast) var(--ease-standard);
-}
-
-.site-header__actions .btn:hover {
-  background-color: var(--header-fg);
-  color: var(--header-invert);
 }
 
 /* Menu hambúrguer (mobile) */
@@ -283,7 +292,7 @@ section {
 }
 
 .site-nav--mobile .site-nav__list li {
-  border-bottom: 1px solid rgba(248, 246, 242, 0.14);
+  border-bottom: 1px solid rgba(248, 247, 244, 0.14);
   opacity: 0;
   transform: translateY(10px);
   animation: nav-mobile-item-in var(--duration-slow) var(--ease-standard) forwards;
@@ -379,10 +388,28 @@ section {
   padding: 0;
 }
 
+.site-footer__social a {
+  display: inline-flex;
+  transition: opacity var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.site-footer__social a:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+/* .btn--gold-outline usa --color-accent-strong como texto por padrão — a mesma
+   cor de fundo do footer. Sobre a superfície escura, o botão precisa de texto
+   claro para não desaparecer contra o próprio fundo. */
+.site-footer .btn--gold-outline {
+  color: var(--color-ink-on-dark);
+}
+
 .site-footer__bottom {
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1px solid rgba(248, 246, 242, 0.2);
+  border-top: 1px solid rgba(248, 247, 244, 0.2);
   font-size: var(--step--1);
   opacity: 0.8;
 }

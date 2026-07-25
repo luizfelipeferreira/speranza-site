@@ -6,7 +6,7 @@ body.page-home .hero {
   display: flex;
   flex-direction: column;
   padding-top: 4.5rem; /* reserva a faixa do header fixo mesmo em telas muito baixas */
-  color: var(--color-cream);
+  color: var(--color-text);
   overflow: hidden;
 }
 
@@ -20,24 +20,27 @@ body.page-home .hero__inner {
   min-height: 0;
 }
 
-/* Fundo provisório: campo sólido de verde bem escuro — sem gradiente decorativo —
-   enquanto não há sessão fotográfica profissional do espaço (ver docs/ESTRATEGIA.md §5).
-   Trocar por foto/vídeo do espaço quando existir. O grain abaixo é textura, não
-   gradiente: dá tato sem simular um "brilho" de iluminação artificial. */
+/* Fundo provisório: campo sólido em off-white — grandes áreas em off-white são a
+   base da identidade Soft Sage, e um placeholder claro erra menos quando a sessão
+   fotográfica do espaço entrar (hospitalidade boutique tende a luz natural, não
+   ambiente escuro). Trocar por foto/vídeo do espaço quando existir. O grain abaixo
+   é textura, não gradiente: dá tato sem simular um "brilho" artificial. */
 body.page-home .hero__media {
   position: absolute;
   inset: 0;
-  background-color: var(--color-accent-strong);
+  background-color: var(--color-bg-alt);
 }
 
 /* Grain sutil sobre o campo de cor — tira a leitura de "cor chapada digital" e
-   aproxima de textura fotográfica/impressa. Ruído gerado via SVG, sem imagem externa. */
+   aproxima de textura fotográfica/impressa. Ruído gerado via SVG, sem imagem externa.
+   multiply (não overlay) porque sobre uma base clara é o blend mode que continua
+   dando textura visível — overlay quase não marca contra tons próximos do branco. */
 body.page-home .hero__media::after {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
   pointer-events: none;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbikiLz48L3N2Zz4=");
 }
@@ -83,7 +86,7 @@ body.page-home .hero__eyebrow {
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--color-gold-soft);
+  color: var(--color-accent-strong);
   margin-bottom: var(--space-md);
 }
 
@@ -91,7 +94,7 @@ body.page-home .hero h1 {
   font-size: var(--step-5);
   font-weight: 500;
   line-height: 1.05;
-  color: var(--color-cream);
+  color: var(--color-text);
   max-width: 16ch;
 }
 
@@ -99,8 +102,7 @@ body.page-home .hero__subheadline {
   max-width: 38ch;
   font-size: var(--step-1);
   margin-top: var(--space-lg);
-  color: var(--color-ink-on-dark);
-  opacity: 0.88;
+  color: var(--color-text-soft);
 }
 
 /* Um CTA sólido + um link de texto — não dois botões pill lado a lado. Hierarquia
@@ -115,17 +117,27 @@ body.page-home .hero__cta-group {
 
 body.page-home .hero__cta-link {
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--color-text);
   text-decoration: none;
-  border-bottom: 1px solid rgba(248, 246, 242, 0.4);
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.2rem;
   transition: color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard);
 }
 
 body.page-home .hero__cta-link:hover {
-  color: var(--color-gold-soft);
+  color: var(--color-accent-strong);
   border-color: var(--color-gold);
+}
+
+/* Nudge sutil da seta no hover — a mesma microinteração usada no CTA da Galeria. */
+body.page-home .hero__cta-link span {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+body.page-home .hero__cta-link:hover span {
+  transform: translateX(4px);
 }
 
 /* Indicador de rolagem — traço fino + ponto animado, sem ícone de seta/mouse genérico.
@@ -144,7 +156,7 @@ body.page-home .hero__scroll-cue {
   background: none;
   border: none;
   padding: var(--space-xs);
-  color: var(--color-cream);
+  color: var(--color-text-soft);
 }
 
 body.page-home .hero__scroll-label {
@@ -153,14 +165,14 @@ body.page-home .hero__scroll-label {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 body.page-home .hero__scroll-line {
   position: relative;
   width: 1px;
   height: 2.5rem;
-  background-color: rgba(248, 246, 242, 0.35);
+  background-color: var(--color-border);
   overflow: hidden;
 }
 
@@ -182,9 +194,13 @@ body.page-home .hero__scroll-dot {
 
 body.page-home .structure {
   /* Menos respiro no topo (o Hero já termina com folga própria) e mais no fim,
-     antes da Galeria — ritmo deliberado, não um padding uniforme repetido. */
+     antes da Galeria — ritmo deliberado, não um padding uniforme repetido.
+     Fundo em Surface Alt (não Background): uma banda off-white ligeiramente
+     mais funda entre Hero e Galeria — dá separação de seção sem borda nem
+     sombra, só variação tonal dentro da mesma família neutra. */
   padding-top: var(--space-2xl);
   padding-bottom: var(--space-3xl);
+  background-color: var(--color-bg-alt);
 }
 
 /* Introdução alinhada à esquerda — mesmo idioma editorial da Galeria, não um
@@ -234,7 +250,8 @@ body.page-home .structure__index {
   justify-content: center;
   width: 2.75rem;
   padding-block: 0.15rem;
-  background-color: var(--color-bg);
+  /* mesmo tom do fundo da seção (Surface Alt), para mascarar a linha atrás do número */
+  background-color: var(--color-bg-alt);
   font-family: var(--font-heading);
   font-size: var(--step-1);
   font-weight: 400;
@@ -326,17 +343,27 @@ body.page-home .gallery-editorial__lede {
 body.page-home .gallery-editorial__cta {
   flex-shrink: 0;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent-strong);
   padding-bottom: 0.2rem;
   transition: color var(--duration-fast) var(--ease-standard),
     border-color var(--duration-fast) var(--ease-standard);
 }
 
 body.page-home .gallery-editorial__cta:hover {
-  color: var(--color-accent-strong);
+  color: var(--color-ink);
   border-color: var(--color-gold);
+}
+
+/* Nudge sutil da seta no hover — mesma microinteração do link do Hero. */
+body.page-home .gallery-editorial__cta span {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+body.page-home .gallery-editorial__cta:hover span {
+  transform: translateX(4px);
 }
 
 body.page-home .gallery-editorial__grid {
@@ -356,7 +383,7 @@ body.page-home .gallery-editorial__plate figure {
   height: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background-color: var(--color-accent-strong);
+  background-color: var(--color-surface-alt);
 }
 
 /* Prancha de destaque e faixas largas rompem o par de colunas no mobile também —
@@ -384,18 +411,18 @@ body.page-home .gallery-editorial__plate:hover .gallery-editorial__media {
   transform: scale(1.045);
 }
 
-/* Cor sólida por prancha — nunca gradiente. Alterna entre os tons já existentes na
-   paleta (verde primário, verde mais escuro, tinta quase-preta) para dar ritmo entre
-   as 8 pranchas, como uma sessão fotográfica real com exposições distintas, sem
-   inventar cores fora do sistema. */
-body.page-home .gallery-editorial__plate--lead      { --plate-color: var(--color-accent); }
-body.page-home .gallery-editorial__plate--table      { --plate-color: var(--color-accent-strong); }
-body.page-home .gallery-editorial__plate--detail     { --plate-color: var(--color-ink); }
-body.page-home .gallery-editorial__plate--backstage  { --plate-color: var(--color-accent); }
-body.page-home .gallery-editorial__plate--wide       { --plate-color: var(--color-accent-strong); }
-body.page-home .gallery-editorial__plate--night      { --plate-color: var(--color-ink); }
-body.page-home .gallery-editorial__plate--catering   { --plate-color: var(--color-accent-strong); }
-body.page-home .gallery-editorial__plate--crowd      { --plate-color: var(--color-accent); }
+/* Cor sólida por prancha — nunca gradiente. Alterna entre tons neutros claros
+   (nunca o sage saturado: cor só apoia, não domina 8 painéis grandes) — como uma
+   folha de contato fotográfica em branco, não blocos de marca, enquanto não há
+   fotografia real do espaço. */
+body.page-home .gallery-editorial__plate--lead      { --plate-color: var(--color-surface-alt); }
+body.page-home .gallery-editorial__plate--table      { --plate-color: var(--color-primary-soft); }
+body.page-home .gallery-editorial__plate--detail     { --plate-color: var(--color-white); }
+body.page-home .gallery-editorial__plate--backstage  { --plate-color: var(--color-border); }
+body.page-home .gallery-editorial__plate--wide       { --plate-color: var(--color-primary-soft); }
+body.page-home .gallery-editorial__plate--night      { --plate-color: var(--color-surface-alt); }
+body.page-home .gallery-editorial__plate--catering   { --plate-color: var(--color-white); }
+body.page-home .gallery-editorial__plate--crowd      { --plate-color: var(--color-border); }
 
 body.page-home .gallery-editorial__plate figcaption {
   position: absolute;
@@ -407,8 +434,16 @@ body.page-home .gallery-editorial__plate figcaption {
   align-items: baseline;
   gap: var(--space-sm);
   padding: var(--space-md);
-  background: linear-gradient(to top, rgba(36, 52, 43, 0.65), transparent);
+  background: linear-gradient(to top, rgba(36, 36, 36, 0.6), transparent);
   color: var(--color-cream);
+  transition: background var(--duration-base) var(--ease-standard);
+}
+
+/* O véu escancara um pouco mais junto com o zoom da imagem no hover — reforça a
+   sensação de "revelar detalhe", em vez de a legenda ficar inerte enquanto só a
+   imagem por trás se move. */
+body.page-home .gallery-editorial__plate:hover figcaption {
+  background: linear-gradient(to top, rgba(36, 36, 36, 0.72), transparent 65%);
 }
 
 body.page-home .gallery-editorial__index {

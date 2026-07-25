@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(42, 35, 32, 0.92);
+  background-color: rgba(36, 36, 36, 0.92);
   padding: var(--space-md);
 }
 

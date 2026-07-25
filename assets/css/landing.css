@@ -15,7 +15,7 @@ body.page-landing .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(36, 52, 43, 0.2) 0%, rgba(36, 52, 43, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(36, 36, 36, 0.2) 0%, rgba(36, 36, 36, 0.85) 100%);
 }
 
 body.page-landing .hero__content {

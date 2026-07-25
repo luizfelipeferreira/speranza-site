@@ -1,34 +1,34 @@
 /*
   Design tokens — Speranza Eventos
-  Base off-white + verde oliva profundo como cor de apoio autoral — hospitalidade de
-  alto padrão (Fasano, Rosewood, Six Senses, Aman), não convite de casamento.
-  Dourado/latão aparece só como acento pontual (bordas finas, ícones, numerais), nunca
-  como cor dominante nem de texto corrido.
+  Identidade "Soft Sage": grandes áreas em off-white, sage como cor de apoio (botões,
+  links, estados ativos), champagne como acento pontual (linhas, ícones, numerais,
+  divisores) — hospitalidade boutique contemporânea, fotografia como protagonista.
   Fonte de verdade completa da identidade visual: docs/DESIGN_SYSTEM.md.
 */
 
 :root {
-  /* Cor — base neutra */
-  --color-cream: #f8f6f2;
-  --color-cream-soft: #fbfaf7;
+  /* Cor — base neutra (off-white dominante) */
+  --color-cream: #f8f7f4;
+  --color-cream-soft: #fbfaf9;
   --color-white: #ffffff;
+  --color-surface-alt: #f2f1ec;
 
-  /* Cor — apoio (verde oliva profundo) */
-  --color-primary: #31473a;
-  --color-primary-hover: #24342b;
-  --color-primary-soft: #e3e8e2;
+  /* Cor — apoio (sage) */
+  --color-primary: #7a867b;
+  --color-primary-hover: #667264;
+  --color-primary-soft: #e7eae5;
 
-  /* Cor — acento pontual (latão) */
-  --color-gold: #b6935c;
-  --color-gold-soft: #d8c39d;
+  /* Cor — acento pontual (champagne) */
+  --color-gold: #c2a36b;
+  --color-gold-soft: #d9c49f;
 
   /* Cor — texto */
-  --color-ink: #222222;
-  --color-ink-soft: #66615a;
-  --color-ink-on-dark: #f8f6f2;
+  --color-ink: #242424;
+  --color-ink-soft: #66645f;
+  --color-ink-on-dark: #f8f7f4;
 
   /* Cor — borda (hairline neutro, ver docs/DESIGN_SYSTEM.md) */
-  --color-border: #e5e0d7;
+  --color-border: #e6e3dc;
 
   /* Cor — feedback/estado (uso mínimo: foco, links, erro de formulário curto) */
   --color-focus: #2a6bd9;
@@ -37,6 +37,7 @@
   /* Papéis semânticos */
   --color-bg: var(--color-cream);
   --color-bg-elevated: var(--color-white);
+  --color-bg-alt: var(--color-surface-alt);
   --color-text: var(--color-ink);
   --color-text-soft: var(--color-ink-soft);
   --color-accent: var(--color-primary);
@@ -80,11 +81,14 @@
   --radius-lg: 20px;
   --radius-pill: 999px;
 
-  /* Elevação — extremamente discreta, quase imperceptível (hospitalidade de alto
-     padrão sinaliza hierarquia com espaço e linha fina, não com sombra de card) */
-  --shadow-sm: 0 1px 2px rgba(34, 34, 34, 0.05);
-  --shadow-md: 0 6px 16px rgba(34, 34, 34, 0.07);
-  --shadow-lg: 0 12px 32px rgba(34, 34, 34, 0.09);
+  /* Elevação — quase imperceptível; hierarquia vem de espaço e borda fina, a sombra
+     é só o último toque, nunca o recurso principal (ver docs/DESIGN_SYSTEM.md). */
+  --shadow-sm: 0 1px 2px rgba(36, 36, 36, 0.04);
+  --shadow-md: 0 4px 12px rgba(36, 36, 36, 0.05);
+  --shadow-lg: 0 8px 24px rgba(36, 36, 36, 0.06);
+
+  /* Header translúcido ao rolar (ver .site-header.is-scrolled em layout.css) */
+  --header-blur: 10px;
 
   /* Movimento */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
