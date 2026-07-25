@@ -45,8 +45,11 @@ h2 {
   font-size: var(--step-3);
 }
 
+/* peso 500, não 600 herdado do bloco acima — título de card/bloco, um degrau
+   mais leve que H1/H2 (ver docs/DESIGN_SYSTEM.md § Tipografia, tabela de hierarquia). */
 h3 {
   font-size: var(--step-2);
+  font-weight: 500;
 }
 
 h4 {

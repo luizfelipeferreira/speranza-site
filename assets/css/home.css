@@ -61,7 +61,7 @@ body.page-home .hero h1 {
 }
 
 body.page-home .hero__subheadline {
-  max-width: 42ch;
+  max-width: 38ch; /* alinhado ao ch-target de docs/DESIGN_SYSTEM.md (Subheadline: 38ch) */
   font-size: var(--step-1);
   margin-top: var(--space-lg);
   color: var(--color-text-soft);
@@ -600,10 +600,173 @@ body.page-home .how-it-works__step p {
 
 /* Único elemento realmente interativo da seção — por isso é o único com peso
    de botão sólido, não um link discreto como nas seções anteriores. Centralizado
-   de propósito: uma grade de 4 colunas simétrica pede um fecho simétrico. */
+   de propósito: uma grade de 4 colunas simétrica pede um fecho simétrico.
+   margin-top alinhado ao mesmo valor usado no fecho de Depoimentos/FAQ
+   (space-2xl) — era space-3xl, inconsistência de revisão editorial. */
 body.page-home .how-it-works__cta {
   display: flex;
   width: fit-content;
   margin-inline: auto;
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-2xl);
+}
+
+/* Depoimentos — sem fundo próprio: herda o off-white padrão de `section`
+   (layout.css) e mantém a alternância bg-alt (Como Funciona) → bg (aqui). Grid
+   de 2 cards de espera, nunca conteúdo inventado (ver TODO no HTML e
+   docs/DESIGN_SYSTEM.md § Depoimentos). */
+
+body.page-home .testimonials__intro {
+  max-width: 34rem;
+  margin-bottom: var(--space-2xl);
+}
+
+body.page-home .testimonials__lede {
+  margin-top: var(--space-sm);
+  color: var(--color-text-soft);
+}
+
+body.page-home .testimonials__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  body.page-home .testimonials__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+/* Estado de espera deliberado: o `.testimonial` genérico (components.css) usa
+   fundo elevado + shadow-sm, pensado para depoimento real preenchido. Aqui,
+   antes de haver conteúdo real, uma "caixa" elevada leria como card cheio, não
+   como espera — por isso o fundo vira transparente e a sombra some, deixando
+   só a borda tracejada em champagne (.testimonial--placeholder) comunicar
+   "isto ainda não existe", nunca as duas linguagens de profundidade competindo
+   (ver docs/DESIGN_SYSTEM.md § Sombras). */
+body.page-home .testimonials .testimonial {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+body.page-home .testimonials .testimonial__stars {
+  margin-bottom: var(--space-md);
+  font-size: var(--step-1);
+  line-height: 1;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+}
+
+body.page-home .testimonials .testimonial__quote {
+  color: var(--color-text);
+}
+
+body.page-home .testimonials .testimonial__meta {
+  margin-top: var(--space-md);
+  font-style: normal;
+}
+
+/* Fecho centralizado — mesmo raciocínio do CTA de Como Funciona: uma grade
+   simétrica de 2 cards pede um fecho simétrico, não um link alinhado à
+   esquerda como nas seções de composição assimétrica (Estrutura/Galeria). */
+body.page-home .testimonials__cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+body.page-home .testimonials__cta p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-soft);
+}
+
+/* FAQ — layout/grade apenas; .faq-item e .faq-item__answer permanecem exatamente
+   como definidos em components.css (não sobrescritos aqui). Fundo em Surface Alt
+   (revisão editorial): antes do ajuste, Depoimentos e FAQ ficavam consecutivos no
+   mesmo tom (bg), duas seções em grade+CTA seguidas sem nenhuma quebra tonal —
+   a sequência mais repetitiva do ritmo de rolagem da Home. Com o ajuste, FAQ some
+   com o fundo do CTA Final logo depois (ambos bg-alt), lidos como o mesmo
+   "capítulo de fechamento" da página, o que faz sentido editorial. */
+body.page-home .faq {
+  background-color: var(--color-bg-alt);
+}
+
+body.page-home .faq__intro {
+  max-width: 34rem;
+  margin-bottom: var(--space-2xl);
+}
+
+body.page-home .faq__lede {
+  margin-top: var(--space-sm);
+  color: var(--color-text-soft);
+}
+
+body.page-home .faq__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+/* Tablet e mobile: 1 coluna só — o site considera "Desktop" a partir de
+   1024px (ver docs/DESIGN_SYSTEM.md § Breakpoints), por isso a grade de FAQ
+   só vira 2 colunas a partir daí, diferente dos grids de 640px usados em
+   Tipos de Evento/Depoimentos. grid-auto-flow: column faz a 1ª e a 2ª pergunta
+   caírem em colunas diferentes (leitura por coluna, de cima para baixo — como
+   duas listas editoriais lado a lado), não pareado linha a linha. */
+@media (min-width: 1024px) {
+  body.page-home .faq__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: var(--space-3xl);
+  }
+}
+
+body.page-home .faq__cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+body.page-home .faq__cta p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-soft);
+}
+
+/* CTA Final — fechamento editorial: container estreito, texto centralizado,
+   sem foto/textura/caixa/sombra (ver comentário no HTML). Fundo em Surface Alt
+   só para dar um respiro tonal antes do rodapé — mesma técnica de alternância
+   já usada em Estrutura/Como Funciona, nunca cor/imagem chamativa. */
+
+body.page-home .final-cta {
+  background-color: var(--color-bg-alt);
+}
+
+body.page-home .final-cta__inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* .section-eyebrow::before (linha vertical champagne, components.css) nasce
+   alinhada à esquerda por padrão — aqui, dentro de um bloco centralizado, ela
+   precisa centralizar junto com o texto, sem alterar o componente genérico. */
+body.page-home .final-cta .section-eyebrow::before {
+  margin-inline: auto;
+}
+
+body.page-home .final-cta__text {
+  margin-top: var(--space-lg);
+  color: var(--color-text-soft);
+}
+
+body.page-home .final-cta__text + .final-cta__text {
+  margin-top: var(--space-sm);
+}
+
+body.page-home .final-cta__inner .cta-group {
+  justify-content: center;
+  margin-top: var(--space-xl);
 }

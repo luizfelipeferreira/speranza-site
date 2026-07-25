@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Speranza Eventos | Salão de Festas em Jundiaí — Casamentos, Debutantes, Corporativo</title>
-  <meta name="description" content="Speranza Eventos: salão de festas em Jundiaí-SP para casamentos, debutantes, eventos corporativos e sociais. Estrutura completa, atendimento próximo. Fale no WhatsApp." />
+  <meta name="description" content="Speranza Eventos: salão de festas em Jundiaí-SP para casamentos, debutantes, eventos corporativos e sociais. Estrutura completa, atendimento próximo." />
   <link rel="canonical" href="https://www.speranzaeventos.com.br/" />
 
   <meta property="og:type" content="website" />
@@ -32,7 +32,10 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/gallery.css" />
+  <!-- gallery.css removido daqui: a Home usa .gallery-editorial (home.css), não
+       .gallery-grid/.lightbox (gallery.css) — main.js só importa gallery.js quando
+       existe [data-gallery] na página, o que não acontece na Home. Ver
+       docs/DESIGN_SYSTEM.md § Performance ("CSS modular por página"). -->
   <link rel="stylesheet" href="/assets/css/animations.css" />
   <link rel="stylesheet" href="/assets/css/home.css" />
 
@@ -126,10 +129,16 @@
          que fica reservado para a galeria completa dentro de /espaco/)
       7. Como funciona ✓ (4 blocos editoriais — numeral discreto, sem círculo/seta/
          timeline; ver docs/DESIGN_SYSTEM.md e a análise de UX desta implementação)
-      8. Depoimentos
-      9. FAQ
+      8. Depoimentos ✓ (2 cards em estado de espera — borda tracejada em champagne,
+         sem nome/nota/depoimento inventado; ver TODO junto a cada card no HTML e
+         docs/DESIGN_SYSTEM.md § Depoimentos)
+      9. FAQ ✓ (grid editorial de 2 colunas no desktop, <details>/<summary>
+         nativos reaproveitando .faq-item já existente em components.css — ver
+         TODO no item "buffet" sobre validação pendente com o cliente)
       10. Localização — mapa
-      11. CTA final
+      11. CTA final ✓ (implementada fora de ordem, a pedido, antes da Localização/
+          item 10 — fechamento editorial, container estreito centralizado, sem
+          foto/textura/caixa e sem gatilho de urgência artificial no copy)
     -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container hero__grid">
@@ -436,6 +445,165 @@
         </ol>
 
         <a class="how-it-works__cta btn btn--primary" data-wa="como-funciona" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+      </div>
+    </section>
+
+    <!-- Depoimentos — NÃO existe autorização para publicar depoimentos reais ainda
+         (ver docs/WIREFRAME.md § Depoimentos e docs/DESIGN_SYSTEM.md § Depoimentos:
+         "nunca fabricar nome ou depoimento fictício"). Os dois cards abaixo são um
+         estado de espera deliberado, não um placeholder de "página incompleta":
+         borda tracejada em champagne (.testimonial--placeholder, já definida em
+         components.css) em vez de cartão sólido/sombra, para comunicar transparência
+         ("ainda não temos isso publicado") em vez de parecer um bug visual. -->
+    <section class="testimonials" aria-labelledby="testimonials-heading" data-scroll-depth="depoimentos">
+      <div class="container testimonials__intro" data-reveal>
+        <header>
+          <p class="section-eyebrow">Depoimentos</p>
+          <h2 id="testimonials-heading">Quem celebra no Speranza é quem melhor pode contar essa experiência.</h2>
+          <p class="testimonials__lede">Estamos reunindo depoimentos autorizados de clientes que realizaram seus eventos no Speranza. Enquanto isso, nossa equipe terá prazer em apresentar o espaço pessoalmente.</p>
+        </header>
+      </div>
+
+      <div class="container">
+        <ul class="testimonials__grid">
+          <!-- TODO depoimento 1 — ao receber autorização por escrito do cliente, substituir:
+               • .testimonial__stars: manter como texto simples (★ repetido), mas ajustar a
+                 QUANTIDADE de estrelas à nota real (não deixar 5 fixo se a avaliação real for outra);
+                 remover o aria-hidden quando a nota for real e informar o valor por extenso
+                 (ex. aria-label="Avaliação 5 de 5 estrelas").
+               • .testimonial__quote: trocar pelo texto literal do depoimento autorizado (sem edição
+                 de sentido).
+               • .testimonial__meta: trocar "Avaliação real em breve" por nome (ou iniciais, conforme
+                 autorização) + tipo de evento — ex. "Marina S., Casamento" (ver docs/WIREFRAME.md).
+               • remover a classe "testimonial--placeholder" do <article> quando o conteúdo for real. -->
+          <li data-reveal>
+            <article class="testimonial testimonial--placeholder">
+              <p class="testimonial__stars" aria-hidden="true">★★★★★</p>
+              <blockquote class="testimonial__quote">
+                <p>Depoimento em aprovação para publicação.</p>
+              </blockquote>
+              <footer class="testimonial__meta">Avaliação real em breve</footer>
+            </article>
+          </li>
+
+          <!-- TODO depoimento 2 — mesma substituição do card acima; se possível, priorizar um
+               tipo de evento diferente do primeiro card (ver docs/WIREFRAME.md, "mínimo 1 por
+               segmento, se possível"). -->
+          <li data-reveal>
+            <article class="testimonial testimonial--placeholder">
+              <p class="testimonial__stars" aria-hidden="true">★★★★★</p>
+              <blockquote class="testimonial__quote">
+                <p>Depoimento em aprovação para publicação.</p>
+              </blockquote>
+              <footer class="testimonial__meta">Avaliação real em breve</footer>
+            </article>
+          </li>
+        </ul>
+
+        <div class="testimonials__cta" data-reveal>
+          <p>Prefere conhecer o espaço pessoalmente?</p>
+          <a class="btn btn--primary" data-wa="depoimentos" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ — reaproveita .faq-item/.faq-item__answer já definidos em
+         components.css (<details>/<summary> nativos, zero JavaScript, indicador
+         +/− via ::after). Só informação já confirmada (ver docs/WIREFRAME.md);
+         onde o dado depende do cliente (buffet/fornecedores externos), a
+         resposta é deliberadamente conservadora e o TODO abaixo marca a
+         pendência — nunca afirmar o que ainda não foi validado. -->
+    <section class="faq" aria-labelledby="faq-heading">
+      <div class="container faq__intro" data-reveal>
+        <p class="section-eyebrow">Perguntas frequentes</p>
+        <h2 id="faq-heading">Algumas respostas antes da sua visita.</h2>
+        <p class="faq__lede">Reunimos as dúvidas mais comuns de quem está conhecendo o Speranza pela primeira vez.</p>
+      </div>
+
+      <div class="container">
+        <ul class="faq__grid">
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Posso visitar o espaço antes de reservar?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. Nossa equipe agenda visitas para que você conheça os ambientes, tire dúvidas e avalie se o espaço atende ao seu evento.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>O Speranza possui estacionamento?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. O espaço conta com estacionamento exclusivo e gratuito para os convidados.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>O salão é climatizado?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. O ambiente principal é climatizado para proporcionar conforto durante todo o evento.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: confirmar se o buffet parceiro (Combinatto)
+               é obrigatório ou se o Speranza aceita fornecedores externos de buffet
+               (pendência já registrada em docs/WIREFRAME.md § "Dados a validar com o
+               cliente"). A resposta abaixo é deliberadamente conservadora até essa
+               confirmação — não afirmar exclusividade nem abertura a terceiros sem
+               validar antes. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>O buffet é próprio?</summary>
+              <div class="faq-item__answer">
+                <p>O Speranza trabalha em parceria com o Combinatto Buffet.</p>
+                <p>Caso exista possibilidade de fornecedores externos, esse conteúdo deverá ser atualizado após validação do cliente.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Quais tipos de evento o espaço recebe?</summary>
+              <div class="faq-item__answer">
+                <p>Casamentos, festas de debutante, aniversários, bodas, eventos corporativos e outras celebrações.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Como faço para solicitar um orçamento?</summary>
+              <div class="faq-item__answer">
+                <p>Entre em contato pelo WhatsApp para informar o tipo de evento, a data desejada e o número aproximado de convidados.</p>
+                <p>Nossa equipe retornará com as orientações iniciais.</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+
+        <div class="faq__cta" data-reveal>
+          <p>Ainda ficou alguma dúvida?</p>
+          <a class="btn btn--primary" data-wa="faq" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Speranza%20Eventos." target="_blank" rel="noopener">Fale com nossa equipe</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final — fechamento editorial da Home, não seção promocional (ver
+         docs/WIREFRAME.md, item 11). Copy sem gatilho de urgência artificial por
+         pedido explícito desta implementação — nenhuma variação de "garanta sua
+         data"/"últimas vagas"/"aproveite". Sem fotografia, textura, caixa ou
+         sombra: só tipografia e espaço em branco, container estreito centralizado. -->
+    <section class="final-cta" aria-labelledby="final-cta-heading">
+      <div class="container final-cta__inner" data-reveal>
+        <header>
+          <p class="section-eyebrow">Visite o Speranza</p>
+          <h2 id="final-cta-heading">O melhor jeito de conhecer um espaço é caminhar por ele.</h2>
+        </header>
+        <p class="final-cta__text">Conheça o salão, veja cada ambiente pessoalmente e converse com nossa equipe sobre o tipo de evento que você está planejando.</p>
+        <p class="final-cta__text">Uma visita permite entender os espaços, esclarecer dúvidas e avaliar todas as possibilidades com tranquilidade.</p>
+        <div class="cta-group">
+          <a class="btn btn--primary" data-wa="cta-final" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+          <a class="btn btn--secondary" href="/espaco/">Conheça o espaço</a>
+        </div>
       </div>
     </section>
   </main>
