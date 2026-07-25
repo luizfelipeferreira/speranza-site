@@ -105,13 +105,13 @@
   gap: var(--space-sm);
 }
 
-/* Cards de segmentação (Casamentos / Debutantes / Corporativo / Aniversários) */
+/* Cards de segmentação (Casamentos / Debutantes / Corporativo / Aniversários) —
+   "convites", não cards de serviço: imagem grande em retrato, texto mínimo. */
 
 .event-card {
   display: block;
   position: relative;
   border-radius: var(--radius-lg);
-  overflow: hidden;
   background-color: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
   text-decoration: none;
@@ -127,16 +127,78 @@
   transform: translateY(-4px);
 }
 
+/* overflow:hidden fica na mídia, não no card — um :focus-visible no card
+   precisa desenhar por fora da borda sem ser cortado pelo raio da imagem. */
 .event-card__media {
-  aspect-ratio: 4 / 3;
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.event-card__media-fill {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-surface-alt);
+  transition: transform var(--duration-slow) var(--ease-standard);
+}
+
+.event-card__media-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbikiLz48L3N2Zz4=");
+}
+
+/* Hover extremamente discreto: zoom leve só do preenchimento da imagem (nunca
+   do card), nada de sombra pesada — profundidade por borda + translateY do
+   card inteiro, ver regra acima. */
+.event-card:hover .event-card__media-fill {
+  transform: scale(1.03);
 }
 
 .event-card__body {
   padding: var(--space-lg);
 }
 
+.event-card__category {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+  margin-bottom: var(--space-xs);
+}
+
 .event-card__title {
-  margin-bottom: var(--space-2xs);
+  margin-bottom: var(--space-xs);
+}
+
+.event-card__text {
+  color: var(--color-text-soft);
+}
+
+.event-card__cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  margin-top: var(--space-md);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--color-accent-strong);
+}
+
+.event-card__cta span {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.event-card:hover .event-card__cta span {
+  transform: translateX(4px);
 }
 
 /* Barra de confiança */

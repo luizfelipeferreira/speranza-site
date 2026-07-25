@@ -66,7 +66,7 @@
   <!-- SYNCED FROM index.html — header canônico, replicado nas outras 6 páginas -->
   <!-- Logo em wordmark (Fraunces) enquanto não existe um arquivo de marca real em
        /assets/images/brand/ — trocar por <img> do logo assim que a arte estiver pronta. -->
-  <header class="site-header site-header--overlay" data-header>
+  <header class="site-header" data-header>
     <div class="container site-header__bar">
       <a class="site-header__logo" href="/" aria-label="Speranza Eventos — página inicial">
         <span class="site-header__logo-mark">Speranza</span>
@@ -113,85 +113,183 @@
 
   <main id="main">
     <!-- Conteúdo pendente — ver docs/WIREFRAME.md § HOME (11 seções). Implementado até aqui:
-      1. Hero ✓ (headline + subheadline + CTA primário/secundário + indicador de rolagem)
+      1. Hero ✓ (duas colunas — eyebrow/headline/subheadline/CTA + fotografia; ver
+         docs/DESIGN_SYSTEM.md e docs/COPY_GUIDE.md para as regras aplicadas aqui)
       2. Barra de confiança — indicadores (anos, nº de eventos, avaliação Google)
-      3. Escolha seu tipo de evento — 4 cards (Casamentos/Debutantes/Corporativo/Aniversários)
+      3. Escolha seu tipo de evento ✓ (grid 2×2 de .event-card — "convites", não
+         cards de serviço; nunca 4 colunas, ver docs/DESIGN_SYSTEM.md § Cards)
       4. Sobre o Speranza — narrativa de marca
       5. Estrutura em destaque ✓ (implementada fora de ordem, a pedido — narrativa em 4
          capítulos em vez de grade de ícones; ver .structure em assets/css/home.css)
       6. Galeria (prévia) ✓ (implementada fora de ordem, a pedido — composição editorial
          assimétrica, não o .gallery-grid genérico já existente em assets/css/gallery.css,
          que fica reservado para a galeria completa dentro de /espaco/)
-      7. Como funciona — passos
+      7. Como funciona ✓ (4 blocos editoriais — numeral discreto, sem círculo/seta/
+         timeline; ver docs/DESIGN_SYSTEM.md e a análise de UX desta implementação)
       8. Depoimentos
       9. FAQ
       10. Localização — mapa
       11. CTA final
     -->
     <section class="hero" aria-labelledby="hero-heading">
-      <!-- Fundo provisório (campo sólido de verde escuro + grain, sem gradiente
-           decorativo) enquanto não há sessão fotográfica profissional do espaço (ver
-           docs/ESTRATEGIA.md §5). Trocar por <img>/picture do salão real quando pronto. -->
-      <div class="hero__media" aria-hidden="true"></div>
-      <!-- Sentinela de 1px no topo do Hero: o header vira sólido assim que ela sai da
-           faixa do header (ver assets/js/hero.js), independente da altura do Hero. -->
-      <div class="hero__header-sentinel" data-header-sentinel aria-hidden="true"></div>
-
-      <div class="hero__inner">
-        <div class="container hero__content">
-          <p class="hero__eyebrow">Salão de festas premium em Jundiaí</p>
-          <h1 id="hero-heading">Elegância de capital,<br />endereço de Jundiaí.</h1>
-          <p class="hero__subheadline">Casamentos, debutantes e eventos corporativos em um espaço premium no Bairro Caxambú.</p>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Espaço para eventos em Jundiaí</p>
+          <h1 id="hero-heading">Cada evento pede<br />um espaço<br />à altura dele.</h1>
+          <p class="hero__subheadline">No Bairro Caxambú, o Speranza reúne estrutura e conforto para casamentos, debutantes, eventos corporativos e comemorações em família.</p>
           <div class="hero__cta-group">
-            <a class="btn btn--primary" data-wa="hero-orcamento" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20evento%20no%20Speranza." target="_blank" rel="noopener">Solicitar orçamento</a>
-            <a class="hero__cta-link" data-wa="hero-visita" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">ou agende uma visita <span aria-hidden="true">→</span></a>
+            <a class="btn btn--primary" data-wa="hero-visita" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+            <a class="hero__cta-link" href="/espaco/">Conheça o espaço <span aria-hidden="true">→</span></a>
           </div>
         </div>
+
+        <!-- Fundo provisório (Surface Alt + grain, sem gradiente decorativo) enquanto
+             não há sessão fotográfica profissional do espaço (ver docs/ESTRATEGIA.md §5).
+             Trocar por <img loading="eager" alt="…"> do salão real quando pronto — é o
+             maior elemento acima da dobra, candidato a LCP, por isso eager. -->
+        <div class="hero__media" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="event-types" aria-labelledby="event-types-heading">
+      <div class="container event-types__intro" data-reveal>
+        <p class="section-eyebrow">Tipos de evento</p>
+        <h2 id="event-types-heading">Escolha o seu tipo de evento.</h2>
+        <p class="event-types__lede">Cada celebração pede uma estrutura diferente — veja a sua abaixo.</p>
       </div>
 
-      <button type="button" class="hero__scroll-cue" data-scroll-cue aria-label="Rolar para ver mais">
-        <span class="hero__scroll-label">Role para descobrir</span>
-        <span class="hero__scroll-line"><span class="hero__scroll-dot" aria-hidden="true"></span></span>
-      </button>
+      <div class="container">
+        <!-- Fundo provisório de cada imagem (Surface Alt + grain, mesma lógica do
+             Hero e da Galeria) enquanto não há sessão fotográfica profissional (ver
+             docs/ESTRATEGIA.md §5). Trocar .event-card__media-fill por <img
+             loading="lazy" alt=""> quando a foto existir — alt vazio porque o link
+             já tem nome acessível pelo texto visível (categoria/título/texto). -->
+        <ul class="event-type-grid">
+          <li data-reveal>
+            <a class="event-card" href="/casamentos/">
+              <div class="event-card__media" aria-hidden="true">
+                <div class="event-card__media-fill"></div>
+              </div>
+              <div class="event-card__body">
+                <p class="event-card__category">Casamentos</p>
+                <h3 class="event-card__title">Cerimônia e festa, no mesmo endereço.</h3>
+                <p class="event-card__text">Área para cerimônia ao ar livre e camarim privativo para os últimos retoques.</p>
+                <span class="event-card__cta">Ver casamentos <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li data-reveal>
+            <a class="event-card" href="/debutantes/">
+              <div class="event-card__media" aria-hidden="true">
+                <div class="event-card__media-fill"></div>
+              </div>
+              <div class="event-card__body">
+                <p class="event-card__category">Debutantes</p>
+                <h3 class="event-card__title">Uma festa de 15 anos com espaço para todos.</h3>
+                <p class="event-card__text">Camarim, som e iluminação para uma pista pronta desde a primeira dança.</p>
+                <span class="event-card__cta">Ver debutantes <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li data-reveal>
+            <a class="event-card" href="/corporativo/">
+              <div class="event-card__media" aria-hidden="true">
+                <div class="event-card__media-fill"></div>
+              </div>
+              <div class="event-card__body">
+                <p class="event-card__category">Corporativo</p>
+                <h3 class="event-card__title">Estrutura pronta para reunir sua empresa.</h3>
+                <p class="event-card__text">Estacionamento, climatização e capacidade para grandes eventos corporativos.</p>
+                <span class="event-card__cta">Ver eventos corporativos <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li data-reveal>
+            <a class="event-card" href="/aniversarios/">
+              <div class="event-card__media" aria-hidden="true">
+                <div class="event-card__media-fill"></div>
+              </div>
+              <div class="event-card__body">
+                <p class="event-card__category">Aniversários &amp; Bodas</p>
+                <h3 class="event-card__title">Para cada comemoração em família.</h3>
+                <p class="event-card__text">Aniversários, bodas e formaturas — com espaço kids e buffet parceiro.</p>
+                <span class="event-card__cta">Ver aniversários e bodas <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="structure" aria-labelledby="structure-heading">
       <div class="container structure__intro" data-reveal>
         <p class="section-eyebrow">Estrutura do Speranza</p>
-        <h2 id="structure-heading">Uma estrutura pensada para sustentar cada momento da sua celebração.</h2>
+        <h2 id="structure-heading">Uma estrutura pensada para o seu evento.</h2>
+        <p class="structure__lede">Cada detalhe já está resolvido — para você aproveitar o dia, não administrar o evento.</p>
+      </div>
+
+      <!-- Bloco de abertura (maior foto da seção) — placeholder em Surface Alt +
+           grain enquanto não há sessão fotográfica profissional (ver
+           docs/ESTRATEGIA.md §5). Trocar .structure__lead-media por <img
+           loading="lazy" alt="Salão principal do Speranza, vazio, mostrando o
+           pé-direito e a amplitude do espaço"> quando a foto existir — aqui a
+           imagem carrega informação real, o alt não pode ficar vazio. -->
+      <div class="container structure__lead" data-reveal>
+        <div class="structure__lead-media" aria-hidden="true"></div>
+        <div class="structure__caption">
+          <span class="structure__index" aria-hidden="true">01</span>
+          <div>
+            <h3>Salão climatizado</h3>
+            <p>Clima e iluminação prontos para qualquer horário, do início ao fim da festa.</p>
+          </div>
+        </div>
       </div>
 
       <div class="container">
-        <ol class="structure__list">
-          <li class="structure__chapter" data-reveal>
-            <span class="structure__index" aria-hidden="true">01</span>
-            <div class="structure__body">
-              <h3>Antes de tudo começar</h3>
-              <p>Chegar já é simples: <strong>estacionamento gratuito</strong> para todos os convidados, e um <strong>camarim privativo</strong> para os últimos retoques antes de abrir as portas.</p>
+        <ul class="structure__list">
+          <li class="structure__block" data-reveal>
+            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__caption">
+              <span class="structure__index" aria-hidden="true">02</span>
+              <div>
+                <h3>Camarim privativo</h3>
+                <p>Estacionamento gratuito para os convidados e um camarim só seu para os últimos retoques.</p>
+              </div>
             </div>
           </li>
-          <li class="structure__chapter" data-reveal>
-            <span class="structure__index" aria-hidden="true">02</span>
-            <div class="structure__body">
-              <h3>O coração da festa</h3>
-              <p>Dentro, o <strong>salão climatizado</strong> garante conforto do primeiro ao último brinde. Do lado de fora, a <strong>estrutura para cerimônias ao ar livre</strong> transforma a cerimônia em um momento à parte, sob o céu de Jundiaí.</p>
+          <li class="structure__block" data-reveal>
+            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__caption">
+              <span class="structure__index" aria-hidden="true">03</span>
+              <div>
+                <h3>Área externa</h3>
+                <p>Estrutura para cerimônias ao ar livre, sob o céu de Jundiaí.</p>
+              </div>
             </div>
           </li>
-          <li class="structure__chapter" data-reveal>
-            <span class="structure__index" aria-hidden="true">03</span>
-            <div class="structure__body">
-              <h3>Para que ninguém se preocupe</h3>
-              <p>Enquanto os pequenos brincam no <strong>espaço kids</strong>, a <strong>equipe de segurança</strong> cuida de cada detalhe — para os pais aproveitarem a festa sem pausas.</p>
+          <li class="structure__block" data-reveal>
+            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__caption">
+              <span class="structure__index" aria-hidden="true">04</span>
+              <div>
+                <h3>Espaço Kids</h3>
+                <p>Um espaço só para os pequenos, para os pais aproveitarem a festa sem pausa.</p>
+              </div>
             </div>
           </li>
-          <li class="structure__chapter" data-reveal>
-            <span class="structure__index" aria-hidden="true">04</span>
-            <div class="structure__body">
-              <h3>Sabores que fecham a noite</h3>
-              <p>Na cozinha, tudo pronto para operar em grande escala: <strong>cozinha equipada</strong> e parceria com o <strong>Combinatto Buffet</strong>, referência de sabor na região.</p>
+          <li class="structure__block" data-reveal>
+            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__caption">
+              <span class="structure__index" aria-hidden="true">05</span>
+              <div>
+                <h3>Cozinha e buffet</h3>
+                <p>Cozinha equipada e parceria com o Combinatto Buffet, referência de sabor na região.</p>
+              </div>
             </div>
           </li>
-        </ol>
+        </ul>
+
+        <a class="structure__cta" href="/espaco/" data-reveal>Ver estrutura completa <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -200,66 +298,144 @@
         <div>
           <p class="section-eyebrow">Galeria</p>
           <h2 id="gallery-heading">O espaço, em detalhe.</h2>
-          <p class="gallery-editorial__lede">Uma curadoria de ambientes, montagens e detalhes reais do Speranza, em Jundiaí.</p>
+          <p class="gallery-editorial__lede">Uma curadoria de ambientes, montagens e detalhes do Speranza, em Jundiaí.</p>
         </div>
         <a class="gallery-editorial__cta" href="/espaco/">Ver o espaço completo <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="container">
-        <!-- Fundo de cada prancha é uma cor sólida provisória da paleta (sem gradiente)
-             — não há sessão fotográfica profissional ainda (ver docs/ESTRATEGIA.md §5).
-             Trocar .gallery-editorial__media por <img loading="lazy" alt="…"> real
-             mantendo a legenda (figcaption) quando as fotos existirem. -->
+        <!-- ATENÇÃO — placeholders temporários do Unsplash (curadoria em
+             docs/ESTRATEGIA.md §5 / análise de UX desta implementação). NENHUMA
+             destas fotos é do Speranza — todas têm TODO individual indicando a
+             foto real que deve substituí-la. Ao trocar: manter <img> com mesma
+             classe/aspect-ratio, atualizar src + alt (removendo "imagem
+             temporária") e o <span class="sr-only"> de legenda — nenhuma outra
+             alteração estrutural é necessária. -->
         <ul class="gallery-editorial__grid">
           <li class="gallery-editorial__plate gallery-editorial__plate--lead" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">01</span><span class="gallery-editorial__label">O salão</span></figcaption>
+              <!-- TODO: substituir por foto real do salão principal do Speranza, vazio, luz natural -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1783519158599-ca69bbc07d10?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Salão amplo com colunas brancas e piso em granilite, iluminado por luz natural (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">01</span>
+                <span class="gallery-editorial__label">O salão</span>
+                <span class="sr-only">Referência de escala e luz — não é o salão real do Speranza.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--table" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">02</span><span class="gallery-editorial__label">Mesa posta</span></figcaption>
+              <!-- TODO: substituir por foto real de uma mesa posta do Speranza -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Mesa posta com pratos brancos, talheres e arranjo de folhagem sobre madeira (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">02</span>
+                <span class="gallery-editorial__label">Mesa posta</span>
+                <span class="sr-only">Referência de composição de mesa em tons neutros.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--detail" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">03</span><span class="gallery-editorial__label">Detalhes</span></figcaption>
+              <!-- TODO: substituir por foto real de um detalhe do Speranza (louça, tecido, arranjo) -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1551468133-32ed0f9d86f1?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Prato branco sobre tecido claro, com uma pequena flor branca (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">03</span>
+                <span class="gallery-editorial__label">Detalhes</span>
+                <span class="sr-only">Referência de detalhe minimalista, tecidos claros.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--backstage" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">04</span><span class="gallery-editorial__label">Camarim</span></figcaption>
+              <!-- TODO: substituir por foto real do camarim do Speranza -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1750268746268-fc48e94a316d?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Bancada de camarim em tons neutros, com espelho e poltrona estofada (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">04</span>
+                <span class="gallery-editorial__label">Camarim</span>
+                <span class="sr-only">Referência de ambiente de apoio, tons neutros.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--wide" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">05</span><span class="gallery-editorial__label">Cerimônia ao ar livre</span></figcaption>
+              <!-- TODO: substituir por foto real da área externa/cerimônia do Speranza -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1613256253906-3e5e19769403?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Arco de madeira em jardim, com bancos dispostos para cerimônia ao ar livre (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">05</span>
+                <span class="gallery-editorial__label">Cerimônia ao ar livre</span>
+                <span class="sr-only">Referência de estrutura para cerimônia ao ar livre — não é o jardim real do Speranza.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--night" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">06</span><span class="gallery-editorial__label">Luz da noite</span></figcaption>
+              <!-- TODO: substituir por foto real do Speranza à noite -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1529516222410-a269d812f320?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Arranjo de flores brancas e velas sobre mesa, à noite (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">06</span>
+                <span class="gallery-editorial__label">Luz da noite</span>
+                <span class="sr-only">Referência de clima noturno e iluminação.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--catering" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">07</span><span class="gallery-editorial__label">Buffet</span></figcaption>
+              <!-- TODO: substituir por foto real do buffet/parceria com o Combinatto Buffet -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1549048085-bab2f1f49f65?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Pratos brancos empilhados sobre carrinho de madeira, em ambiente com luz suave (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">07</span>
+                <span class="gallery-editorial__label">Buffet</span>
+                <span class="sr-only">Referência de apresentação de buffet, tons neutros.</span>
+              </figcaption>
             </figure>
           </li>
           <li class="gallery-editorial__plate gallery-editorial__plate--crowd" data-reveal>
             <figure>
-              <div class="gallery-editorial__media" aria-hidden="true"></div>
-              <figcaption><span class="gallery-editorial__index">08</span><span class="gallery-editorial__label">A festa</span></figcaption>
+              <!-- TODO: substituir por foto real de um evento em andamento no Speranza -->
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1740120424442-ccd013ec9581?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Mesa longa posta com velas e flores brancas, à noite (imagem temporária)" loading="lazy" />
+              <figcaption>
+                <span class="gallery-editorial__index">08</span>
+                <span class="gallery-editorial__label">A festa</span>
+                <span class="sr-only">Referência de clima de celebração, tons neutros e velas.</span>
+              </figcaption>
             </figure>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <section class="how-it-works" aria-labelledby="how-it-works-heading">
+      <div class="container how-it-works__intro" data-reveal>
+        <p class="section-eyebrow">Como funciona</p>
+        <h2 id="how-it-works-heading">Do primeiro contato ao grande dia.</h2>
+        <p class="how-it-works__lede">Quatro passos simples, sem burocracia, até a data do seu evento.</p>
+      </div>
+
+      <div class="container">
+        <ol class="how-it-works__list">
+          <li class="how-it-works__step" data-reveal>
+            <span class="how-it-works__index" aria-hidden="true">01</span>
+            <h3>Conversa inicial</h3>
+            <p>Uma conversa para entender o tipo de evento, a data desejada e o que você imagina para esse momento.</p>
+          </li>
+          <li class="how-it-works__step" data-reveal>
+            <span class="how-it-works__index" aria-hidden="true">02</span>
+            <h3>Visita ao espaço</h3>
+            <p>Conheça o salão, os ambientes e toda a estrutura pessoalmente.</p>
+          </li>
+          <li class="how-it-works__step" data-reveal>
+            <span class="how-it-works__index" aria-hidden="true">03</span>
+            <h3>Planejamento</h3>
+            <p>Definimos juntos os detalhes da montagem, parceiros e necessidades do evento.</p>
+          </li>
+          <li class="how-it-works__step" data-reveal>
+            <span class="how-it-works__index" aria-hidden="true">04</span>
+            <h3>O grande dia</h3>
+            <p>Nossa equipe cuida da estrutura para que você aproveite cada momento.</p>
+          </li>
+        </ol>
+
+        <a class="how-it-works__cta btn btn--primary" data-wa="como-funciona" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
       </div>
     </section>
   </main>
