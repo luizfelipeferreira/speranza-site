@@ -15,19 +15,35 @@
   <meta property="og:url" content="https://www.speranzaeventos.com.br/casamentos/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Casamentos em Jundiaí | Speranza Eventos" />
+  <meta name="twitter:description" content="O espaço que acolhe cada etapa do seu casamento — cerimônia e festa no mesmo local, em Jundiaí." />
+  <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#667264" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Placeholders temporários de Momentos/Galeria vêm do Unsplash (ver TODOs abaixo). -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <!-- gallery.css/gallery.js usados aqui: a seção Momentos reaproveita o grid quadrado
+       + lightbox já construído (mesmo dispositivo de /espaco/ § Detalhe). A Galeria
+       (seção 7) usa composição assimétrica própria, sem lightbox — mesmo padrão da
+       Galeria da Home. Ver docs/WEDDING_PAGE_STRATEGY.md e docs/WEDDING_PAGE_WIREFRAME.md. -->
   <link rel="stylesheet" href="/assets/css/gallery.css" />
   <link rel="stylesheet" href="/assets/css/animations.css" />
-  <link rel="stylesheet" href="/assets/css/landing.css" />
+  <link rel="stylesheet" href="/assets/css/casamentos.css" />
 
   <script type="application/ld+json">
     {
@@ -51,15 +67,61 @@
       ]
     }
   </script>
+
+  <!-- FAQPage — texto idêntico ao da seção FAQ visível na página (exigência do
+       Google para rich snippet); atualizar os dois em conjunto se o copy mudar.
+       Ver docs/REFACTOR_ROADMAP.md § 3.7. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso levar fornecedores externos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Speranza trabalha em parceria fixa com o Combinatto Buffet. Para os demais fornecedores (decoração, cerimonial, fotografia), fale com nossa equipe na visita para confirmar as condições do seu casamento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O buffet é obrigatório?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Speranza trabalha em parceria com o Combinatto Buffet. Caso exista possibilidade de fornecedores externos de buffet, esse conteúdo deverá ser atualizado após validação do cliente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Até que horas posso usar o espaço?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O horário de uso é combinado na visita, conforme o formato do seu casamento. Fale com nossa equipe para confirmar as opções disponíveis para a sua data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quantos convidados cabem no salão?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Speranza recebe casamentos de diferentes tamanhos. A capacidade exata para o seu formato de festa (sentado ou coquetel) é confirmada na visita."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
-<body class="page-landing page-casamentos" data-page="casamentos">
+<body class="page-casamentos" data-page="casamentos">
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — header canônico (wordmark Fraunces, sem <img> de
+       logo real ainda — ver comentário equivalente na Home/Espaço). -->
   <header class="site-header" data-header>
     <div class="container site-header__bar">
       <a class="site-header__logo" href="/" aria-label="Speranza Eventos — página inicial">
-        <img src="/assets/images/brand/logo.svg" alt="Speranza Eventos" width="160" height="40" />
+        <span class="site-header__logo-mark">Speranza</span>
+        <span class="site-header__logo-sub">Eventos</span>
       </a>
 
       <nav class="site-nav" aria-label="Navegação principal">
@@ -75,7 +137,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20para%20o%20meu%20casamento." target="_blank" rel="noopener">
+        <a class="btn btn--secondary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20para%20o%20meu%20casamento." target="_blank" rel="noopener">
           <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-whatsapp"></use></svg>
           Fale no WhatsApp
         </a>
@@ -101,22 +163,300 @@
   <!-- /SYNCED -->
 
   <main id="main">
-    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § PÁGINA: Casamentos (8 seções):
-      1. Hero  2. Por que casar no Speranza  3. Estrutura para o seu casamento
-      4. Como funciona a contratação  5. Galeria de casamentos  6. Depoimentos de casais
-      7. FAQ de casamento  8. CTA final
-    -->
-    <section class="hero" data-reveal>
-      <div class="container hero__content">
-        <h1><!-- TODO: headline voltada a casamento --></h1>
+    <!-- Implementação segue docs/WEDDING_PAGE_STRATEGY.md + docs/WEDDING_PAGE_WIREFRAME.md
+         (blueprint aprovado antes deste código) — 9 seções, a página editada como o
+         fotoensaio de um casamento real, do início da cerimônia ao fim da festa.
+         Nenhum CTA menciona orçamento: só "Agende uma visita". -->
+
+    <!-- 1. Hero — calma, sem argumento ainda. Ver wireframe § Seção 1. -->
+    <section class="wedding-hero" aria-labelledby="wedding-hero-heading">
+      <!-- TODO foto real: plano geral do espaço de cerimônia/recepção em luz de fim de
+           tarde, com presença humana pequena e ambígua ao fundo (nunca o foco do
+           quadro) — nunca vazio de propósito, diferente do Hero de /espaco/. Lente
+           35mm, profundidade de campo intermediária (f/4–5.6), composição assimétrica.
+           Proporção 16:9 (desktop) / 4:5 (mobile). Ver docs/WEDDING_PAGE_WIREFRAME.md
+           § Seção 1 e docs/ART_DIRECTION.md §1.2–1.5. -->
+      <div class="wedding-hero__media grain-overlay" aria-hidden="true"></div>
+      <div class="container wedding-hero__content">
+        <p class="wedding-hero__eyebrow">Casamentos</p>
+        <h1 id="wedding-hero-heading">Cerimônia e festa, no mesmo endereço.</h1>
+      </div>
+    </section>
+
+    <!-- 2. Cerimônia — o pico emocional da página inteira. Ver wireframe § Seção 2. -->
+    <section class="wedding-block wedding-block--ceremony" aria-labelledby="wedding-ceremony-heading">
+      <div class="container wedding-block__grid">
+        <div class="wedding-block__media wedding-block__media--landscape">
+          <!-- TODO foto real: plano geral da área externa (mesmo ambiente de /espaco/
+               § Tour 3.2, aqui fotografado como cena de cerimônia real). Lente 35mm,
+               linha de fuga real, luz de entardecer. Proporção 3:2 ou 16:9. -->
+          <div class="wedding-block__media-fill grain-overlay" aria-hidden="true"></div>
+          <!-- TODO foto real (insert): detalhe candid da cerimônia — mãos dadas, verso
+               de um convidado sentado, nunca rosto para a câmera. Lente 85mm, proporção
+               4:5. -->
+          <div class="wedding-block__media-inset grain-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="wedding-block__caption">
+          <p class="section-eyebrow">Cerimônia</p>
+          <h2 id="wedding-ceremony-heading">Sob o céu de Jundiaí, o sim.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Recepção — um degrau abaixo da Cerimônia em peso visual, de propósito (ver
+         docs/WEDDING_PAGE_WIREFRAME.md § revisão crítica, Ritmo). -->
+    <section class="wedding-block wedding-block--reception" aria-labelledby="wedding-reception-heading">
+      <div class="container wedding-block__grid wedding-block__grid--single">
+        <div class="wedding-block__media wedding-block__media--landscape">
+          <!-- TODO foto real: salão à noite, luz quente de velas/iluminação de cena
+               (nunca flash direto). Lente 35–50mm. Proporção 4:3 ou 16:9. Sem insert —
+               reforça a diferença de escala em relação à Cerimônia. -->
+          <div class="wedding-block__media-fill grain-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="wedding-block__caption">
+          <p class="section-eyebrow">Recepção</p>
+          <h2 id="wedding-reception-heading">A festa começa onde a cerimônia termina.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Momentos — zoom de plano geral para still-life/detalhe. Grid quadrado +
+         lightbox reaproveitados de /espaco/ § Detalhe (mesmo componente). Ver wireframe
+         § Seção 4. -->
+    <section class="wedding-moments" aria-labelledby="wedding-moments-heading" data-gallery>
+      <div class="container section-intro wedding-moments__intro" data-reveal>
+        <p class="section-eyebrow">Momentos</p>
+        <h2 id="wedding-moments-heading">Os detalhes que ninguém esquece.</h2>
+      </div>
+
+      <div class="container">
+        <!-- ATENÇÃO — placeholders temporários do Unsplash, verificados visualmente
+             antes de usar (ver docs/ART_DIRECTION.md §6): still-life apenas, nenhuma
+             pessoa/rosto, para não arriscar implicar um casal real sem autorização
+             (mesmo princípio de docs/DESIGN_SYSTEM.md § Depoimentos). -->
+        <ul class="gallery-grid">
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Alianças">
+              <!-- TODO: substituir por still-life real das alianças do casal, no Speranza -->
+              <img src="https://images.unsplash.com/photo-1710077758087-2727a4d0fca3?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Aliança de noivado sobre uma taça dourada, com luzes desfocadas ao fundo (imagem temporária)" loading="lazy" />
+            </button>
+          </li>
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Buquê">
+              <!-- TODO: substituir por still-life real do buquê/arranjo floral do Speranza -->
+              <img src="https://images.unsplash.com/photo-1612619733678-3810171dc7ba?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Arranjo floral em tons neutros com folhagem, sobre superfície clara (imagem temporária)" loading="lazy" />
+            </button>
+          </li>
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Convite">
+              <!-- TODO: substituir por still-life real da papelaria/convite de um casamento no Speranza -->
+              <img src="https://images.unsplash.com/photo-1741893043659-ca8b82a8b637?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Convite de casamento em tipografia minimalista sobre tecido claro (imagem temporária, nomes fictícios de mockup)" loading="lazy" />
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Lightbox — markup esperado por assets/js/gallery.js, estilos já definidos
+           em assets/css/gallery.css. Nenhuma classe/atributo novo. -->
+      <div class="lightbox" data-lightbox hidden>
+        <button type="button" class="lightbox__close" data-lightbox-close aria-label="Fechar">
+          <svg class="icon" width="24" height="24" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-close"></use></svg>
+        </button>
+        <button type="button" class="lightbox__prev" data-lightbox-prev aria-label="Foto anterior">‹</button>
+        <figure class="lightbox__figure">
+          <img data-lightbox-image src="" alt="" />
+          <figcaption class="lightbox__caption" data-lightbox-caption></figcaption>
+        </figure>
+        <button type="button" class="lightbox__next" data-lightbox-next aria-label="Próxima foto">›</button>
+      </div>
+    </section>
+
+    <!-- 5. Bastidores — o momento mais íntimo da página, revelado tarde de propósito
+         (ver docs/WEDDING_PAGE_STRATEGY.md §5). Ver wireframe § Seção 5. -->
+    <section class="wedding-block wedding-block--backstage" aria-labelledby="wedding-backstage-heading">
+      <div class="container wedding-block__grid wedding-block__grid--single">
+        <div class="wedding-block__media wedding-block__media--portrait">
+          <!-- TODO foto real: camarim em luz de janela suave, gesto candid de
+               preparação (mão ajustando algo, reflexo parcial em espelho — nunca
+               rosto de frente para a câmera). Lente 50–85mm, proporção 3:4. Mesmo
+               ambiente físico de /espaco/ § Tour 3.3, outra lente narrativa. -->
+          <div class="wedding-block__media-fill grain-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="wedding-block__caption">
+          <p class="section-eyebrow">Bastidores</p>
+          <h2 id="wedding-backstage-heading">Antes do "sim", um espaço só seu.</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Estrutura para Casamentos — pivô de tom deliberado: de sensação para
+         informação. Mesmos 12 itens já mapeados, reagrupados por momento do
+         casamento. Ver wireframe § Seção 6. -->
+    <section class="wedding-structure" aria-labelledby="wedding-structure-heading">
+      <div class="container section-intro wedding-structure__intro" data-reveal>
+        <p class="section-eyebrow">Estrutura para casamentos</p>
+        <h2 id="wedding-structure-heading">Tudo pensado para o seu casamento, do início ao fim.</h2>
+      </div>
+
+      <div class="container">
+        <div class="wedding-structure__grid">
+          <div class="wedding-structure__cluster" data-reveal>
+            <h3>Para o "sim"</h3>
+            <ul>
+              <li>Cerimônia externa</li>
+              <li>Decoração</li>
+              <li>Sistema de som e imagem</li>
+            </ul>
+          </div>
+          <div class="wedding-structure__cluster" data-reveal>
+            <h3>Para os preparativos</h3>
+            <ul>
+              <li>Camarim privativo</li>
+              <li>Estacionamento gratuito</li>
+            </ul>
+          </div>
+          <div class="wedding-structure__cluster" data-reveal>
+            <h3>Para a festa</h3>
+            <ul>
+              <li>Climatização em todo o salão</li>
+              <li>Mobiliário incluso</li>
+            </ul>
+          </div>
+          <div class="wedding-structure__cluster" data-reveal>
+            <h3>Para o sabor</h3>
+            <ul>
+              <li>Cozinha equipada</li>
+              <li>Buffet parceiro (Combinatto Buffet)</li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="link-arrow wedding-structure__cta" data-wa="estrutura" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20estrutura%20para%20o%20meu%20casamento%20no%20Speranza." target="_blank" rel="noopener" data-reveal>Ainda tem dúvidas? Fale com nossa equipe <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- 7. Galeria — registro de abundância (muitos casamentos), não de impacto único.
+         Composição assimétrica própria (não o grid quadrado de Momentos) — mesmo
+         espírito do .gallery-editorial da Home, sem lightbox (mesmo padrão da Home).
+         Ver wireframe § Seção 7. -->
+    <section class="wedding-gallery" aria-labelledby="wedding-gallery-heading" data-scroll-depth="galeria">
+      <div class="container section-intro wedding-gallery__intro" data-reveal>
+        <p class="section-eyebrow">Galeria de casamentos</p>
+        <h2 id="wedding-gallery-heading">Casamentos reais, no Speranza.</h2>
+      </div>
+
+      <div class="container">
+        <!-- ATENÇÃO — placeholders temporários do Unsplash, verificados visualmente
+             (ver docs/ART_DIRECTION.md §6). Nenhuma pessoa/rosto em nenhuma das três,
+             pelo mesmo motivo da seção Momentos. -->
+        <ul class="wedding-gallery__grid">
+          <li class="wedding-gallery__plate wedding-gallery__plate--aisle" data-reveal>
+            <figure>
+              <!-- TODO: substituir por foto real da área externa/cerimônia de um casamento no Speranza -->
+              <img class="wedding-gallery__media" src="https://images.unsplash.com/photo-1759954644796-0ed43f06715b?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Cerimônia ao ar livre montada com cadeiras brancas e arco de madeira em jardim (imagem temporária)" loading="lazy" />
+              <figcaption><span class="sr-only">Referência de cerimônia ao ar livre — não é o jardim real do Speranza.</span></figcaption>
+            </figure>
+          </li>
+          <li class="wedding-gallery__plate wedding-gallery__plate--cake" data-reveal>
+            <figure>
+              <!-- TODO: substituir por foto real do bolo/doces de um casamento no Speranza -->
+              <img class="wedding-gallery__media" src="https://images.unsplash.com/photo-1623428454614-abaf00244e52?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Bolo de casamento branco com flores e frutas vermelhas (imagem temporária)" loading="lazy" />
+              <figcaption><span class="sr-only">Referência de estilo de bolo — não é o bolo real do Speranza.</span></figcaption>
+            </figure>
+          </li>
+          <li class="wedding-gallery__plate wedding-gallery__plate--reception" data-reveal>
+            <figure>
+              <!-- TODO: substituir por foto real da recepção/mesa de um casamento no Speranza -->
+              <img class="wedding-gallery__media" src="https://images.unsplash.com/photo-1536942839176-bf9deb5b6f0d?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Mesa posta com taças e luzes desfocadas ao fundo, em ambiente noturno (imagem temporária)" loading="lazy" />
+              <figcaption><span class="sr-only">Referência de clima de recepção noturna — não é o salão real do Speranza.</span></figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. FAQ — reaproveita .faq-item/.faq-item__answer já definidos em
+         components.css (mesmo componente de Home/Espaço). Onde o dado depende do
+         cliente (buffet/horário/capacidade), a resposta é deliberadamente
+         conservadora — nunca inventar número. Ver wireframe § Seção 8. -->
+    <section class="wedding-faq" aria-labelledby="wedding-faq-heading">
+      <div class="container section-intro wedding-faq__intro" data-reveal>
+        <p class="section-eyebrow">Perguntas frequentes</p>
+        <h2 id="wedding-faq-heading">Algumas respostas antes do seu casamento.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="wedding-faq__grid">
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Posso levar fornecedores externos?</summary>
+              <div class="faq-item__answer">
+                <p>O Speranza trabalha em parceria fixa com o Combinatto Buffet. Para os demais fornecedores (decoração, cerimonial, fotografia), fale com nossa equipe na visita para confirmar as condições do seu casamento.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: mesma pendência já registrada em
+               docs/WIREFRAME.md § "Dados a validar com o cliente" e no FAQ da Home —
+               confirmar se o buffet é obrigatório ou se há abertura a fornecedores
+               externos de buffet especificamente. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>O buffet é obrigatório?</summary>
+              <div class="faq-item__answer">
+                <p>O Speranza trabalha em parceria com o Combinatto Buffet. Caso exista possibilidade de fornecedores externos de buffet, esse conteúdo deverá ser atualizado após validação do cliente.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: horário de uso do espaço não informado em
+               nenhum documento do projeto (mesma pendência do rodapé do site) — não
+               inventar horário específico até confirmação. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Até que horas posso usar o espaço?</summary>
+              <div class="faq-item__answer">
+                <p>O horário de uso é combinado na visita, conforme o formato do seu casamento. Fale com nossa equipe para confirmar as opções disponíveis para a sua data.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: capacidade de convidados por tipo de
+               montagem ainda não confirmada (pendência já registrada em
+               docs/ESTRATEGIA.md § "Dados a validar com o cliente") — não inventar
+               número até confirmação. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Quantos convidados cabem no salão?</summary>
+              <div class="faq-item__answer">
+                <p>O Speranza recebe casamentos de diferentes tamanhos. A capacidade exata para o seu formato de festa (sentado ou coquetel) é confirmada na visita.</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+
+        <div class="wedding-faq__cta" data-reveal>
+          <p>Ainda ficou alguma dúvida?</p>
+          <a class="btn btn--primary" data-wa="faq" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20para%20o%20meu%20casamento." target="_blank" rel="noopener">Fale com nossa equipe</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CTA Final — fecha a jornada emocional inteira. Sem foto, sem gatilho de
+         urgência artificial, mesmo espírito do CTA Final de Home/Espaço. Ver
+         wireframe § Seção 9. -->
+    <section class="wedding-cta" aria-labelledby="wedding-cta-heading">
+      <div class="container wedding-cta__inner" data-reveal>
+        <header>
+          <p class="section-eyebrow">Vamos conversar</p>
+          <h2 id="wedding-cta-heading">Cada casamento é um só. O seu merece um espaço à altura dele.</h2>
+        </header>
         <div class="cta-group">
-          <a class="btn btn--primary" data-wa="hero" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20para%20o%20meu%20casamento." target="_blank" rel="noopener">Quero saber mais sobre meu casamento</a>
+          <a class="btn btn--primary" data-wa="cta-final" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20para%20o%20meu%20casamento." target="_blank" rel="noopener">Agende uma visita</a>
+          <a class="btn btn--secondary" href="/espaco/">Ver o espaço completo</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — footer canônico -->
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div>
@@ -128,7 +468,6 @@
         </address>
         <p><a href="tel:+551145842441">(11) 4584-2441</a></p>
         <p><a href="mailto:contato@speranzaeventos.com.br">contato@speranzaeventos.com.br</a></p>
-        <!-- TODO: horário de atendimento — dado não informado no site atual, validar com o cliente -->
       </div>
       <div>
         <h2 class="sr-only">Redes sociais</h2>
@@ -146,7 +485,7 @@
         </ul>
       </div>
       <div>
-        <a class="btn btn--gold-outline" data-wa="footer" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20para%20o%20meu%20casamento." target="_blank" rel="noopener">Fale no WhatsApp</a>
+        <a class="btn btn--gold-outline" data-wa="footer" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20Eventos." target="_blank" rel="noopener">Fale no WhatsApp</a>
       </div>
     </div>
     <div class="container site-footer__bottom">

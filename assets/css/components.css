@@ -1,5 +1,32 @@
 /* Componentes reutilizáveis — botões, cards, trust-bar, passos, depoimentos, FAQ */
 
+/* Textura de grain sutil para placeholders de fotografia — usada em todo elemento
+   aguardando sessão fotográfica profissional (Hero/Estrutura/Tour/Localização de
+   Home, /espaco/ e /casamentos/). Consolidado de 10 cópias idênticas do mesmo SVG em
+   base64 espalhadas por home.css/espaco.css/casamentos.css — ver
+   docs/REFACTOR_ROADMAP.md § 2.1. O elemento com esta classe precisa ter
+   position:relative (já definido na própria classe de contexto, ex. .hero__media). */
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbikiLz48L3N2Zz4=");
+}
+
+/* Bloco de introdução de seção (eyebrow + H2 + lede) — largura máxima e respiro
+   antes do conteúdo da seção. Consolidado de 12 cópias idênticas em
+   home.css/espaco.css/casamentos.css — ver docs/REFACTOR_ROADMAP.md § 2.1.
+   .event-types__intro (36rem) e .gallery-editorial__intro (layout flex próprio)
+   permanecem à parte em home.css por serem genuinamente diferentes, não cópias. */
+.section-intro {
+  max-width: 34rem;
+  margin-bottom: var(--space-2xl);
+}
+
 /* Eyebrow — rótulo pequeno acima de um título de seção, sobre fundo claro.
    Usa --color-accent (bordô), nunca dourado: ver docs/DESIGN_SYSTEM.md, dourado
    sobre creme reprova contraste AA. Para fundos escuros, ver .hero__eyebrow.
@@ -103,6 +130,47 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
+}
+
+/* Link com seta — "ver mais" discreto ao final de blocos/seções, usado em Home,
+   /espaco/ e /casamentos/ (consolidado de 6 implementações idênticas espalhadas por
+   home.css/espaco.css/casamentos.css — ver docs/REFACTOR_ROADMAP.md § 2.1). Cada
+   página continua definindo só o posicionamento (display/gap/margin) na própria
+   classe de contexto (ex. .structure__cta); a identidade visual mora só aqui. */
+.link-arrow {
+  font-weight: 600;
+  color: var(--color-accent-strong);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent-strong);
+  padding-bottom: 0.2rem;
+  transition: color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.link-arrow:hover {
+  color: var(--color-ink);
+  border-color: var(--color-gold);
+}
+
+.link-arrow span {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.link-arrow:hover span {
+  transform: translateX(4px);
+}
+
+/* Variante "sutil" — usada uma única vez (CTA secundário do Hero da Home): texto em
+   ink e borda neutra em repouso, só ganha cor no hover (em vez de já nascer colorida). */
+.link-arrow--subtle {
+  color: var(--color-text);
+  border-bottom-color: var(--color-border);
+}
+
+.link-arrow--subtle:hover {
+  color: var(--color-accent-strong);
+  border-color: var(--color-gold);
 }
 
 /* Cards de segmentação (Casamentos / Debutantes / Corporativo / Aniversários) —
@@ -218,7 +286,9 @@
 .trust-bar__number {
   font-family: var(--font-heading);
   font-size: var(--step-3);
-  color: var(--color-accent);
+  /* accent-strong, não accent: o sage claro reprova contraste AA em texto
+     (ver docs/DESIGN_SYSTEM.md § Acessibilidade, tabela de contraste). */
+  color: var(--color-accent-strong);
 }
 
 /* Como funciona — passos numerados */

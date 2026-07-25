@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Speranza Eventos | Salão de Festas em Jundiaí — Casamentos, Debutantes, Corporativo</title>
+  <title>Speranza Eventos | Salão de Festas em Jundiaí</title>
   <meta name="description" content="Speranza Eventos: salão de festas em Jundiaí-SP para casamentos, debutantes, eventos corporativos e sociais. Estrutura completa, atendimento próximo." />
   <link rel="canonical" href="https://www.speranzaeventos.com.br/" />
 
@@ -15,6 +15,9 @@
   <meta property="og:url" content="https://www.speranzaeventos.com.br/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Speranza Eventos | Salão de Festas em Jundiaí" />
+  <meta name="twitter:description" content="Sofisticação de espaço de grande cidade em Jundiaí, sem sair da região. Casamentos, debutantes, corporativo e eventos sociais." />
+  <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
@@ -23,8 +26,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Placeholders temporários da Galeria vêm do Unsplash (ver TODOs em cada
+       <img>) — preconnect evita pagar DNS/TLS na primeira imagem carregada. -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <!-- Eixo "ital" adicionado ao Fraunces: .structure__index/.how-it-works__index/
+       .testimonial__quote usam font-style:italic, mas sem este eixo o navegador
+       nunca baixa o itálico real — sintetiza um itálico falso (oblíquo) a partir
+       do peso 400 reto. Peso 500 do Manrope removido: não há nenhum uso de
+       font-weight:500 em texto com --font-body no CSS atual (só Fraunces usa
+       500 — Hero h1, H3, nav mobile), então esse peso nunca era servido à toa. -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -62,6 +74,66 @@
     }
   </script>
   <!-- TODO: adicionar geo (latitude/longitude) e openingHoursSpecification quando confirmados com o cliente -->
+
+  <!-- FAQPage — texto idêntico ao da seção FAQ visível na página (exigência do
+       Google para rich snippet); atualizar os dois em conjunto se o copy mudar.
+       Ver docs/REFACTOR_ROADMAP.md § 3.7. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso visitar o espaço antes de reservar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Nossa equipe agenda visitas para que você conheça os ambientes, tire dúvidas e avalie se o espaço atende ao seu evento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O Speranza possui estacionamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O espaço conta com estacionamento exclusivo e gratuito para os convidados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O salão é climatizado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O ambiente principal é climatizado para proporcionar conforto durante todo o evento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O buffet é próprio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Speranza trabalha em parceria com o Combinatto Buffet. Caso exista possibilidade de fornecedores externos, esse conteúdo deverá ser atualizado após validação do cliente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais tipos de evento o espaço recebe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Casamentos, festas de debutante, aniversários, bodas, eventos corporativos e outras celebrações."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como faço para solicitar um orçamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre em contato pelo WhatsApp para informar o tipo de evento, a data desejada e o número aproximado de convidados. Nossa equipe retornará com as orientações iniciais."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
 <body class="page-home" data-page="home">
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
@@ -148,7 +220,7 @@
           <p class="hero__subheadline">No Bairro Caxambú, o Speranza reúne estrutura e conforto para casamentos, debutantes, eventos corporativos e comemorações em família.</p>
           <div class="hero__cta-group">
             <a class="btn btn--primary" data-wa="hero-visita" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
-            <a class="hero__cta-link" href="/espaco/">Conheça o espaço <span aria-hidden="true">→</span></a>
+            <a class="link-arrow link-arrow--subtle" href="/espaco/">Conheça o espaço <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
@@ -156,7 +228,7 @@
              não há sessão fotográfica profissional do espaço (ver docs/ESTRATEGIA.md §5).
              Trocar por <img loading="eager" alt="…"> do salão real quando pronto — é o
              maior elemento acima da dobra, candidato a LCP, por isso eager. -->
-        <div class="hero__media" aria-hidden="true"></div>
+        <div class="hero__media grain-overlay" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -231,7 +303,7 @@
     </section>
 
     <section class="structure" aria-labelledby="structure-heading">
-      <div class="container structure__intro" data-reveal>
+      <div class="container section-intro structure__intro" data-reveal>
         <p class="section-eyebrow">Estrutura do Speranza</p>
         <h2 id="structure-heading">Uma estrutura pensada para o seu evento.</h2>
         <p class="structure__lede">Cada detalhe já está resolvido — para você aproveitar o dia, não administrar o evento.</p>
@@ -244,7 +316,7 @@
            pé-direito e a amplitude do espaço"> quando a foto existir — aqui a
            imagem carrega informação real, o alt não pode ficar vazio. -->
       <div class="container structure__lead" data-reveal>
-        <div class="structure__lead-media" aria-hidden="true"></div>
+        <div class="structure__lead-media grain-overlay" aria-hidden="true"></div>
         <div class="structure__caption">
           <span class="structure__index" aria-hidden="true">01</span>
           <div>
@@ -257,7 +329,7 @@
       <div class="container">
         <ul class="structure__list">
           <li class="structure__block" data-reveal>
-            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__media grain-overlay" aria-hidden="true"></div>
             <div class="structure__caption">
               <span class="structure__index" aria-hidden="true">02</span>
               <div>
@@ -267,7 +339,7 @@
             </div>
           </li>
           <li class="structure__block" data-reveal>
-            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__media grain-overlay" aria-hidden="true"></div>
             <div class="structure__caption">
               <span class="structure__index" aria-hidden="true">03</span>
               <div>
@@ -277,7 +349,7 @@
             </div>
           </li>
           <li class="structure__block" data-reveal>
-            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__media grain-overlay" aria-hidden="true"></div>
             <div class="structure__caption">
               <span class="structure__index" aria-hidden="true">04</span>
               <div>
@@ -287,7 +359,7 @@
             </div>
           </li>
           <li class="structure__block" data-reveal>
-            <div class="structure__media" aria-hidden="true"></div>
+            <div class="structure__media grain-overlay" aria-hidden="true"></div>
             <div class="structure__caption">
               <span class="structure__index" aria-hidden="true">05</span>
               <div>
@@ -298,7 +370,7 @@
           </li>
         </ul>
 
-        <a class="structure__cta" href="/espaco/" data-reveal>Ver estrutura completa <span aria-hidden="true">→</span></a>
+        <a class="link-arrow structure__cta" href="/espaco/" data-reveal>Ver estrutura completa <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -309,7 +381,7 @@
           <h2 id="gallery-heading">O espaço, em detalhe.</h2>
           <p class="gallery-editorial__lede">Uma curadoria de ambientes, montagens e detalhes do Speranza, em Jundiaí.</p>
         </div>
-        <a class="gallery-editorial__cta" href="/espaco/">Ver o espaço completo <span aria-hidden="true">→</span></a>
+        <a class="link-arrow gallery-editorial__cta" href="/espaco/">Ver o espaço completo <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="container">
@@ -335,7 +407,7 @@
           <li class="gallery-editorial__plate gallery-editorial__plate--table" data-reveal>
             <figure>
               <!-- TODO: substituir por foto real de uma mesa posta do Speranza -->
-              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Mesa posta com pratos brancos, talheres e arranjo de folhagem sobre madeira (imagem temporária)" loading="lazy" />
+              <img class="gallery-editorial__media" src="https://images.unsplash.com/photo-1579101403194-24b242aa56e2?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Prato branco em relevo sobre guardanapo de linho, ao lado de um sousplat de fibra natural (imagem temporária)" loading="lazy" />
               <figcaption>
                 <span class="gallery-editorial__index">02</span>
                 <span class="gallery-editorial__label">Mesa posta</span>
@@ -414,7 +486,7 @@
     </section>
 
     <section class="how-it-works" aria-labelledby="how-it-works-heading">
-      <div class="container how-it-works__intro" data-reveal>
+      <div class="container section-intro how-it-works__intro" data-reveal>
         <p class="section-eyebrow">Como funciona</p>
         <h2 id="how-it-works-heading">Do primeiro contato ao grande dia.</h2>
         <p class="how-it-works__lede">Quatro passos simples, sem burocracia, até a data do seu evento.</p>
@@ -456,7 +528,7 @@
          components.css) em vez de cartão sólido/sombra, para comunicar transparência
          ("ainda não temos isso publicado") em vez de parecer um bug visual. -->
     <section class="testimonials" aria-labelledby="testimonials-heading" data-scroll-depth="depoimentos">
-      <div class="container testimonials__intro" data-reveal>
+      <div class="container section-intro testimonials__intro" data-reveal>
         <header>
           <p class="section-eyebrow">Depoimentos</p>
           <h2 id="testimonials-heading">Quem celebra no Speranza é quem melhor pode contar essa experiência.</h2>
@@ -514,7 +586,7 @@
          resposta é deliberadamente conservadora e o TODO abaixo marca a
          pendência — nunca afirmar o que ainda não foi validado. -->
     <section class="faq" aria-labelledby="faq-heading">
-      <div class="container faq__intro" data-reveal>
+      <div class="container section-intro faq__intro" data-reveal>
         <p class="section-eyebrow">Perguntas frequentes</p>
         <h2 id="faq-heading">Algumas respostas antes da sua visita.</h2>
         <p class="faq__lede">Reunimos as dúvidas mais comuns de quem está conhecendo o Speranza pela primeira vez.</p>

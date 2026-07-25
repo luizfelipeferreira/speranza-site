@@ -1,51 +1,347 @@
-/* Específico de O Espaço — ficha técnica + tour por ambientes */
+/* Específico de O Espaço — hero cinematográfico + abertura conceitual + tour em
+   duplas de página + detalhe still-life (grid/lightbox reaproveitados de gallery.css,
+   sem CSS novo para essa seção) + estrutura em clusters + localização + fechamento
+   editorial. Ver docs/SPACE_PAGE_STRATEGY.md e docs/SPACE_PAGE_WIREFRAME.md para o
+   raciocínio completo por trás de cada decisão desta página. */
 
-body.page-espaco .ambiente-tour {
+/* 1. Hero — diferente do Hero da Home (duas colunas texto/imagem): aqui a foto ocupa
+   a largura inteira da viewport, texto sobreposto num terço inferior, sobre um véu
+   escuro — mesma técnica de legibilidade já usada nas legendas da Galeria da Home. */
+
+body.page-espaco .space-hero {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+body.page-espaco .space-hero__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+}
+
+@media (min-width: 768px) {
+  body.page-espaco .space-hero__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 1024px) {
+  body.page-espaco .space-hero__media {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* Grain sutil — mesmo padrão usado em todo placeholder de foto do site (Hero/Estrutura
+   da Home), enquanto não há sessão fotográfica profissional (ver docs/ART_DIRECTION.md). */
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+/* Véu escuro no terço inferior — garante legibilidade do texto claro quando a foto
+   real (clara, luz de dia) entrar no lugar do placeholder. */
+body.page-espaco .space-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(36, 36, 36, 0.78) 0%, rgba(36, 36, 36, 0.5) 45%, transparent 85%);
+}
+
+body.page-espaco .space-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding-block: var(--space-2xl);
+}
+
+body.page-espaco .space-hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-gold-soft);
+  margin-bottom: var(--space-md);
+}
+
+body.page-espaco .space-hero h1 {
+  max-width: 16ch;
+  font-size: clamp(2.2rem, 1.7rem + 2vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-cream);
+}
+
+/* 2. Abertura conceitual — 100% tipográfica, respiro deliberado depois do impacto
+   visual do Hero. O número 450m² recebe peso tipográfico próprio, não fica escondido
+   dentro do parágrafo (ver benchmark com a Apple em docs/SPACE_PAGE_STRATEGY.md §5). */
+
+body.page-espaco .space-concept__inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+body.page-espaco .space-concept__text {
+  margin-top: var(--space-lg);
+  color: var(--color-text-soft);
+}
+
+body.page-espaco .space-concept__number {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2ch;
+  margin-block: var(--space-xl);
+  font-family: var(--font-heading);
+  font-size: var(--step-2);
+  color: var(--color-accent-strong);
+}
+
+body.page-espaco .space-concept__number span {
+  font-size: clamp(3.5rem, 2.5rem + 4vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* 3. Tour por ambientes — 5 "duplas de página" em zigue-zague (mesma técnica já usada
+   na Estrutura da Home), com proporções alternadas de propósito: a variação (paisagem/
+   paisagem/retrato/paisagem/paisagem) é o mecanismo de ritmo descrito em
+   docs/SPACE_PAGE_WIREFRAME.md § Resumo de proporções. */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-espaco .space-tour__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+body.page-espaco .space-tour__block {
   display: grid;
   gap: var(--space-xl);
 }
 
-@media (min-width: 768px) {
-  body.page-espaco .ambiente-tour {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 1024px) {
+  body.page-espaco .space-tour__block {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  /* Zigue-zague: blocos pares invertem o lado da foto — leitor de tela continua
+     lendo foto → texto sempre (order só reorganiza a posição visual). */
+  body.page-espaco .space-tour__block:nth-child(even) .space-tour__media {
+    order: 2;
+  }
+
+  body.page-espaco .space-tour__block:nth-child(even) .space-tour__caption {
+    order: 1;
   }
 }
 
-body.page-espaco .ambiente-card__media {
-  aspect-ratio: 3 / 2;
-  border-radius: var(--radius-md);
-  overflow: hidden;
+body.page-espaco .space-tour__media {
+  position: relative;
 }
 
-body.page-espaco .spec-sheet {
+body.page-espaco .space-tour__media-fill {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+}
+
+body.page-espaco .space-tour__media--16-9 .space-tour__media-fill {
+  aspect-ratio: 16 / 9;
+}
+
+body.page-espaco .space-tour__media--3-4 .space-tour__media-fill {
+  aspect-ratio: 3 / 4;
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+/* Insert — segunda foto (detalhe), só nos blocos 3.1 e 3.5. Ancorada no canto inferior
+   da foto dominante, tamanho reduzido — mesma lógica de "still-life como coadjuvante"
+   descrita no wireframe. */
+body.page-espaco .space-tour__media-inset {
+  position: relative;
+  width: 42%;
+  aspect-ratio: 1 / 1;
+  margin-top: var(--space-md);
+  margin-left: auto;
+  overflow: hidden;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-espaco .space-tour__caption {
   display: grid;
-  gap: var(--space-sm) var(--space-xl);
-  list-style: none;
-  padding: 0;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-lg);
+  align-items: start;
+}
+
+/* Numeral itálico em champagne — mesmo motivo já usado na Estrutura/Como Funciona da
+   Home (ver docs/DESIGN_SYSTEM.md), reaproveitado aqui para manter a mesma assinatura
+   visual de "prancha editorial" em todo o site. */
+body.page-espaco .space-tour__index {
+  display: inline-flex;
+  justify-content: center;
+  width: 2.75rem;
+  padding-block: 0.15rem;
+  font-family: var(--font-heading);
+  font-size: var(--step-1);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+body.page-espaco .space-tour__caption h3 {
+  margin-bottom: var(--space-xs);
+}
+
+body.page-espaco .space-tour__caption p {
+  color: var(--color-text-soft);
+  max-width: 42ch;
+}
+
+/* 4. Detalhe (still-life) — sem CSS próprio de grid: reaproveita .gallery-grid e
+   .lightbox integralmente (gallery.css). Só o espaçamento da introdução da seção
+   precisa de regra própria aqui. */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+/* 5. Estrutura completa — 4 clusters temáticos (não lista plana de 12 itens), mesma
+   lógica de breakpoint em 1024px já usada na FAQ da Home. */
+
+body.page-espaco .space-structure {
+  background-color: var(--color-bg-alt);
+}
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-espaco .space-structure__grid {
+  display: grid;
+  gap: var(--space-xl);
 }
 
 @media (min-width: 640px) {
-  body.page-espaco .spec-sheet {
+  body.page-espaco .space-structure__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-body.page-espaco .spec-sheet__item {
+@media (min-width: 1024px) {
+  body.page-espaco .space-structure__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body.page-espaco .space-structure__cluster h3 {
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-gold);
+}
+
+body.page-espaco .space-structure__cluster ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-sm);
-  padding-block: var(--space-xs);
-  border-bottom: 1px solid var(--color-accent-soft);
 }
 
-body.page-espaco .map-embed {
+body.page-espaco .space-structure__cluster li {
+  color: var(--color-text-soft);
+  font-size: var(--step--1);
+}
+
+/* Identidade visual em .link-arrow (components.css, consolidado a partir das 6
+   implementações duplicadas — ver docs/REFACTOR_ROADMAP.md § 2.1). Só
+   posicionamento aqui. */
+body.page-espaco .space-structure__cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  margin-top: var(--space-2xl);
+}
+
+/* 6. Localização e acesso — mapa dominante + fachada/endereço ao lado. Única seção
+   que mostra o espaço "de fora", simetria narrativa com o Hero (que mostra de dentro). */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-espaco .space-location__grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 1024px) {
+  body.page-espaco .space-location__grid {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-2xl);
+  }
+}
+
+body.page-espaco .space-location__map {
   aspect-ratio: 16 / 9;
-  border-radius: var(--radius-md);
   overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
 }
 
-body.page-espaco .map-embed iframe {
+body.page-espaco .space-location__map iframe {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+body.page-espaco .space-location__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+  background-color: var(--color-surface-alt);
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-espaco .space-location__address {
+  font-style: normal;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-md);
+}
+
+/* Identidade visual em .link-arrow (components.css) — só posicionamento aqui. */
+body.page-espaco .space-location__cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+}
+
+/* 7. CTA final — mesmo espírito do CTA Final da Home: container estreito,
+   centralizado, sem foto/textura/caixa/sombra, sem gatilho de urgência artificial. */
+
+body.page-espaco .space-cta {
+  background-color: var(--color-bg-alt);
+}
+
+body.page-espaco .space-cta__inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+body.page-espaco .space-cta__inner .cta-group {
+  justify-content: center;
+  margin-top: var(--space-xl);
 }

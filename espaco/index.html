@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>O Espaço | Speranza Eventos — Salão de 450m² em Jundiaí</title>
-  <meta name="description" content="Conheça os ambientes do Speranza Eventos em Jundiaí-SP: salão principal, área externa para cerimônia, camarim, espaço kids e ficha técnica completa." />
+  <meta name="description" content="Conheça os ambientes do Speranza Eventos em Jundiaí-SP: salão principal, área externa para cerimônia, camarim, espaço kids e estrutura completa." />
   <link rel="canonical" href="https://www.speranzaeventos.com.br/espaco/" />
 
   <meta property="og:type" content="website" />
@@ -15,16 +15,31 @@
   <meta property="og:url" content="https://www.speranzaeventos.com.br/espaco/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="O Espaço | Speranza Eventos" />
+  <meta name="twitter:description" content="450m² em Jundiaí — salão principal, área externa, camarim, espaço kids e estrutura completa." />
+  <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#667264" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Placeholders temporários da seção Detalhe vêm do Unsplash (ver TODOs abaixo). -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <!-- gallery.css/gallery.js usados aqui: a seção "Detalhe" reaproveita o grid quadrado
+       + lightbox já construído (ver docs/SPACE_PAGE_STRATEGY.md §6 — a composição em
+       grid uniforme dissolvida do Tour continua válida como componente reutilizável). -->
   <link rel="stylesheet" href="/assets/css/gallery.css" />
   <link rel="stylesheet" href="/assets/css/animations.css" />
   <link rel="stylesheet" href="/assets/css/espaco.css" />
@@ -55,11 +70,13 @@
 <body class="page-espaco" data-page="espaco">
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — header canônico (wordmark Fraunces, sem <img> de
+       logo real ainda — ver comentário equivalente na Home). -->
   <header class="site-header" data-header>
     <div class="container site-header__bar">
       <a class="site-header__logo" href="/" aria-label="Speranza Eventos — página inicial">
-        <img src="/assets/images/brand/logo.svg" alt="Speranza Eventos" width="160" height="40" />
+        <span class="site-header__logo-mark">Speranza</span>
+        <span class="site-header__logo-sub">Eventos</span>
       </a>
 
       <nav class="site-nav" aria-label="Navegação principal">
@@ -75,7 +92,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20espa%C3%A7o%20do%20Speranza." target="_blank" rel="noopener">
+        <a class="btn btn--secondary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20espa%C3%A7o%20do%20Speranza." target="_blank" rel="noopener">
           <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-whatsapp"></use></svg>
           Fale no WhatsApp
         </a>
@@ -101,25 +118,299 @@
   <!-- /SYNCED -->
 
   <main id="main">
-    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § PÁGINA: O Espaço (7 seções):
-      1. Hero  2. Apresentação geral (450m², Jundiaí/Caxambú)
-      3. Tour por ambientes (Salão principal · Área externa · Camarim · Espaço kids · Cozinha · Estacionamento)
-      4. Ficha técnica completa (12 itens de estrutura, ver docs/INVENTARIO-SITE-ATUAL.md §3)
-      5. Localização e acesso — mapa
-      6. Galeria completa (curada por ambiente)
-      7. CTA final
-    -->
-    <section class="hero" data-reveal>
-      <div class="container hero__content">
-        <h1><!-- TODO: headline institucional --></h1>
+    <!-- Implementação segue docs/SPACE_PAGE_STRATEGY.md + docs/SPACE_PAGE_WIREFRAME.md
+         (blueprint aprovado antes deste código) — 7 seções, sedução antes de checklist.
+         Nenhum CTA nesta página menciona orçamento: só "Agende uma visita". -->
+
+    <!-- 1. Hero — impacto silencioso, sem argumento ainda. Ver wireframe § Seção 1. -->
+    <section class="space-hero" aria-labelledby="space-hero-heading">
+      <!-- TODO foto real: plano geral arquitetural do salão principal vazio, luz de fim
+           de tarde/manhã entrando pelos vãos. Lente 35mm equiv., composição assimétrica
+           com linha de fuga real, muito espaço negativo no terço onde o texto repousa.
+           Proporção 21:9 (desktop) / 4:5 (mobile). Ver docs/SPACE_PAGE_WIREFRAME.md § Seção 1
+           e docs/ART_DIRECTION.md §1.2–1.5. -->
+      <div class="space-hero__media grain-overlay" aria-hidden="true"></div>
+      <div class="container space-hero__content">
+        <p class="space-hero__eyebrow">O Espaço</p>
+        <h1 id="space-hero-heading">Um salão para ver de perto.</h1>
+      </div>
+    </section>
+
+    <!-- 2. Abertura conceitual — 100% tipográfica, de propósito (respiro depois do
+         impacto visual do Hero). Ver wireframe § Seção 2. -->
+    <section class="space-concept" aria-labelledby="space-concept-heading">
+      <div class="container space-concept__inner" data-reveal>
+        <p class="section-eyebrow">O conceito</p>
+        <h2 id="space-concept-heading">Um único endereço para cada etapa da sua celebração.</h2>
+        <p class="space-concept__text">O Speranza reúne salão, área externa e apoio completo em um único endereço no Bairro Caxambú, em Jundiaí.</p>
+        <p class="space-concept__number"><span>450</span>m²</p>
+        <p class="space-concept__text">Cada ambiente tem um papel — conheça cada um deles a seguir.</p>
+      </div>
+    </section>
+
+    <!-- 3. Tour por ambientes — 5 "duplas de página", na ordem de uma visita guiada
+         (não alfabética, não por importância comercial — ver justificativa completa em
+         docs/SPACE_PAGE_WIREFRAME.md § Seção 3). -->
+    <section class="space-tour" aria-labelledby="space-tour-heading">
+      <div class="container section-intro space-tour__intro" data-reveal>
+        <p class="section-eyebrow">Tour pelos ambientes</p>
+        <h2 id="space-tour-heading">Um espaço para cada momento do seu evento.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="space-tour__list">
+          <!-- 3.1 Salão principal — primeira parada de qualquer visita real. -->
+          <li class="space-tour__block" data-reveal>
+            <div class="space-tour__media space-tour__media--3-4">
+              <!-- TODO foto real: plano geral arquitetural do salão, ângulo diferente do
+                   Hero (mostrando profundidade/lateral). Lente 35–50mm, proporção 4:3.
+                   Ver docs/SPACE_PAGE_WIREFRAME.md § 3.1. -->
+              <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
+              <!-- TODO foto real (insert): detalhe do salão — luminária, piso ou
+                   pé-direito. Lente 85mm, proporção 1:1. -->
+              <div class="space-tour__media-inset grain-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="space-tour__caption">
+              <span class="space-tour__index" aria-hidden="true">01</span>
+              <div>
+                <h3>Salão principal</h3>
+                <p>Luz natural o dia inteiro, teto alto e espaço para qualquer formato de festa.</p>
+              </div>
+            </div>
+          </li>
+
+          <!-- 3.2 Área externa — o outro polo emocional do Speranza: cerimônia ao ar livre. -->
+          <li class="space-tour__block" data-reveal>
+            <div class="space-tour__media space-tour__media--16-9">
+              <!-- TODO foto real: plano geral ao ar livre, luz de fim de tarde/dourada.
+                   Lente 35mm, linha de fuga real (caminho/arco/fileira de assentos),
+                   muito céu/espaço negativo acima. Proporção 16:9. -->
+              <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="space-tour__caption">
+              <span class="space-tour__index" aria-hidden="true">02</span>
+              <div>
+                <h3>Área externa</h3>
+                <p>Cerimônia ao ar livre, sob o céu de Jundiaí.</p>
+              </div>
+            </div>
+          </li>
+
+          <!-- 3.3 Camarim privativo — primeiro momento íntimo da página, contraste de
+               escala deliberado (proporção retrato, não paisagem). -->
+          <li class="space-tour__block" data-reveal>
+            <div class="space-tour__media space-tour__media--3-4">
+              <!-- TODO foto real: plano médio ambientado, mais fechado/aconchegante.
+                   Lente 50–85mm, composição intimista, pouco espaço negativo.
+                   Proporção 3:4 (retrato). -->
+              <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="space-tour__caption">
+              <span class="space-tour__index" aria-hidden="true">03</span>
+              <div>
+                <h3>Camarim privativo</h3>
+                <p>Um espaço só seu, para os últimos retoques antes da festa.</p>
+              </div>
+            </div>
+          </li>
+
+          <!-- 3.4 Espaço Kids — estende o cuidado do camarim para a família inteira. -->
+          <li class="space-tour__block" data-reveal>
+            <div class="space-tour__media space-tour__media--4-3">
+              <!-- TODO foto real: plano médio ambientado, luz clara e alegre, sem
+                   infantilizar (nada de cor berrante/decoração de festa infantil
+                   genérica — ver docs/ART_DIRECTION.md §4). Lente 35–50mm, proporção 4:3. -->
+              <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="space-tour__caption">
+              <span class="space-tour__index" aria-hidden="true">04</span>
+              <div>
+                <h3>Espaço Kids</h3>
+                <p>Os pequenos com espaço garantido — os pais aproveitam sem pausa.</p>
+              </div>
+            </div>
+          </li>
+
+          <!-- 3.5 Cozinha e Buffet — fecha o tour no registro sensorial/prático, ponte
+               direta para o still-life da Seção 4. -->
+          <li class="space-tour__block" data-reveal>
+            <div class="space-tour__media space-tour__media--4-3">
+              <!-- TODO foto real: plano médio da cozinha equipada. Lente 50mm, proporção 4:3. -->
+              <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
+              <!-- TODO foto real (insert, ponte para a Seção 4): still-life de um
+                   prato/travessa do buffet. Lente 85–105mm, proporção 1:1. -->
+              <div class="space-tour__media-inset grain-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="space-tour__caption">
+              <span class="space-tour__index" aria-hidden="true">05</span>
+              <div>
+                <h3>Cozinha e Buffet</h3>
+                <p>Cozinha equipada, em parceria com o Combinatto Buffet.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Detalhe (still-life) — pausa de ritmo depois da amplitude do Tour. Grid
+         quadrado uniforme + lightbox: reaproveita .gallery-grid/.lightbox já
+         construídos (gallery.css/gallery.js), sem CSS novo para esta seção (ver
+         docs/SPACE_PAGE_STRATEGY.md §6). Silêncio visual deliberado: sem parágrafo,
+         só rótulo mínimo por imagem. -->
+    <section class="space-detail" aria-labelledby="space-detail-heading" data-gallery>
+      <div class="container section-intro space-detail__intro" data-reveal>
+        <p class="section-eyebrow">Detalhes</p>
+        <h2 id="space-detail-heading">Nos detalhes, o mesmo cuidado.</h2>
+      </div>
+
+      <div class="container">
+        <!-- ATENÇÃO — placeholders temporários do Unsplash, mesma lógica da Galeria da
+             Home: nenhuma é o Speranza real, cada uma tem TODO indicando a foto real
+             que deve substituí-la (ver docs/ART_DIRECTION.md §6 para critérios de
+             curadoria — nenhum link foi escolhido por conveniência de categoria). -->
+        <ul class="gallery-grid">
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Mesa posta">
+              <!-- TODO: substituir por still-life real de uma mesa posta do Speranza -->
+              <img src="https://images.unsplash.com/photo-1579101403194-24b242aa56e2?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Prato branco em relevo sobre guardanapo de linho, ao lado de um sousplat de fibra natural (imagem temporária)" loading="lazy" />
+            </button>
+          </li>
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Louça">
+              <!-- TODO: substituir por still-life real de louça do Speranza -->
+              <img src="https://images.unsplash.com/photo-1551468133-32ed0f9d86f1?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Prato branco sobre tecido claro, com uma pequena flor branca (imagem temporária)" loading="lazy" />
+            </button>
+          </li>
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Tecido">
+              <!-- TODO: substituir por still-life real de tecido/toalha do Speranza -->
+              <img src="https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Textura de linho bege claro, tecido de toalha de mesa (imagem temporária)" loading="lazy" />
+            </button>
+          </li>
+          <li class="gallery-grid__item" data-reveal>
+            <button type="button" data-lightbox-trigger aria-label="Ampliar foto: Luz da noite">
+              <!-- TODO: substituir por still-life real de luz/velas do Speranza à noite -->
+              <img src="https://images.unsplash.com/photo-1529516222410-a269d812f320?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Arranjo de flores brancas e velas sobre mesa, à noite (imagem temporária)" loading="lazy" />
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Lightbox — markup esperado por assets/js/gallery.js, estilos já definidos
+           em assets/css/gallery.css. Nenhuma classe/atributo novo. -->
+      <div class="lightbox" data-lightbox hidden>
+        <button type="button" class="lightbox__close" data-lightbox-close aria-label="Fechar">
+          <svg class="icon" width="24" height="24" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-close"></use></svg>
+        </button>
+        <button type="button" class="lightbox__prev" data-lightbox-prev aria-label="Foto anterior">‹</button>
+        <figure class="lightbox__figure">
+          <img data-lightbox-image src="" alt="" />
+          <figcaption class="lightbox__caption" data-lightbox-caption></figcaption>
+        </figure>
+        <button type="button" class="lightbox__next" data-lightbox-next aria-label="Próxima foto">›</button>
+      </div>
+    </section>
+
+    <!-- 5. Estrutura completa — os 12 itens já mapeados (docs/INVENTARIO-SITE-ATUAL.md
+         §3), reagrupados em 4 clusters temáticos em vez de lista plana. Pivô de tom
+         deliberado: de sensação para informação. Ver wireframe § Seção 5. -->
+    <section class="space-structure" aria-labelledby="space-structure-heading" data-scroll-depth="estrutura">
+      <div class="container section-intro space-structure__intro" data-reveal>
+        <p class="section-eyebrow">Estrutura completa</p>
+        <h2 id="space-structure-heading">Tudo já resolvido, antes mesmo de você perguntar.</h2>
+      </div>
+
+      <div class="container">
+        <div class="space-structure__grid">
+          <div class="space-structure__cluster" data-reveal>
+            <h3>Conforto</h3>
+            <ul>
+              <li>Climatização em todo o salão</li>
+              <li>Mobiliário incluso (mesas e cadeiras)</li>
+              <li>Decoração</li>
+            </ul>
+          </div>
+          <div class="space-structure__cluster" data-reveal>
+            <h3>Cerimônia e festa</h3>
+            <ul>
+              <li>Área para cerimônia externa</li>
+              <li>Sistema de som e imagem</li>
+              <li>Camarim privativo</li>
+            </ul>
+          </div>
+          <div class="space-structure__cluster" data-reveal>
+            <h3>Apoio</h3>
+            <ul>
+              <li>Espaço Kids</li>
+              <li>Equipe de apoio treinada</li>
+              <li>Serviço de segurança</li>
+            </ul>
+          </div>
+          <div class="space-structure__cluster" data-reveal>
+            <h3>Praticidade</h3>
+            <ul>
+              <li>Estacionamento gratuito e exclusivo</li>
+              <li>Cozinha equipada</li>
+              <li>Buffet parceiro (Combinatto Buffet)</li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="link-arrow space-structure__cta" data-wa="estrutura" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20estrutura%20do%20Speranza." target="_blank" rel="noopener" data-reveal>Ainda tem dúvidas? Fale com nossa equipe <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- 6. Localização e acesso — volta ao concreto: a única seção que mostra o
+         espaço de fora (simetria narrativa com o Hero, que mostra de dentro). Ver
+         wireframe § Seção 6. -->
+    <section class="space-location" aria-labelledby="space-location-heading">
+      <div class="container section-intro space-location__intro" data-reveal>
+        <p class="section-eyebrow">Localização</p>
+        <h2 id="space-location-heading">No Bairro Caxambú, fácil de chegar.</h2>
+      </div>
+
+      <div class="container space-location__grid">
+        <div class="space-location__map" data-reveal>
+          <iframe
+            src="https://www.google.com/maps?q=Av.%20Humberto%20Cereser%2C%203970%2C%20Bairro%20Caxamb%C3%BA%2C%20Jundia%C3%AD%20-%20SP&output=embed"
+            title="Mapa com a localização do Speranza Eventos"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="space-location__side" data-reveal>
+          <!-- TODO foto real: fachada/exterior do prédio, de preferência ao
+               entardecer. Lente 35mm, composição simétrica (exceção deliberada — ver
+               docs/SPACE_PAGE_WIREFRAME.md § Seção 6), proporção 16:9. -->
+          <div class="space-location__media grain-overlay" aria-hidden="true"></div>
+          <address class="space-location__address">
+            Av. Humberto Cereser, nº 3970<br />
+            Bairro Caxambú — Jundiaí/SP
+          </address>
+          <a class="link-arrow space-location__cta" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Humberto+Cereser,+3970,+Bairro+Caxamb%C3%BA,+Jundia%C3%AD+-+SP" target="_blank" rel="noopener">Como chegar <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CTA final — fecha a jornada emocional inteira. Sem foto, sem gatilho de
+         urgência artificial, mesma régua do CTA Final da Home. Ver wireframe § Seção 7. -->
+    <section class="space-cta" aria-labelledby="space-cta-heading">
+      <div class="container space-cta__inner" data-reveal>
+        <header>
+          <p class="section-eyebrow">Agende sua visita</p>
+          <h2 id="space-cta-heading">Fotografia mostra o espaço. Só uma visita mostra como ele combina com o seu evento.</h2>
+        </header>
         <div class="cta-group">
-          <a class="btn btn--primary" data-wa="hero" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20espa%C3%A7o%20do%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+          <a class="btn btn--primary" data-wa="cta-final" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20espa%C3%A7o%20do%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+          <a class="btn btn--secondary" href="/">Ver tipos de evento</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — footer canônico -->
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div>
@@ -131,7 +422,6 @@
         </address>
         <p><a href="tel:+551145842441">(11) 4584-2441</a></p>
         <p><a href="mailto:contato@speranzaeventos.com.br">contato@speranzaeventos.com.br</a></p>
-        <!-- TODO: horário de atendimento — dado não informado no site atual, validar com o cliente -->
       </div>
       <div>
         <h2 class="sr-only">Redes sociais</h2>
@@ -149,7 +439,7 @@
         </ul>
       </div>
       <div>
-        <a class="btn btn--gold-outline" data-wa="footer" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20espa%C3%A7o%20do%20Speranza." target="_blank" rel="noopener">Fale no WhatsApp</a>
+        <a class="btn btn--gold-outline" data-wa="footer" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Speranza%20Eventos." target="_blank" rel="noopener">Fale no WhatsApp</a>
       </div>
     </div>
     <div class="container site-footer__bottom">

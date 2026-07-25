@@ -22,15 +22,24 @@ export const NAP = {
   hours: null,
 };
 
+// Nenhuma mensagem menciona orçamento — nenhum CTA do site oferece ou pede
+// orçamento (ver docs/SPACE_PAGE_STRATEGY.md §4 e docs/WEDDING_PAGE_STRATEGY.md
+// §12): o único caminho é "Agende uma visita"/"Fale com nossa equipe". A chave
+// "hero_orcamento" que existia aqui foi removida por contradizer essa regra e por
+// nunca ter sido usada em nenhum link real (ver docs/REFACTOR_ROADMAP.md § 3.1).
 export const WHATSAPP_MESSAGES = {
   default: "Olá! Gostaria de saber mais sobre o Speranza Eventos.",
-  hero_orcamento: "Olá! Gostaria de solicitar um orçamento para o meu evento no Speranza.",
+  // Home: hero, "Como funciona", Depoimentos e CTA Final reaproveitam a mesma
+  // mensagem de agendamento de visita.
   hero_visita: "Olá! Gostaria de agendar uma visita ao Speranza.",
+  home_faq: "Olá! Tenho uma dúvida sobre o Speranza Eventos.",
   casamentos: "Olá! Gostaria de saber mais sobre o Speranza para o meu casamento.",
+  casamentos_estrutura: "Olá! Tenho uma dúvida sobre a estrutura para o meu casamento no Speranza.",
   debutantes: "Olá! Gostaria de saber mais sobre a festa de 15 anos no Speranza.",
   corporativo: "Olá! Gostaria de solicitar uma proposta para um evento corporativo no Speranza.",
   aniversarios: "Olá! Gostaria de saber mais sobre minha comemoração no Speranza.",
   espaco: "Olá! Gostaria de agendar uma visita ao espaço do Speranza.",
+  espaco_estrutura: "Olá! Tenho uma dúvida sobre a estrutura do Speranza.",
   contato: "Olá! Gostaria de falar com o Speranza Eventos.",
 };
 
