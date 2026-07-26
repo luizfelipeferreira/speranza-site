@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eventos Corporativos em Jundiaí | Speranza Eventos</title>
-  <meta name="description" content="Espaço para eventos corporativos em Jundiaí-SP: confraternizações, lançamentos, treinamentos e congressos. Infraestrutura completa e orçamento objetivo." />
+  <meta name="description" content="Espaço para eventos corporativos em Jundiaí-SP: plenárias, treinamentos, lançamentos e confraternizações. Infraestrutura completa e proposta objetiva." />
   <link rel="canonical" href="https://www.speranzaeventos.com.br/corporativo/" />
 
   <meta property="og:type" content="website" />
@@ -15,6 +15,9 @@
   <meta property="og:url" content="https://www.speranzaeventos.com.br/corporativo/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eventos Corporativos em Jundiaí | Speranza Eventos" />
+  <meta name="twitter:description" content="Infraestrutura, previsibilidade e localização para o seu evento corporativo em Jundiaí." />
+  <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
@@ -32,9 +35,13 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <!-- gallery.css usado só pelo layout de grid quadrado (.gallery-grid) na seção
+       Detalhe — sem lightbox/gallery.js: não há fotografia real validada ainda para
+       esta página (ver relatório de implementação). Nenhum [data-gallery] no HTML,
+       então main.js não baixa gallery.js. -->
   <link rel="stylesheet" href="/assets/css/gallery.css" />
   <link rel="stylesheet" href="/assets/css/animations.css" />
-  <link rel="stylesheet" href="/assets/css/landing.css" />
+  <link rel="stylesheet" href="/assets/css/corporativo.css" />
 
   <script type="application/ld+json">
     {
@@ -58,11 +65,56 @@
       ]
     }
   </script>
+
+  <!-- FAQPage — texto idêntico ao da seção FAQ visível na página (exigência do
+       Google para rich snippet); atualizar os dois em conjunto se o copy mudar.
+       Mesmo padrão já usado em Home/Espaço/Casamentos, ver docs/REFACTOR_ROADMAP.md § 3.7. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Emitem nota fiscal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A emissão de nota fiscal faz parte do processo formal de contratação, junto com a proposta e a confirmação de data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais formas de pagamento são aceitas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As condições de pagamento são apresentadas na proposta formal, de acordo com o formato do seu evento. Fale com nossa equipe para mais detalhes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a capacidade para os formatos de plenária e coquetel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A capacidade varia conforme o formato do evento. O número exato para o seu caso é confirmado na visita técnica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível agendar uma visita técnica antes de fechar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A visita técnica é uma das etapas do processo, antes da proposta formal."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
-<body class="page-landing page-corporativo" data-page="corporativo">
+<body class="page-corporativo" data-page="corporativo">
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — header canônico (wordmark Fraunces, sem <img> de
+       logo real ainda — ver comentário equivalente na Home/Espaço/Casamentos). -->
   <header class="site-header" data-header>
     <div class="container site-header__bar">
       <a class="site-header__logo" href="/" aria-label="Speranza Eventos — página inicial">
@@ -83,7 +135,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta%20para%20um%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener">
+        <a class="btn btn--secondary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta%20para%20um%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener">
           <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-whatsapp"></use></svg>
           Fale no WhatsApp
         </a>
@@ -109,23 +161,366 @@
   <!-- /SYNCED -->
 
   <main id="main">
-    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § PÁGINA: Corporativo (8 seções):
-      1. Hero  2. Por que o Speranza para o seu evento  3. Infraestrutura corporativa
-      4. Formatos de evento atendidos  5. Como funciona / processo de orçamento
-      6. Galeria/casos corporativos  7. FAQ corporativo
-      8. CTA final — variante com WhatsApp + telefone/e-mail lado a lado (ver .cta-final__channels em landing.css)
-    -->
-    <section class="hero" data-reveal>
-      <div class="container hero__content">
-        <h1><!-- TODO: headline objetiva, sem tom "sonho/romance" --></h1>
-        <div class="cta-group">
-          <a class="btn btn--primary" data-wa="hero" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta%20para%20um%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener">Solicitar proposta para meu evento corporativo</a>
+    <!-- Implementação segue docs/CORPORATE_PAGE_STRATEGY.md + docs/CORPORATE_PAGE_WIREFRAME.md
+         + docs/CORPORATE_COPY_GUIDE.md (blueprints aprovados antes deste código) — 9
+         seções (Formatos conta como 1 com 4 sub-blocos), dispositivo estrutural: o
+         mesmo espaço reconfigurado para 4 formatos de uso, não um tour de ambientes
+         nem um fotoensaio de um dia. CTA primário desta página é "Solicitar
+         proposta" — única exceção documentada à regra geral do site de nunca
+         mencionar orçamento (ver docs/CORPORATE_PAGE_STRATEGY.md §12). -->
+
+    <!-- 1. Hero — competência silenciosa, sem argumento ainda. Ver wireframe § Seção 1. -->
+    <section class="corp-hero" aria-labelledby="corp-hero-heading">
+      <!-- TODO foto real: plano geral do salão principal montado em formato plenária —
+           cadeiras alinhadas com pequena variação humana real (não perfeitamente em
+           fileira, como se alguém tivesse acabado de ajustar a última), luz natural de
+           manhã entrando pelas janelas, nenhuma pessoa em cena. Lente 35mm equivalente,
+           composição assimétrica com linha de fuga real, profundidade de campo fechada
+           (f/5.6–f/8). Proporção 16:9 (desktop) / 4:5 (mobile). Ver
+           docs/CORPORATE_PAGE_WIREFRAME.md § Seção 1 e docs/ART_DIRECTION.md §1.2–1.5. -->
+      <div class="corp-hero__media grain-overlay" aria-hidden="true"></div>
+      <div class="container corp-hero__content">
+        <p class="corp-hero__eyebrow">Corporativo</p>
+        <h1 id="corp-hero-heading">Estrutura pronta para reunir sua empresa.</h1>
+      </div>
+    </section>
+
+    <!-- 2. Abertura conceitual — 100% tipográfica; o fato de escala (450m²) chega
+         cedo, ao contrário de /casamentos/ — este público verifica antes de se deixar
+         seduzir. Ver wireframe § Seção 2. -->
+    <section class="corp-concept" aria-labelledby="corp-concept-heading">
+      <div class="container corp-concept__inner" data-reveal>
+        <p class="section-eyebrow">Escala e localização</p>
+        <h2 id="corp-concept-heading">Um endereço, qualquer formato de evento.</h2>
+        <p class="corp-concept__text">O Speranza reúne 450m² num único endereço no Bairro Caxambú, em Jundiaí.</p>
+        <p class="corp-concept__number"><span>450</span>m²</p>
+        <!-- TODO validar com o cliente: capacidade por formato (sentado, coquetel,
+             plenária) ainda não confirmada — não inventar número até validação (ver
+             docs/CORPORATE_PAGE_WIREFRAME.md § Seção 2, nota de dado pendente). -->
+        <p class="corp-concept__text">Veja como o espaço se adapta ao formato do seu evento.</p>
+      </div>
+    </section>
+
+    <!-- 3. Formatos de evento — dispositivo estrutural central: o mesmo espaço
+         reconfigurado 4 vezes, peso visual equivalente entre os formatos (nunca um
+         "hero" do conjunto — ver docs/CORPORATE_PAGE_STRATEGY.md §6). Ordem do mais
+         formal ao mais social, não por importância comercial. Ver wireframe § Seção 3. -->
+    <section class="corp-formats" aria-labelledby="corp-formats-heading">
+      <div class="container section-intro corp-formats__intro" data-reveal>
+        <p class="section-eyebrow">Formatos de evento</p>
+        <h2 id="corp-formats-heading">Um espaço, quatro formatos, nenhum imprevisto.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="corp-formats__grid">
+          <!-- 3.1 Plenária/Palestra — o formato mais formal, abre a sequência. -->
+          <li class="corp-format" data-reveal>
+            <div class="corp-format__media corp-format__media--16-9">
+              <!-- TODO foto real: plano geral do salão em fileiras voltadas para uma
+                   frente, tela desligada mas visível, luz de manhã, sem pessoas. Lente
+                   35mm, composição assimétrica, linha de fuga real, profundidade de
+                   campo fechada. Proporção 16:9. Ver docs/CORPORATE_PAGE_WIREFRAME.md § 3.1. -->
+              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+            </div>
+            <h3 class="corp-format__title">Plenária</h3>
+            <p class="corp-format__text">Fileiras para palestras e convenções, com som e projeção prontos.</p>
+          </li>
+
+          <!-- 3.2 Treinamento/Workshop — mesmo espaço, mesas em ilha. -->
+          <li class="corp-format" data-reveal>
+            <div class="corp-format__media">
+              <!-- TODO foto real: mesmo salão, mesas agrupadas em ilhas, cadeiras ao
+                   redor, material de apoio discreto sobre a mesa, sem pessoas. Lente
+                   35–50mm, ângulo levemente distinto de 3.1. Proporção 4:3. Ver
+                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.2. -->
+              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+            </div>
+            <h3 class="corp-format__title">Treinamento</h3>
+            <p class="corp-format__text">Mesas em grupo, espaço para dinâmica e luz natural o dia inteiro.</p>
+          </li>
+
+          <!-- 3.3 Lançamento de produto — registro mais cenográfico, ainda contido. -->
+          <li class="corp-format" data-reveal>
+            <div class="corp-format__media corp-format__media--1-1">
+              <!-- TODO foto real: ambiente com iluminação cenográfica discreta (nunca
+                   neon/azul), um elemento de destaque centralizado (mesa/pedestal vazio),
+                   luz quente-neutra, sem pessoas. Lente 35–50mm, composição mais
+                   centralizada (exceção deliberada). Proporção 1:1. Ver
+                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.3. -->
+              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+            </div>
+            <h3 class="corp-format__title">Lançamento</h3>
+            <p class="corp-format__text">Um ponto de destaque, iluminação sob controle, sem depender de improviso.</p>
+          </li>
+
+          <!-- 3.4 Confraternização de equipe — fecha no registro mais informal, ponte
+               para o still-life da Seção 4 via o insert. -->
+          <li class="corp-format" data-reveal>
+            <div class="corp-format__media">
+              <!-- TODO foto real: área externa ou salão em configuração de coquetel,
+                   mesas altas, sem toalha decorativa exagerada, luz de fim de tarde, sem
+                   pessoas. Lente 35mm. Proporção 4:3. Ver docs/CORPORATE_PAGE_WIREFRAME.md § 3.4. -->
+              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+              <!-- TODO foto real (insert, ponte para a Seção 4): still-life de
+                   copos/aparador organizado, sem pessoas. Lente 85mm, proporção 1:1. -->
+              <div class="corp-format__media-inset grain-overlay" aria-hidden="true"></div>
+            </div>
+            <h3 class="corp-format__title">Confraternização</h3>
+            <p class="corp-format__text">Área externa ou salão, num só endereço, para reunir a equipe.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Detalhe (precisão) — pausa de ritmo: still-life de controle operacional
+         (nunca still-life afetivo de mesa posta, esse vocabulário pertence a
+         /espaco/ e /casamentos/). Sem lightbox — ver nota no corporativo.css e no
+         relatório de implementação. Ver wireframe § Seção 4. -->
+    <section class="corp-detail" aria-labelledby="corp-detail-heading">
+      <div class="container section-intro corp-detail__intro" data-reveal>
+        <p class="section-eyebrow">Precisão</p>
+        <h2 id="corp-detail-heading">Onde nada é deixado ao acaso.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="gallery-grid corp-detail__grid">
+          <li class="gallery-grid__item corp-detail__item" data-reveal>
+            <!-- TODO foto real: cabo de energia organizado ao lado de um assento.
+                 Lente 85–105mm, profundidade de campo aberta (f/1.8–f/2.8), muito
+                 espaço negativo. Proporção 1:1. -->
+            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <span class="corp-detail__label">Energia</span>
+          </li>
+          <li class="gallery-grid__item corp-detail__item" data-reveal>
+            <!-- TODO foto real: tomada disponível ao lado de uma cadeira, material do
+                 mobiliário em foco. Lente 85–105mm, proporção 1:1. -->
+            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <span class="corp-detail__label">Preparo</span>
+          </li>
+          <li class="gallery-grid__item corp-detail__item" data-reveal>
+            <!-- TODO foto real: luz natural sobre uma superfície de trabalho limpa.
+                 Lente 85–105mm, proporção 1:1. -->
+            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <span class="corp-detail__label">Luz</span>
+          </li>
+          <li class="gallery-grid__item corp-detail__item" data-reveal>
+            <!-- TODO foto real: textura de material do mobiliário (madeira, linho,
+                 metal escovado). Lente 85–105mm, proporção 1:1. -->
+            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <span class="corp-detail__label">Material</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Infraestrutura completa — os 12 itens já mapeados
+         (docs/INVENTARIO-SITE-ATUAL.md §3), reagrupados com vocabulário corporativo.
+         Pivô de tom deliberado: de sensação para informação. Ver wireframe § Seção 5. -->
+    <section class="corp-structure" aria-labelledby="corp-structure-heading" data-scroll-depth="infraestrutura">
+      <div class="container section-intro corp-structure__intro" data-reveal>
+        <p class="section-eyebrow">Infraestrutura completa</p>
+        <h2 id="corp-structure-heading">Tudo já resolvido, antes mesmo de você perguntar.</h2>
+      </div>
+
+      <div class="container">
+        <div class="corp-structure__grid">
+          <div class="corp-structure__cluster" data-reveal>
+            <h3>Apoio técnico</h3>
+            <ul>
+              <li>Sistema de som e imagem</li>
+              <li>Equipe de apoio treinada</li>
+            </ul>
+            <!-- TODO validar com o cliente: existência de Wi-Fi não confirmada em
+                 nenhum levantamento do projeto — não afirmar até validação (ver
+                 docs/CORPORATE_PAGE_WIREFRAME.md § Seção 5 e docs/WIREFRAME.md §
+                 Dados a validar). Se confirmado, adicionar como item deste cluster. -->
+          </div>
+          <div class="corp-structure__cluster" data-reveal>
+            <h3>Logística</h3>
+            <ul>
+              <li>Estacionamento gratuito e exclusivo</li>
+              <li>Serviço de segurança</li>
+            </ul>
+            <!-- TODO validar com o cliente: acessibilidade (rampas, banheiro
+                 adaptado) ainda não confirmada — não inventar. -->
+          </div>
+          <div class="corp-structure__cluster" data-reveal>
+            <h3>Conforto</h3>
+            <ul>
+              <li>Climatização em todo o salão</li>
+              <li>Mobiliário incluso (mesas e cadeiras)</li>
+            </ul>
+          </div>
+          <div class="corp-structure__cluster" data-reveal>
+            <h3>Alimentação</h3>
+            <ul>
+              <li>Cozinha equipada</li>
+              <li>Buffet parceiro (Combinatto Buffet)</li>
+            </ul>
+          </div>
         </div>
+
+        <a class="link-arrow corp-structure__cta" data-wa="estrutura" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20infraestrutura%20para%20o%20meu%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener" data-reveal>Falar com nossa equipe <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- 6. Como funciona (processo) — seção com peso próprio nesta página (diferente
+         de /espaco/ e /casamentos/, onde é reforço secundário): o processo de
+         contratação corporativa é mais formal. Reaproveita .steps/.step
+         (components.css), componente genérico ainda não usado em nenhuma página. Ver
+         wireframe § Seção 6. -->
+    <section class="corp-process" aria-labelledby="corp-process-heading">
+      <div class="container section-intro corp-process__intro" data-reveal>
+        <p class="section-eyebrow">Como funciona</p>
+        <h2 id="corp-process-heading">Do primeiro contato à data confirmada.</h2>
+      </div>
+
+      <div class="container">
+        <div class="steps">
+          <div class="step" data-reveal>
+            <h3>Você fala com a gente</h3>
+            <p>Solicitação inicial pelo WhatsApp, já com o formato do seu evento.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Visita técnica</h3>
+            <p>Conhecemos o seu evento e o espaço em conjunto, no local.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Proposta formal</h3>
+            <p>Você recebe uma proposta por escrito, com o que está incluso.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Confirmação de data</h3>
+            <p>A data do seu evento é reservada.</p>
+          </div>
+        </div>
+
+        <div class="corp-process__cta" data-reveal>
+          <a class="btn btn--primary" data-wa="processo" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta%20para%20um%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener">Solicitar proposta</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Localização e acesso — mapa dominante + fachada/endereço ao lado, com a
+         nota de estacionamento nomeada explicitamente (dado de maior peso para este
+         público). Ver wireframe § Seção 7. -->
+    <section class="corp-location" aria-labelledby="corp-location-heading">
+      <div class="container section-intro corp-location__intro" data-reveal>
+        <p class="section-eyebrow">Localização e acesso</p>
+        <h2 id="corp-location-heading">No Bairro Caxambú, com estacionamento garantido.</h2>
+      </div>
+
+      <div class="container corp-location__grid">
+        <div class="corp-location__map" data-reveal>
+          <iframe
+            src="https://www.google.com/maps?q=Av.%20Humberto%20Cereser%2C%203970%2C%20Bairro%20Caxamb%C3%BA%2C%20Jundia%C3%AD%20-%20SP&output=embed"
+            title="Mapa com a localização do Speranza Eventos"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="corp-location__side" data-reveal>
+          <!-- TODO foto real: fachada/exterior do prédio, de preferência ao
+               entardecer. Lente 35mm, composição simétrica (exceção deliberada, mesma
+               lógica de /espaco/ § Localização), proporção 16:9. -->
+          <div class="corp-location__media grain-overlay" aria-hidden="true"></div>
+          <address class="corp-location__address">
+            Av. Humberto Cereser, nº 3970<br />
+            Bairro Caxambú — Jundiaí/SP
+          </address>
+          <p class="corp-location__note">Estacionamento gratuito e exclusivo para todos os participantes do seu evento.</p>
+          <a class="link-arrow corp-location__cta" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Humberto+Cereser,+3970,+Bairro+Caxamb%C3%BA,+Jundia%C3%AD+-+SP" target="_blank" rel="noopener">Como chegar <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAQ corporativo — reaproveita .faq-item (components.css) sem alteração.
+         Respostas conservadoras onde o dado depende do cliente (pagamento,
+         capacidade) — nunca inventar número/condição. Ver wireframe § Seção 8. -->
+    <section class="corp-faq" aria-labelledby="corp-faq-heading">
+      <div class="container section-intro corp-faq__intro" data-reveal>
+        <p class="section-eyebrow">Perguntas frequentes</p>
+        <h2 id="corp-faq-heading">Respostas objetivas antes do contato.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="corp-faq__grid">
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Emitem nota fiscal?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. A emissão de nota fiscal faz parte do processo formal de contratação, junto com a proposta e a confirmação de data.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: condições de pagamento específicas
+               (parcelamento, formas aceitas) ainda não confirmadas — não inventar. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Quais formas de pagamento são aceitas?</summary>
+              <div class="faq-item__answer">
+                <p>As condições de pagamento são apresentadas na proposta formal, de acordo com o formato do seu evento. Fale com nossa equipe para mais detalhes.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: capacidade por formato (plenária,
+               treinamento, coquetel) ainda não confirmada — não inventar número até
+               validação (mesma pendência de docs/ESTRATEGIA.md § Dados a validar). -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Qual a capacidade para os formatos de plenária e coquetel?</summary>
+              <div class="faq-item__answer">
+                <p>A capacidade varia conforme o formato do evento. O número exato para o seu caso é confirmado na visita técnica.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>É possível agendar uma visita técnica antes de fechar?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. A visita técnica é uma das etapas do processo, antes da proposta formal — veja em "Como funciona".</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+
+        <div class="corp-faq__cta" data-reveal>
+          <p>Ainda ficou alguma dúvida?</p>
+          <a class="btn btn--primary" data-wa="faq" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta%20para%20um%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener">Solicitar proposta</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CTA Final — convite objetivo, sem urgência emocional. Única página do
+         site com telefone e e-mail expostos ao lado do WhatsApp (ver
+         docs/CORPORATE_PAGE_STRATEGY.md §12). Ver wireframe § Seção 9. -->
+    <section class="corp-cta" aria-labelledby="corp-cta-heading">
+      <div class="container corp-cta__inner" data-reveal>
+        <header>
+          <p class="section-eyebrow">Vamos conversar</p>
+          <h2 id="corp-cta-heading">O evento da sua empresa, sem improviso.</h2>
+          <p>Fale com a gente e receba uma proposta objetiva.</p>
+        </header>
+        <div class="cta-group">
+          <a class="btn btn--primary" data-wa="cta-final" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20proposta%20para%20um%20evento%20corporativo%20no%20Speranza." target="_blank" rel="noopener">Solicitar proposta</a>
+          <a class="btn btn--secondary" href="/espaco/">Ver o espaço completo</a>
+        </div>
+        <p class="corp-cta__channels">
+          <a href="tel:+551145842441">
+            <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-phone"></use></svg>
+            (11) 4584-2441
+          </a>
+          <a href="mailto:contato@speranzaeventos.com.br">
+            <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-email"></use></svg>
+            contato@speranzaeventos.com.br
+          </a>
+        </p>
       </div>
     </section>
   </main>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — footer canônico -->
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div>
@@ -137,7 +532,6 @@
         </address>
         <p><a href="tel:+551145842441">(11) 4584-2441</a></p>
         <p><a href="mailto:contato@speranzaeventos.com.br">contato@speranzaeventos.com.br</a></p>
-        <!-- TODO: horário de atendimento — dado não informado no site atual, validar com o cliente -->
       </div>
       <div>
         <h2 class="sr-only">Redes sociais</h2>

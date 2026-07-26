@@ -40,6 +40,7 @@ export const WHATSAPP_MESSAGES = {
   aniversarios: "Olá! Gostaria de saber mais sobre minha comemoração no Speranza.",
   espaco: "Olá! Gostaria de agendar uma visita ao espaço do Speranza.",
   espaco_estrutura: "Olá! Tenho uma dúvida sobre a estrutura do Speranza.",
+  corporativo_estrutura: "Olá! Tenho uma dúvida sobre a infraestrutura para o meu evento corporativo no Speranza.",
   contato: "Olá! Gostaria de falar com o Speranza Eventos.",
 };
 

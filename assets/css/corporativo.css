@@ -1,0 +1,415 @@
+/* Específico de Corporativo — hero de arquitetura em uso + abertura conceitual +
+   formatos de evento (o mesmo espaço reconfigurado 4 vezes, peso visual equivalente,
+   sem pico único) + detalhe de precisão + infraestrutura em clusters + processo em
+   4 passos + localização + FAQ processual + fechamento com canal de contato
+   ampliado. Ver docs/CORPORATE_PAGE_STRATEGY.md e docs/CORPORATE_PAGE_WIREFRAME.md
+   para o raciocínio completo por trás de cada decisão desta página. Esta folha não
+   depende de landing.css — a página tem identidade visual própria, por decisão do
+   briefing de implementação. */
+
+/* 1. Hero — full-bleed, 16:9 no desktop (não o 21:9 cinematográfico de /espaco/ nem
+   o 16:9 "de dia vivido" de /casamentos/ com a mesma proporção mas outro assunto):
+   aqui a foto mostra o espaço já em configuração de uso, nunca vazio por abandono
+   nem povoado por pessoas (ver docs/CORPORATE_PAGE_STRATEGY.md §8-9). */
+
+body.page-corporativo .corp-hero {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+body.page-corporativo .corp-hero__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+}
+
+@media (min-width: 768px) {
+  body.page-corporativo .corp-hero__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(36, 36, 36, 0.78) 0%, rgba(36, 36, 36, 0.5) 45%, transparent 85%);
+}
+
+body.page-corporativo .corp-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding-block: var(--space-2xl);
+}
+
+body.page-corporativo .corp-hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-gold-soft);
+  margin-bottom: var(--space-md);
+}
+
+body.page-corporativo .corp-hero h1 {
+  max-width: 20ch;
+  font-size: clamp(2.2rem, 1.7rem + 2vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-cream);
+}
+
+/* 2. Abertura conceitual — 100% tipográfica, mesma pausa de ritmo já usada em
+   /espaco/ § Abertura Conceitual, mas o fato de escala chega ainda mais cedo em
+   relação ao volume total da página (este público verifica antes de se deixar
+   seduzir, ver docs/CORPORATE_PAGE_STRATEGY.md §5). */
+
+body.page-corporativo .corp-concept__inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+body.page-corporativo .corp-concept__text {
+  margin-top: var(--space-lg);
+  color: var(--color-text-soft);
+}
+
+body.page-corporativo .corp-concept__number {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2ch;
+  margin-block: var(--space-xl);
+  font-family: var(--font-heading);
+  font-size: var(--step-2);
+  color: var(--color-accent-strong);
+}
+
+body.page-corporativo .corp-concept__number span {
+  font-size: clamp(3.5rem, 2.5rem + 4vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* 3. Formatos de evento — dispositivo estrutural central da página: o mesmo espaço
+   reconfigurado 4 vezes, em grid de 2 colunas com peso visual equivalente (nunca um
+   card maior que os outros) — ver docs/CORPORATE_PAGE_STRATEGY.md §6, a ausência de
+   pico único é deliberada. Pequena variação de proporção entre os 4 (16:9 / 4:3 /
+   1:1 / 4:3+insert) sustenta o ritmo sem criar hierarquia. */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-formats__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  body.page-corporativo .corp-formats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
+  }
+}
+
+body.page-corporativo .corp-format__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  background-color: var(--color-surface-alt);
+}
+
+body.page-corporativo .corp-format__media--16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+body.page-corporativo .corp-format__media--1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+body.page-corporativo .corp-format__media-fill {
+  position: absolute;
+  inset: 0;
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+/* Insert só na Confraternização (3.4) — ponte visual para o still-life da Seção 4.
+   Sobreposto no canto, não ao lado (diferente do insert de /espaco/ e /casamentos/,
+   que empurra a composição para baixo-direita por margem) — assinatura própria desta
+   página, ver docs/SITE_NARRATIVE_ARCHITECTURE.md § O que nunca repetir. */
+body.page-corporativo .corp-format__media-inset {
+  position: absolute;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 2;
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid var(--color-white);
+  background-color: var(--color-white);
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-format__title {
+  margin-bottom: var(--space-xs);
+}
+
+body.page-corporativo .corp-format__text {
+  max-width: 38ch;
+  color: var(--color-text-soft);
+}
+
+/* 4. Detalhe (precisão) — reaproveita só o layout de .gallery-grid (gallery.css),
+   sem lightbox: sem fotografia real ainda validada para esta página, um
+   still-life sem imagem clicável para ampliar seria uma interação vazia (ver
+   relatório de implementação — decisão registrada ali, não fabricar foto de banco
+   de imagens sem checagem visual). Rótulo mínimo por imagem, mesmo padrão de
+   /espaco/ § Detalhe e /casamentos/ § Momentos. */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-detail__item {
+  position: relative;
+}
+
+body.page-corporativo .corp-detail__media {
+  position: absolute;
+  inset: 0;
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-detail__label {
+  position: absolute;
+  left: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 2;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+}
+
+/* 5. Infraestrutura completa — 4 clusters temáticos, mesma lógica de breakpoint em
+   1024px já usada em /espaco/ § Estrutura Completa e /casamentos/ § Estrutura para
+   Casamentos, com vocabulário e agrupamento próprios desta página (ver
+   docs/CORPORATE_PAGE_WIREFRAME.md § Seção 5). */
+
+body.page-corporativo .corp-structure {
+  background-color: var(--color-bg-alt);
+}
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-structure__grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  body.page-corporativo .corp-structure__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  body.page-corporativo .corp-structure__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body.page-corporativo .corp-structure__cluster h3 {
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-gold);
+}
+
+body.page-corporativo .corp-structure__cluster ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+body.page-corporativo .corp-structure__cluster li {
+  color: var(--color-text-soft);
+  font-size: var(--step--1);
+}
+
+/* Identidade visual em .link-arrow (components.css) — só posicionamento aqui. */
+body.page-corporativo .corp-structure__cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  margin-top: var(--space-2xl);
+}
+
+/* 6. Como funciona (processo) — reaproveita .steps/.step (components.css), um
+   componente genérico já existente e ainda não usado por nenhuma página do site.
+   Só o CTA de fechamento precisa de posicionamento próprio aqui. */
+
+body.page-corporativo .corp-process__cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+/* 7. Localização e acesso — mapa dominante + fachada/endereço ao lado, mesma
+   gramática de /espaco/ § Localização (a única seção desta página a mostrar o
+   espaço de fora), com a nota de estacionamento nomeada explicitamente — dado de
+   maior peso para este público (ver docs/CORPORATE_PAGE_STRATEGY.md §4). */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-location__grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 1024px) {
+  body.page-corporativo .corp-location__grid {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-2xl);
+  }
+}
+
+body.page-corporativo .corp-location__map {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+body.page-corporativo .corp-location__map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+body.page-corporativo .corp-location__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+  background-color: var(--color-surface-alt);
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-location__address {
+  font-style: normal;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-sm);
+}
+
+body.page-corporativo .corp-location__note {
+  color: var(--color-text-soft);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-md);
+}
+
+/* Identidade visual em .link-arrow (components.css) — só posicionamento aqui. */
+body.page-corporativo .corp-location__cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+}
+
+/* 8. FAQ — reaproveita .faq-item (components.css) sem alteração; layout de grade
+   igual ao já usado no FAQ de /casamentos/ (1 coluna até 1024px, 2 colunas depois). */
+
+/* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
+
+body.page-corporativo .corp-faq__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+@media (min-width: 1024px) {
+  body.page-corporativo .corp-faq__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    column-gap: var(--space-3xl);
+  }
+}
+
+body.page-corporativo .corp-faq__cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+body.page-corporativo .corp-faq__cta p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-soft);
+}
+
+/* 9. CTA final — mesmo espírito do CTA Final de Home/Espaço/Casamentos (container
+   estreito, centralizado, sem foto/textura/caixa/sombra, sem urgência artificial),
+   com uma variação exclusiva desta página: telefone e e-mail expostos ao lado do
+   WhatsApp (ver docs/CORPORATE_PAGE_STRATEGY.md §12). Substitui a regra equivalente
+   que existia em landing.css (.cta-final__channels, escopada a .page-corporativo) —
+   esta página não carrega mais landing.css, então a regra vive só aqui agora. */
+
+body.page-corporativo .corp-cta {
+  background-color: var(--color-bg-alt);
+}
+
+body.page-corporativo .corp-cta__inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+body.page-corporativo .corp-cta__inner .cta-group {
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
+body.page-corporativo .corp-cta__inner header p {
+  margin-top: var(--space-sm);
+  color: var(--color-text-soft);
+}
+
+body.page-corporativo .corp-cta__channels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  font-size: var(--step--1);
+}
+
+body.page-corporativo .corp-cta__channels a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--color-accent-strong);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+body.page-corporativo .corp-cta__channels a:hover {
+  color: var(--color-ink);
+}
