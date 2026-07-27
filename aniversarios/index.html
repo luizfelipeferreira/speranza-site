@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aniversários e Bodas em Jundiaí | Speranza Eventos</title>
-  <meta name="description" content="Espaço para aniversários, bodas e formaturas em Jundiaí-SP: estrutura completa, estacionamento gratuito e agilidade para garantir sua data." />
+  <meta name="description" content="Espaço para aniversários, bodas e reuniões de família em Jundiaí-SP: estrutura para qualquer escala de grupo, de um jantar entre poucos a um grande encontro." />
   <link rel="canonical" href="https://www.speranzaeventos.com.br/aniversarios/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Speranza Eventos" />
   <meta property="og:title" content="Aniversários e Bodas em Jundiaí | Speranza Eventos" />
-  <meta property="og:description" content="Flexibilidade e proximidade para a sua comemoração, em Jundiaí." />
+  <meta property="og:description" content="Um espaço para reunir quem você ama, em qualquer escala, em Jundiaí." />
   <meta property="og:url" content="https://www.speranzaeventos.com.br/aniversarios/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aniversários e Bodas em Jundiaí | Speranza Eventos" />
+  <meta name="twitter:description" content="Um espaço para reunir quem você ama, em qualquer escala, em Jundiaí." />
+  <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
@@ -32,9 +35,14 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
-  <link rel="stylesheet" href="/assets/css/gallery.css" />
+  <!-- gallery.css NÃO é carregado aqui: diferente de /corporativo/ e
+       /debutantes/, esta página não tem seção de still-life em grid quadrado
+       (.gallery-grid) — a única galeria da página (Seção 7) usa um grid
+       assimétrico próprio (.ani-gallery__grid, ver aniversarios.css). Sem
+       lightbox/gallery.js: não há fotografia real validada ainda para esta
+       página. Nenhum [data-gallery] no HTML, então main.js não baixa gallery.js. -->
   <link rel="stylesheet" href="/assets/css/animations.css" />
-  <link rel="stylesheet" href="/assets/css/landing.css" />
+  <link rel="stylesheet" href="/assets/css/aniversarios.css" />
 
   <script type="application/ld+json">
     {
@@ -58,8 +66,60 @@
       ]
     }
   </script>
+
+  <!-- FAQPage — texto idêntico ao da seção FAQ visível na página (exigência do
+       Google para rich snippet); atualizar os dois em conjunto se o copy mudar.
+       Mesmo padrão já usado em Home/Espaço/Casamentos/Corporativo/Debutantes. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O espaço recebe festas infantis e reuniões de adultos com a mesma estrutura?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O Speranza tem Espaço Kids e segurança para receber convidados de todas as idades, na mesma comemoração."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso levar decoração temática própria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A política de decoração temática própria ainda está em confirmação. Fale com nossa equipe para saber o que é possível para a sua comemoração."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a capacidade para grupos pequenos e grandes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A capacidade varia conforme a escala da comemoração. O número exato para o seu grupo é confirmado na visita."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Há espaço e segurança adequados para convidados de todas as idades, incluindo crianças e idosos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A climatização, o Espaço Kids e o serviço de segurança cobrem o salão inteiro, do início ao fim da comemoração."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível fazer uma comemoração mais simples, sem grande estrutura?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O espaço recebe desde um jantar entre poucos até um grande encontro, sempre com o mesmo cuidado."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
-<body class="page-landing page-aniversarios" data-page="aniversarios">
+<body class="page-aniversarios" data-page="aniversarios">
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
 
   <!-- SYNCED FROM index.html -->
@@ -83,7 +143,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20minha%20comemora%C3%A7%C3%A3o%20no%20Speranza." target="_blank" rel="noopener">
+        <a class="btn btn--secondary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20minha%20comemora%C3%A7%C3%A3o%20no%20Speranza." target="_blank" rel="noopener">
           <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-whatsapp"></use></svg>
           Fale no WhatsApp
         </a>
@@ -109,15 +169,264 @@
   <!-- /SYNCED -->
 
   <main id="main">
-    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § PÁGINA: Aniversários & Bodas (8 seções):
-      1. Hero  2. Por que comemorar no Speranza  3. Estrutura para sua comemoração
-      4. Como funciona  5. Galeria  6. Depoimentos  7. FAQ  8. CTA final
-    -->
-    <section class="hero" data-reveal>
-      <div class="container hero__content">
-        <h1><!-- TODO: headline calorosa --></h1>
+    <!-- Implementação segue docs/ANNIVERSARIOS_PAGE_STRATEGY.md +
+         docs/ANNIVERSARIOS_PAGE_WIREFRAME.md + docs/ANNIVERSARIOS_COPY_GUIDE.md
+         (blueprints aprovados antes deste código) — 9 seções, dispositivo
+         estrutural: O Círculo (expansão de proximidade relacional). A metáfora
+         organiza só a ordem de raio (fechado → médio → amplo) e nunca aparece
+         como palavra no texto. -->
+
+    <!-- 1. Hero — silêncio geral do site, raio ainda em zero. Ver wireframe § Seção 1. -->
+    <section class="ani-hero" aria-labelledby="ani-hero-heading">
+      <!-- TODO foto real: plano geral do salão ou área externa, preparado para
+           receber um grupo (mesas ainda vazias ou sendo arrumadas), luz natural.
+           Presença humana discreta e plural ao fundo é aceitável (nunca um
+           indivíduo isolado e identificável). Lente 35mm, altura dos olhos,
+           profundidade de campo fechada (f/5.6–f/8). Proporção 16:9 (desktop) /
+           4:5 (mobile). Intenção narrativa: raio zero do Círculo, ainda sem
+           grupo. Ver docs/ANNIVERSARIOS_PAGE_WIREFRAME.md § Seção 1 e
+           docs/ART_DIRECTION.md §1.2–1.5. -->
+      <div class="ani-hero__media grain-overlay" aria-hidden="true"></div>
+      <div class="container ani-hero__content">
+        <p class="ani-hero__eyebrow">Aniversários &amp; Bodas</p>
+        <h1 id="ani-hero-heading">Um espaço para reunir quem você ama.</h1>
+      </div>
+    </section>
+
+    <!-- 2. Abertura Conceitual — 100% tipográfica; ancora escala e flexibilidade
+         cedo, antes de qualquer cena específica. Ver wireframe § Seção 2. -->
+    <section class="ani-concept" aria-labelledby="ani-concept-heading">
+      <div class="container ani-concept__inner" data-reveal>
+        <p class="section-eyebrow">Qualquer motivo, qualquer tamanho</p>
+        <h2 id="ani-concept-heading">Qualquer motivo já é motivo suficiente.</h2>
+        <p class="ani-concept__text">O Speranza reúne 450m² no Bairro Caxambú, em Jundiaí — prontos para um jantar entre poucos ou um grande encontro de família.</p>
+        <p class="ani-concept__number"><span>450</span>m²</p>
+        <p class="ani-concept__text">Veja como isso funciona, de perto para todos.</p>
+      </div>
+    </section>
+
+    <!-- 3. O Gesto — primeira camada do Círculo, o raio mais próximo. Ver
+         wireframe § Seção 3. -->
+    <section class="ani-gesture" aria-labelledby="ani-gesture-heading">
+      <div class="container ani-gesture__grid">
+        <div class="ani-gesture__media grain-overlay" aria-hidden="true" data-reveal>
+          <!-- TODO foto real: close-up genuíno de um gesto entre duas ou três
+               pessoas (um brinde, uma vela sendo assoprada, mãos se
+               cumprimentando), nunca posado, ninguém olhando para a câmera.
+               Lente 85–105mm, altura dos olhos, profundidade de campo aberta
+               (f/1.8–f/2.8), fundo dissolvido. Proporção 4:5. Intenção
+               narrativa: primeira camada do Círculo — o raio mais íntimo. Ver
+               docs/ANNIVERSARIOS_PAGE_WIREFRAME.md § Seção 3. -->
+        </div>
+        <div class="ani-gesture__caption" data-reveal>
+          <p class="section-eyebrow">De perto</p>
+          <h2 id="ani-gesture-heading">Às vezes, é só um brinde entre poucos.</h2>
+          <p>Uma vela sendo assoprada, um brinde discreto — o começo mais simples de qualquer comemoração.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. O Grupo — segunda camada do Círculo, o raio se expande. Ver
+         wireframe § Seção 4. -->
+    <section class="ani-group" aria-labelledby="ani-group-heading">
+      <div class="container ani-group__grid">
+        <div class="ani-group__caption" data-reveal>
+          <p class="section-eyebrow">Em família, entre amigos</p>
+          <h2 id="ani-group-heading">Do jeito que o seu grupo se reúne de verdade.</h2>
+          <p>Uma mesa cheia, sem pressa — o tamanho certo para quem está por perto.</p>
+        </div>
+        <div class="ani-group__media grain-overlay" aria-hidden="true" data-reveal>
+          <!-- TODO foto real: plano médio candid de um grupo de tamanho
+               intermediário (uma mesa de família, um grupo de amigos), várias
+               idades na cena, sem pose. Lente 50mm, altura dos olhos,
+               profundidade de campo intermediária (f/2.8–f/4). Proporção 4:3.
+               Intenção narrativa: segunda camada do Círculo — a maioria dos
+               aniversários reais se encaixa neste raio intermediário. Ver
+               docs/ANNIVERSARIOS_PAGE_WIREFRAME.md § Seção 4. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. O Salão Cheio — terceira camada do Círculo, o raio máximo. Prova de
+         amplitude, não um clímax dramático. Ver wireframe § Seção 5. -->
+    <section class="ani-hall" aria-labelledby="ani-hall-heading">
+      <!-- TODO foto real: plano geral do salão em uso máximo, várias gerações
+           visíveis, sem fileira posando para a câmera. Lente 35mm, altura dos
+           olhos ou levemente elevada (~2m, nunca ângulo de drone), profundidade
+           de campo fechada (f/5.6–f/8). Proporção 16:9 (desktop) / 4:5
+           (mobile). Intenção narrativa: prova de amplitude máxima do Círculo —
+           energia visível, sem virar pico emocional (essa função pertence a
+           Casamentos/Debutantes). Ver docs/ANNIVERSARIOS_PAGE_WIREFRAME.md § Seção 5. -->
+      <div class="ani-hall__media grain-overlay" aria-hidden="true" data-reveal></div>
+      <div class="container ani-hall__content">
+        <p class="ani-hall__eyebrow">E também para os grandes encontros</p>
+        <h2 id="ani-hall-heading">O mesmo cuidado, em qualquer escala.</h2>
+        <p>Várias gerações, um só espaço — a mesma atenção do início até o fim.</p>
+      </div>
+    </section>
+
+    <!-- 6. Estrutura — reassurance factual, reagrupada em 4 clusters. Ver
+         wireframe § Seção 6. -->
+    <section class="ani-structure" aria-labelledby="ani-structure-heading" data-scroll-depth="estrutura">
+      <div class="container section-intro ani-structure__intro" data-reveal>
+        <p class="section-eyebrow">Estrutura para a sua comemoração</p>
+        <h2 id="ani-structure-heading">Tudo pronto, para qualquer tamanho de grupo.</h2>
+      </div>
+
+      <div class="container">
+        <div class="ani-structure__grid">
+          <div class="ani-structure__cluster" data-reveal>
+            <h3>Para o grupo</h3>
+            <ul>
+              <li>Mobiliário incluso (mesas e cadeiras)</li>
+              <li>Climatização em todo o salão</li>
+            </ul>
+          </div>
+          <div class="ani-structure__cluster" data-reveal>
+            <h3>Para todas as idades</h3>
+            <ul>
+              <li>Espaço Kids</li>
+              <li>Serviço de segurança</li>
+            </ul>
+          </div>
+          <div class="ani-structure__cluster" data-reveal>
+            <h3>Para a comemoração</h3>
+            <ul>
+              <li>Sistema de som e iluminação</li>
+              <li>Decoração</li>
+            </ul>
+            <!-- TODO validar com o cliente: política de decoração temática
+                 própria (frequente em aniversário infantil) ainda não
+                 confirmada — não inventar (ver docs/ANNIVERSARIOS_PAGE_WIREFRAME.md
+                 § Seção 6 e § FAQ, pergunta 2). -->
+          </div>
+          <div class="ani-structure__cluster" data-reveal>
+            <h3>Para o sabor</h3>
+            <ul>
+              <li>Cozinha equipada</li>
+              <li>Buffet parceiro (Combinatto Buffet)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TODO validar com o cliente: capacidade por escala de grupo ainda
+             não confirmada — não inventar número (ver docs/ANNIVERSARIOS_PAGE_WIREFRAME.md
+             § Seção 6). -->
+        <a class="link-arrow ani-structure__cta" data-wa="estrutura" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20estrutura%20para%20a%20minha%20comemora%C3%A7%C3%A3o%20no%20Speranza." target="_blank" rel="noopener" data-reveal>Falar com nossa equipe <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- 7. Galeria — confirmação por abundância: muitas comemorações
+         diferentes, não uma progressão conceitual (essa função pertence às
+         Seções 3–5). Ver wireframe § Seção 7. -->
+    <section class="ani-gallery" aria-labelledby="ani-gallery-heading">
+      <div class="container section-intro ani-gallery__intro" data-reveal>
+        <p class="section-eyebrow">Muitas comemorações</p>
+        <h2 id="ani-gallery-heading">Cada motivo, a sua própria forma de celebrar.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="ani-gallery__grid">
+          <!-- TODO foto real: grupo pequeno-médio em convivência genuína (marco
+               redondo, ex. 60 anos). Lente 50mm, proporção 4:3, recorte
+               quadrado neste plate. -->
+          <li class="ani-gallery__plate ani-gallery__plate--a grain-overlay" aria-hidden="true" data-reveal></li>
+          <!-- TODO foto real: still-life de mesa posta para uma reunião de
+               família simples. Lente 85–105mm, profundidade de campo aberta. -->
+          <li class="ani-gallery__plate ani-gallery__plate--b grain-overlay" aria-hidden="true" data-reveal></li>
+          <!-- TODO foto real: celebração infantil, espaço kids em uso, sem
+               estética de banco de imagens de "família perfeita". Lente 35–50mm. -->
+          <li class="ani-gallery__plate ani-gallery__plate--c grain-overlay" aria-hidden="true" data-reveal></li>
+          <!-- TODO foto real: gesto próximo entre duas pessoas mais velhas
+               (bodas). Lente 85mm, profundidade de campo aberta. -->
+          <li class="ani-gallery__plate ani-gallery__plate--d grain-overlay" aria-hidden="true" data-reveal></li>
+          <!-- TODO foto real: detalhe de mesa/buffet, sem decoração dourada
+               exagerada. Lente 85–105mm. -->
+          <li class="ani-gallery__plate ani-gallery__plate--e grain-overlay" aria-hidden="true" data-reveal></li>
+          <!-- TODO foto real: plano geral de um grande encontro de família,
+               várias gerações, candid. Lente 35mm, proporção 21:9. -->
+          <li class="ani-gallery__plate ani-gallery__plate--wide grain-overlay" aria-hidden="true" data-reveal></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. FAQ — perguntas específicas de comemorações sociais, nunca copiadas
+         de Casamentos ou Home. Ver wireframe § Seção 8. -->
+    <section class="ani-faq" aria-labelledby="ani-faq-heading">
+      <div class="container section-intro ani-faq__intro" data-reveal>
+        <p class="section-eyebrow">Perguntas frequentes</p>
+        <h2 id="ani-faq-heading">Algumas respostas antes da sua comemoração.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="ani-faq__grid">
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>O espaço recebe festas infantis e reuniões de adultos com a mesma estrutura?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. O Speranza tem Espaço Kids e segurança para receber convidados de todas as idades, na mesma comemoração.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: política de decoração temática
+               própria (frequente em aniversário infantil) ainda não confirmada
+               — resposta conservadora, não inventar. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Posso levar decoração temática própria?</summary>
+              <div class="faq-item__answer">
+                <p>A política de decoração temática própria ainda está em confirmação. Fale com nossa equipe para saber o que é possível para a sua comemoração.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: capacidade por escala de grupo ainda
+               não confirmada — resposta conservadora, não inventar número. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Qual a capacidade para grupos pequenos e grandes?</summary>
+              <div class="faq-item__answer">
+                <p>A capacidade varia conforme a escala da comemoração. O número exato para o seu grupo é confirmado na visita.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Há espaço e segurança adequados para convidados de todas as idades, incluindo crianças e idosos?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. A climatização, o Espaço Kids e o serviço de segurança cobrem o salão inteiro, do início ao fim da comemoração.</p>
+              </div>
+            </details>
+          </li>
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>É possível fazer uma comemoração mais simples, sem grande estrutura?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. O espaço recebe desde um jantar entre poucos até um grande encontro, sempre com o mesmo cuidado.</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+
+        <div class="ani-faq__cta" data-reveal>
+          <p>Ainda ficou alguma dúvida?</p>
+          <a class="btn btn--primary" data-wa="faq" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20minha%20comemora%C3%A7%C3%A3o%20no%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CTA Final — convite calmo, coerente com a decisão rápida e de baixa
+         fricção desta persona. Sem urgência artificial (ver
+         docs/ANNIVERSARIOS_PAGE_STRATEGY.md §7). Ver wireframe § Seção 9. -->
+    <section class="ani-cta" aria-labelledby="ani-cta-heading">
+      <div class="container ani-cta__inner" data-reveal>
+        <header>
+          <p class="section-eyebrow">Vamos conversar</p>
+          <h2 id="ani-cta-heading">Reúna quem você ama, do jeito certo.</h2>
+          <p>Agende uma visita e veja se o espaço combina com a sua comemoração.</p>
+        </header>
         <div class="cta-group">
-          <a class="btn btn--primary" data-wa="hero" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20minha%20comemora%C3%A7%C3%A3o%20no%20Speranza." target="_blank" rel="noopener">Quero saber mais sobre minha comemoração</a>
+          <a class="btn btn--primary" data-wa="cta-final" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20minha%20comemora%C3%A7%C3%A3o%20no%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+          <a class="btn btn--secondary" href="/espaco/">Conheça o espaço</a>
         </div>
       </div>
     </section>

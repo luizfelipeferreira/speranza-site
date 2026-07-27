@@ -15,6 +15,9 @@
   <meta property="og:url" content="https://www.speranzaeventos.com.br/debutantes/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Festa de 15 Anos em Jundiaí | Speranza Eventos" />
+  <meta name="twitter:description" content="Sofisticação e diversão na medida certa para a festa de 15 anos, em Jundiaí." />
+  <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/brand/apple-touch-icon.png" />
@@ -32,9 +35,13 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <!-- gallery.css usado só pelo layout de grid quadrado (.gallery-grid) na seção
+       Os Detalhes — sem lightbox/gallery.js: nenhuma fotografia real validada
+       ainda para esta página (ver relatório de implementação). Nenhum
+       [data-gallery] no HTML, então main.js não baixa gallery.js. -->
   <link rel="stylesheet" href="/assets/css/gallery.css" />
   <link rel="stylesheet" href="/assets/css/animations.css" />
-  <link rel="stylesheet" href="/assets/css/landing.css" />
+  <link rel="stylesheet" href="/assets/css/debutantes.css" />
 
   <script type="application/ld+json">
     {
@@ -58,11 +65,65 @@
       ]
     }
   </script>
+
+  <!-- FAQPage — texto idêntico ao da seção FAQ visível na página (exigência do
+       Google para rich snippet); atualizar os dois em conjunto se o copy mudar.
+       Mesmo padrão já usado em Home/Espaço/Casamentos/Corporativo, ver
+       docs/REFACTOR_ROADMAP.md § 3.7. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Há serviço de segurança para os convidados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O Speranza conta com equipe de segurança durante o evento, importante especialmente numa festa que reúne convidados de várias idades."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso contratar decoração temática própria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A possibilidade de decoração temática própria depende do formato da festa. Fale com nossa equipe na visita para confirmar as opções para a sua data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Até que horas a festa pode acontecer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O horário de uso é combinado na visita, conforme o formato da sua festa de debutante. Fale com nossa equipe para confirmar as opções disponíveis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quantos convidados o salão recebe numa festa de debutante?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Speranza recebe festas de diferentes tamanhos. A capacidade exata para o seu formato é confirmada na visita."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível ter um momento de entrada com destaque de luz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A possibilidade de um momento de entrada com iluminação de destaque depende da configuração técnica do seu evento. Fale com nossa equipe para confirmar as opções disponíveis para a sua festa."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
-<body class="page-landing page-debutantes" data-page="debutantes">
+<body class="page-debutantes" data-page="debutantes">
   <a class="sr-only" href="#main">Pular para o conteúdo</a>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — header canônico (wordmark Fraunces, sem <img> de
+       logo real ainda — ver comentário equivalente nas demais páginas). -->
   <header class="site-header" data-header>
     <div class="container site-header__bar">
       <a class="site-header__logo" href="/" aria-label="Speranza Eventos — página inicial">
@@ -83,7 +144,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20festa%20de%2015%20anos%20no%20Speranza." target="_blank" rel="noopener">
+        <a class="btn btn--secondary" data-wa="header" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20festa%20de%2015%20anos%20no%20Speranza." target="_blank" rel="noopener">
           <svg class="icon" width="18" height="18" aria-hidden="true"><use href="/assets/images/icons/icons.svg#icon-whatsapp"></use></svg>
           Fale no WhatsApp
         </a>
@@ -109,22 +170,310 @@
   <!-- /SYNCED -->
 
   <main id="main">
-    <!-- Conteúdo pendente — ver docs/WIREFRAME.md § PÁGINA: Debutantes (8 seções):
-      1. Hero  2. Por que comemorar os 15 anos no Speranza  3. Estrutura pensada para a festa
-      4. Como funciona  5. Galeria de festas de debutante  6. Depoimentos
-      7. FAQ debutantes  8. CTA final
-    -->
-    <section class="hero" data-reveal>
-      <div class="container hero__content">
-        <h1><!-- TODO: headline sobre a festa de 15 anos --></h1>
+    <!-- Implementação segue docs/DEBUTANTES_PAGE_STRATEGY.md +
+         docs/DEBUTANTES_PAGE_WIREFRAME.md + docs/DEBUTANTES_COPY_GUIDE.md
+         (blueprints aprovados antes deste código) — 9 seções, dispositivo
+         estrutural: A Estreia (arco dramatúrgico bastidor → entrada →
+         celebração → detalhe → estrutura → galeria → faq → cta). Nenhum CTA
+         menciona orçamento: só "Agende uma visita". Regra absoluta: a
+         protagonista nunca aparece antes da Seção 3 (A Entrada) — nem sequer
+         como silhueta — a ocultação total sustenta a tensão da metáfora. -->
+
+    <!-- 1. Hero — silêncio absoluto, zero pessoas em qualquer placeholder.
+         Ver wireframe § Seção 1. -->
+    <section class="deb-hero" aria-labelledby="deb-hero-heading">
+      <!-- TODO foto real: plano geral do salão principal montado para uma festa
+           de debutante — mesas montadas, iluminação de destaque testada mas
+           ainda apagada/neutra, ZERO pessoas em cena, nem silhueta distante
+           (diferente do Hero de /casamentos/). Lente 35mm equivalente,
+           composição assimétrica com linha de fuga real, profundidade de campo
+           fechada (f/5.6–f/8). Proporção 16:9 (desktop) / 4:5 (mobile). Ver
+           docs/DEBUTANTES_PAGE_WIREFRAME.md § Seção 1 e docs/ART_DIRECTION.md §1.2–1.5. -->
+      <div class="deb-hero__media grain-overlay" aria-hidden="true"></div>
+      <div class="container deb-hero__content">
+        <p class="deb-hero__eyebrow">Debutantes</p>
+        <h1 id="deb-hero-heading">Uma estreia começa aqui.</h1>
+      </div>
+    </section>
+
+    <!-- 2. Bastidores — primeira seção narrativa: quebra o silêncio do Hero,
+         nomeia o conceito, aproxima a página de uma pessoa real se preparando
+         (sem revelar rosto de frente). Carrega três estados da jornada
+         (Curiosidade, Identificação, Expectativa) numa só seção. Ver
+         wireframe § Seção 2. -->
+    <section class="deb-backstage" aria-labelledby="deb-backstage-heading">
+      <div class="container deb-backstage__grid">
+        <div class="deb-backstage__media" data-reveal>
+          <!-- TODO foto real: plano médio ambientado do camarim, luz de janela
+               suave, gesto candid de preparação (mão ajustando algo, reflexo
+               parcial em espelho — nunca rosto de frente). Lente 50–85mm,
+               profundidade de campo intermediária (f/2.8–f/4). Proporção 3:4. -->
+          <div class="deb-backstage__media-fill grain-overlay" aria-hidden="true"></div>
+          <!-- TODO foto real (insert): still-life de um objeto pessoal dela —
+               joia ou sapato — nunca o mesmo objeto que aparecerá em Os
+               Detalhes (Seção 5). Lente 85–105mm, profundidade de campo aberta
+               (f/1.8–f/2.8). Proporção 1:1. -->
+          <div class="deb-backstage__media-inset grain-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="deb-backstage__caption" data-reveal>
+          <p class="section-eyebrow">Antes de todos verem</p>
+          <h2 id="deb-backstage-heading">O último instante que ainda é só dela.</h2>
+          <p>A luz da tarde entra pela janela do camarim, antes de qualquer outro olhar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. A Entrada — o pico absoluto da página: a única seção em que a
+         protagonista aparece por inteiro. Ver wireframe § Seção 3. -->
+    <section class="deb-entrance" aria-labelledby="deb-entrance-heading">
+      <!-- TODO foto real: plano geral com ela em movimento de entrada —
+           silhueta ou movimento de virada, nunca de frente parada olhando para
+           a câmera. Lente 35–50mm, profundidade de campo intermediária
+           (f/2.8–f/4). Proporção 21:9 (desktop) / 16:9 (tablet) / 4:5 (mobile). -->
+      <div class="deb-entrance__media grain-overlay" aria-hidden="true"></div>
+      <div class="container deb-entrance__content">
+        <p class="deb-entrance__eyebrow">A entrada</p>
+        <h2 id="deb-entrance-heading">O salão inteiro se vira para ela.</h2>
+      </div>
+    </section>
+
+    <!-- 4. A Celebração — resposta da plateia ao reconhecimento revelado na
+         Entrada. Só duas fotografias (dominante + insert do gesto
+         intergeracional) — nunca vira galeria, essa função pertence à Seção 7.
+         Ver wireframe § Seção 4. -->
+    <section class="deb-celebration" aria-labelledby="deb-celebration-heading">
+      <div class="container section-intro" data-reveal>
+        <p class="section-eyebrow">A celebração</p>
+        <h2 id="deb-celebration-heading">A festa responde ao que acabou de acontecer.</h2>
+      </div>
+
+      <div class="container deb-celebration__grid">
+        <div class="deb-celebration__media deb-celebration__media--dominant grain-overlay" aria-hidden="true" data-reveal>
+          <!-- TODO foto real: plano médio candid da pista/plateia respondendo,
+               luz quente de ambiente noturno (nunca flash direto). Lente
+               35–50mm, profundidade de campo intermediária (f/2.8–f/4).
+               Proporção 4:3. -->
+        </div>
+        <div data-reveal>
+          <div class="deb-celebration__media deb-celebration__media--insert grain-overlay" aria-hidden="true">
+            <!-- TODO foto real: plano fechado do gesto intergeracional específico
+                 (valsa ou brinde entre pais e filha). Lente 50–85mm,
+                 profundidade de campo intermediária. Proporção 4:5. -->
+          </div>
+          <p class="deb-celebration__insert-caption">Um brinde, só entre os dois.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Os Detalhes — pausa de ritmo depois do pico e do calor coletivo.
+         Reaproveita só o layout de .gallery-grid, sem lightbox: nenhuma
+         fotografia real validada ainda para esta página. Objetos da produção
+         da festa (mesa, flores, vestido em exibição) — nunca os mesmos
+         objetos pessoais de Bastidores. Ver wireframe § Seção 5. -->
+    <section class="deb-details" aria-labelledby="deb-details-heading">
+      <div class="container section-intro" data-reveal>
+        <p class="section-eyebrow">Os detalhes</p>
+        <h2 id="deb-details-heading">Nos pequenos detalhes, o mesmo cuidado.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="gallery-grid deb-details__grid">
+          <li class="gallery-grid__item deb-details__item" data-reveal>
+            <!-- TODO foto real: vestido em exibição (não sendo vestido), still-life
+                 de perto. Lente 85–105mm, profundidade de campo aberta. Proporção 1:1. -->
+            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <span class="deb-details__label">Vestido</span>
+          </li>
+          <li class="gallery-grid__item deb-details__item" data-reveal>
+            <!-- TODO foto real: mesa posta da festa, still-life de perto.
+                 Lente 85–105mm, proporção 1:1. -->
+            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <span class="deb-details__label">Mesa</span>
+          </li>
+          <li class="gallery-grid__item deb-details__item" data-reveal>
+            <!-- TODO foto real: arranjo floral discreto, still-life de perto.
+                 Lente 85–105mm, proporção 1:1. -->
+            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <span class="deb-details__label">Flores</span>
+          </li>
+          <li class="gallery-grid__item deb-details__item" data-reveal>
+            <!-- TODO foto real: ponto de luz/iluminação de cena, still-life de
+                 perto. Lente 85–105mm, proporção 1:1. -->
+            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <span class="deb-details__label">Luz</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. Estrutura — pivô de tom deliberado: de sensação para informação.
+         Os 12 itens já mapeados, reagrupados com vocabulário desta página. Ver
+         wireframe § Seção 6. -->
+    <section class="deb-structure" aria-labelledby="deb-structure-heading" data-scroll-depth="estrutura">
+      <div class="container section-intro" data-reveal>
+        <p class="section-eyebrow">Estrutura para a sua estreia</p>
+        <h2 id="deb-structure-heading">Tudo já resolvido, para você aproveitar cada instante.</h2>
+      </div>
+
+      <div class="container">
+        <div class="deb-structure__grid">
+          <div class="deb-structure__cluster" data-reveal>
+            <h3>Para a entrada</h3>
+            <ul>
+              <li>Sistema de som e iluminação</li>
+              <li>Camarim privativo</li>
+            </ul>
+          </div>
+          <div class="deb-structure__cluster" data-reveal>
+            <h3>Para os convidados</h3>
+            <ul>
+              <li>Serviço de segurança</li>
+              <li>Estacionamento gratuito e exclusivo</li>
+            </ul>
+          </div>
+          <div class="deb-structure__cluster" data-reveal>
+            <h3>Para o conforto</h3>
+            <ul>
+              <li>Climatização em todo o salão</li>
+              <li>Mobiliário incluso (mesas e cadeiras)</li>
+            </ul>
+          </div>
+          <div class="deb-structure__cluster" data-reveal>
+            <h3>Para o sabor</h3>
+            <ul>
+              <li>Cozinha equipada</li>
+              <li>Buffet parceiro (Combinatto Buffet)</li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="link-arrow deb-structure__cta" data-wa="estrutura" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20estrutura%20para%20a%20festa%20de%2015%20anos%20no%20Speranza." target="_blank" rel="noopener" data-reveal>Falar com nossa equipe <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- 7. Galeria Editorial — confirmação por abundância: muitas estreias
+         diferentes, prova de que o padrão se repete entre famílias. Composição
+         assimétrica própria, sem lightbox. Ver wireframe § Seção 7. -->
+    <section class="deb-gallery" aria-labelledby="deb-gallery-heading">
+      <div class="container section-intro" data-reveal>
+        <p class="section-eyebrow">Muitas estreias</p>
+        <h2 id="deb-gallery-heading">Cada família, a sua própria estreia.</h2>
+      </div>
+
+      <div class="container">
+        <!-- ATENÇÃO — sem fotografia real validada ainda: placeholders em CSS
+             puro (grain-overlay), nenhum banco de imagens de terceiros usado
+             nesta página, dado o cuidado adicional exigido pela protagonista
+             ser menor de idade (ver relatório de implementação). -->
+        <ul class="deb-gallery__grid">
+          <li class="deb-gallery__plate deb-gallery__plate--a grain-overlay" aria-hidden="true" data-reveal>
+            <!-- TODO foto real: outra família, plano geral do salão montado para
+                 uma estreia diferente. -->
+          </li>
+          <li class="deb-gallery__plate deb-gallery__plate--b grain-overlay" aria-hidden="true" data-reveal>
+            <!-- TODO foto real: still-life de detalhe de outra celebração. -->
+          </li>
+          <li class="deb-gallery__plate deb-gallery__plate--c grain-overlay" aria-hidden="true" data-reveal>
+            <!-- TODO foto real: detalhe de preparação parcial (mão, reflexo). -->
+          </li>
+          <li class="deb-gallery__plate deb-gallery__plate--d grain-overlay" aria-hidden="true" data-reveal>
+            <!-- TODO foto real: plano médio de celebração/convivência. -->
+          </li>
+          <li class="deb-gallery__plate deb-gallery__plate--wide grain-overlay" aria-hidden="true" data-reveal>
+            <!-- TODO foto real: tira panorâmica do salão em uso, outra família. -->
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. FAQ — perguntas específicas de festa de debutante, não copiadas de
+         Casamentos nem da Home. Onde o dado depende do cliente, resposta
+         deliberadamente conservadora — nunca inventar número/política. Ver
+         wireframe § Seção 8. -->
+    <section class="deb-faq" aria-labelledby="deb-faq-heading">
+      <div class="container section-intro" data-reveal>
+        <p class="section-eyebrow">Perguntas frequentes</p>
+        <h2 id="deb-faq-heading">Algumas respostas antes da sua estreia.</h2>
+      </div>
+
+      <div class="container">
+        <ul class="deb-faq__grid">
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Há serviço de segurança para os convidados?</summary>
+              <div class="faq-item__answer">
+                <p>Sim. O Speranza conta com equipe de segurança durante o evento, importante especialmente numa festa que reúne convidados de várias idades.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: política de decoração temática própria
+               ainda não confirmada — não inventar. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Posso contratar decoração temática própria?</summary>
+              <div class="faq-item__answer">
+                <p>A possibilidade de decoração temática própria depende do formato da festa. Fale com nossa equipe na visita para confirmar as opções para a sua data.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: horário de uso do espaço não informado
+               em nenhum documento do projeto — não inventar horário específico. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Até que horas a festa pode acontecer?</summary>
+              <div class="faq-item__answer">
+                <p>O horário de uso é combinado na visita, conforme o formato da sua festa de debutante. Fale com nossa equipe para confirmar as opções disponíveis.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: capacidade de convidados por formato
+               de festa ainda não confirmada — não inventar número. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>Quantos convidados o salão recebe numa festa de debutante?</summary>
+              <div class="faq-item__answer">
+                <p>O Speranza recebe festas de diferentes tamanhos. A capacidade exata para o seu formato é confirmada na visita.</p>
+              </div>
+            </details>
+          </li>
+          <!-- TODO validar com o cliente: capacidade técnica de iluminação de
+               destaque pontual para o momento de entrada ainda não confirmada. -->
+          <li data-reveal>
+            <details class="faq-item">
+              <summary>É possível ter um momento de entrada com destaque de luz?</summary>
+              <div class="faq-item__answer">
+                <p>A possibilidade de um momento de entrada com iluminação de destaque depende da configuração técnica do seu evento. Fale com nossa equipe para confirmar as opções disponíveis para a sua festa.</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+
+        <div class="deb-faq__cta" data-reveal>
+          <p>Ainda ficou alguma dúvida?</p>
+          <a class="btn btn--primary" data-wa="faq" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20festa%20de%2015%20anos%20no%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CTA Final — fecha o arco teatral inteiro com um convite calmo,
+         dirigido às duas partes da decisão (debutante + pais). Ver
+         wireframe § Seção 9. -->
+    <section class="deb-cta" aria-labelledby="deb-cta-heading">
+      <div class="container deb-cta__inner" data-reveal>
+        <header>
+          <p class="section-eyebrow">Vamos conversar</p>
+          <h2 id="deb-cta-heading">A estreia dela merece ser vista de perto.</h2>
+          <p>Agende uma visita e sintam juntos se este é o lugar certo.</p>
+        </header>
         <div class="cta-group">
-          <a class="btn btn--primary" data-wa="hero" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20festa%20de%2015%20anos%20no%20Speranza." target="_blank" rel="noopener">Quero saber mais sobre a festa de 15 anos</a>
+          <a class="btn btn--primary" data-wa="cta-final" href="https://wa.me/5511971758298?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20festa%20de%2015%20anos%20no%20Speranza." target="_blank" rel="noopener">Agende uma visita</a>
+          <a class="btn btn--secondary" href="/espaco/">Conheça o espaço</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- SYNCED FROM index.html -->
+  <!-- SYNCED FROM index.html — footer canônico -->
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div>
@@ -136,7 +485,6 @@
         </address>
         <p><a href="tel:+551145842441">(11) 4584-2441</a></p>
         <p><a href="mailto:contato@speranzaeventos.com.br">contato@speranzaeventos.com.br</a></p>
-        <!-- TODO: horário de atendimento — dado não informado no site atual, validar com o cliente -->
       </div>
       <div>
         <h2 class="sr-only">Redes sociais</h2>
