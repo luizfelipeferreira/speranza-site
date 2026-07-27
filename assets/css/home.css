@@ -645,11 +645,8 @@ body.page-home .final-cta {
   background-color: var(--color-bg-alt);
 }
 
-body.page-home .final-cta__inner {
-  max-width: 38rem;
-  margin-inline: auto;
-  text-align: center;
-}
+/* max-width/centralização em .cta-final__inner (components.css) — classe já
+   aplicada no HTML. */
 
 /* .section-eyebrow::before (linha vertical champagne, components.css) nasce
    alinhada à esquerda por padrão — aqui, dentro de um bloco centralizado, ela
@@ -667,7 +664,5 @@ body.page-home .final-cta__text + .final-cta__text {
   margin-top: var(--space-sm);
 }
 
-body.page-home .final-cta__inner .cta-group {
-  justify-content: center;
-  margin-top: var(--space-xl);
-}
+/* .cta-group centralizado em .cta-final__inner (components.css) — classe já
+   aplicada no HTML. */

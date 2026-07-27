@@ -31,6 +31,17 @@ body.page-corporativo .corp-hero__media {
   }
 }
 
+/* Placeholder temporário do Unsplash como <img> real dentro do wrapper — mesma
+   técnica de home.css § Galeria: object-fit:cover preenche o aspect-ratio do
+   wrapper, background-color do wrapper permanece como fallback de carregamento. */
+body.page-corporativo .corp-hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
 
 body.page-corporativo .corp-hero__media::before {
@@ -143,6 +154,9 @@ body.page-corporativo .corp-format__media--1-1 {
 body.page-corporativo .corp-format__media-fill {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -161,6 +175,7 @@ body.page-corporativo .corp-format__media-inset {
   overflow: hidden;
   border: 1px solid var(--color-white);
   background-color: var(--color-white);
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -190,6 +205,9 @@ body.page-corporativo .corp-detail__item {
 body.page-corporativo .corp-detail__media {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -217,42 +235,8 @@ body.page-corporativo .corp-structure {
 
 /* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
 
-body.page-corporativo .corp-structure__grid {
-  display: grid;
-  gap: var(--space-xl);
-}
-
-@media (min-width: 640px) {
-  body.page-corporativo .corp-structure__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  body.page-corporativo .corp-structure__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-body.page-corporativo .corp-structure__cluster h3 {
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-gold);
-}
-
-body.page-corporativo .corp-structure__cluster ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-body.page-corporativo .corp-structure__cluster li {
-  color: var(--color-text-soft);
-  font-size: var(--step--1);
-}
+/* Grid/clusters em .reassurance-grid/.reassurance-cluster (components.css) —
+   classes já aplicadas no HTML. */
 
 /* Identidade visual em .link-arrow (components.css) — só posicionamento aqui. */
 body.page-corporativo .corp-structure__cta {
@@ -309,6 +293,8 @@ body.page-corporativo .corp-location__media {
   overflow: hidden;
   margin-bottom: var(--space-lg);
   background-color: var(--color-surface-alt);
+  width: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -374,16 +360,8 @@ body.page-corporativo .corp-cta {
   background-color: var(--color-bg-alt);
 }
 
-body.page-corporativo .corp-cta__inner {
-  max-width: 38rem;
-  margin-inline: auto;
-  text-align: center;
-}
-
-body.page-corporativo .corp-cta__inner .cta-group {
-  justify-content: center;
-  margin-top: var(--space-xl);
-}
+/* max-width/centralização/.cta-group em .cta-final__inner (components.css) —
+   classe já aplicada no HTML. */
 
 body.page-corporativo .corp-cta__inner header p {
   margin-top: var(--space-sm);

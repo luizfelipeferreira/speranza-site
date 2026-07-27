@@ -11,6 +11,12 @@
 // Nas páginas internas não há sentinela (o header já nasce sólido, sem Hero por trás
 // para justificar transparência) — o mesmo .is-scrolled é então decidido por um
 // limiar simples de scrollY, só para o header ganhar o vidro fosco ao rolar.
+//
+// [data-header-sentinel] e [data-scroll-cue] não existem em nenhuma página
+// construída hoje — mantidos de propósito como scaffold para um Hero em tela
+// cheia futuro, não são ramos mortos por descuido (ver docs/PROJECT_AUDIT.md
+// § Dívida técnica). Se um novo Hero desse tipo nunca vier a existir, remover
+// os dois blocos correspondentes abaixo.
 
 export function initHero() {
   const header = document.querySelector("[data-header]");

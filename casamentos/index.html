@@ -126,11 +126,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/" aria-current="page">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" aria-current="true" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/" aria-current="page">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/">Contato</a></li>
         </ul>
@@ -150,7 +157,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/" aria-current="page">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
@@ -189,11 +195,12 @@
         <div class="wedding-block__media wedding-block__media--landscape">
           <!-- TODO foto real: plano geral da área externa (mesmo ambiente de /espaco/
                § Tour 3.2, aqui fotografado como cena de cerimônia real). Lente 35mm,
-               linha de fuga real, luz de entardecer. Proporção 3:2 ou 16:9. -->
+               linha de fuga real, luz de entardecer. Profundidade de campo intermediária
+               (f/2.8–f/4). Proporção 3:2 ou 16:9. -->
           <div class="wedding-block__media-fill grain-overlay" aria-hidden="true"></div>
           <!-- TODO foto real (insert): detalhe candid da cerimônia — mãos dadas, verso
-               de um convidado sentado, nunca rosto para a câmera. Lente 85mm, proporção
-               4:5. -->
+               de um convidado sentado, nunca rosto para a câmera. Lente 85mm,
+               profundidade de campo aberta (f/1.8–f/2.8), proporção 4:5. -->
           <div class="wedding-block__media-inset grain-overlay" aria-hidden="true"></div>
         </div>
         <div class="wedding-block__caption">
@@ -209,8 +216,9 @@
       <div class="container wedding-block__grid wedding-block__grid--single">
         <div class="wedding-block__media wedding-block__media--landscape">
           <!-- TODO foto real: salão à noite, luz quente de velas/iluminação de cena
-               (nunca flash direto). Lente 35–50mm. Proporção 4:3 ou 16:9. Sem insert —
-               reforça a diferença de escala em relação à Cerimônia. -->
+               (nunca flash direto). Lente 35–50mm. Profundidade de campo intermediária
+               (f/2.8–f/4). Proporção 4:3 ou 16:9. Sem insert — reforça a diferença de
+               escala em relação à Cerimônia. -->
           <div class="wedding-block__media-fill grain-overlay" aria-hidden="true"></div>
         </div>
         <div class="wedding-block__caption">
@@ -226,7 +234,7 @@
     <section class="wedding-moments" aria-labelledby="wedding-moments-heading" data-gallery>
       <div class="container section-intro wedding-moments__intro" data-reveal>
         <p class="section-eyebrow">Momentos</p>
-        <h2 id="wedding-moments-heading">Os detalhes que ninguém esquece.</h2>
+        <h2 id="wedding-moments-heading">Os gestos pequenos, guardados em foto.</h2>
       </div>
 
       <div class="container">
@@ -278,8 +286,9 @@
         <div class="wedding-block__media wedding-block__media--portrait">
           <!-- TODO foto real: camarim em luz de janela suave, gesto candid de
                preparação (mão ajustando algo, reflexo parcial em espelho — nunca
-               rosto de frente para a câmera). Lente 50–85mm, proporção 3:4. Mesmo
-               ambiente físico de /espaco/ § Tour 3.3, outra lente narrativa. -->
+               rosto de frente para a câmera). Lente 50–85mm, profundidade de campo
+               intermediária (f/2.8–f/4), proporção 3:4. Mesmo ambiente físico de
+               /espaco/ § Tour 3.3, outra lente narrativa. -->
           <div class="wedding-block__media-fill grain-overlay" aria-hidden="true"></div>
         </div>
         <div class="wedding-block__caption">
@@ -299,8 +308,8 @@
       </div>
 
       <div class="container">
-        <div class="wedding-structure__grid">
-          <div class="wedding-structure__cluster" data-reveal>
+        <div class="wedding-structure__grid reassurance-grid">
+          <div class="wedding-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para o "sim"</h3>
             <ul>
               <li>Cerimônia externa</li>
@@ -308,21 +317,21 @@
               <li>Sistema de som e imagem</li>
             </ul>
           </div>
-          <div class="wedding-structure__cluster" data-reveal>
+          <div class="wedding-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para os preparativos</h3>
             <ul>
               <li>Camarim privativo</li>
               <li>Estacionamento gratuito</li>
             </ul>
           </div>
-          <div class="wedding-structure__cluster" data-reveal>
+          <div class="wedding-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para a festa</h3>
             <ul>
               <li>Climatização em todo o salão</li>
               <li>Mobiliário incluso</li>
             </ul>
           </div>
-          <div class="wedding-structure__cluster" data-reveal>
+          <div class="wedding-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para o sabor</h3>
             <ul>
               <li>Cozinha equipada</li>
@@ -443,7 +452,7 @@
          urgência artificial, mesmo espírito do CTA Final de Home/Espaço. Ver
          wireframe § Seção 9. -->
     <section class="wedding-cta" aria-labelledby="wedding-cta-heading">
-      <div class="container wedding-cta__inner" data-reveal>
+      <div class="container wedding-cta__inner cta-final__inner" data-reveal>
         <header>
           <p class="section-eyebrow">Vamos conversar</p>
           <h2 id="wedding-cta-heading">Cada casamento é um só. O seu merece um espaço à altura dele.</h2>

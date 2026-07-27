@@ -132,11 +132,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/" aria-current="page">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" aria-current="true" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/" aria-current="page">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/">Contato</a></li>
         </ul>
@@ -156,7 +163,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
@@ -274,22 +280,23 @@
       </div>
 
       <div class="container">
-        <div class="ani-structure__grid">
-          <div class="ani-structure__cluster" data-reveal>
+        <div class="ani-structure__grid reassurance-grid">
+          <div class="ani-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para o grupo</h3>
             <ul>
               <li>Mobiliário incluso (mesas e cadeiras)</li>
               <li>Climatização em todo o salão</li>
+              <li>Estacionamento gratuito e exclusivo</li>
             </ul>
           </div>
-          <div class="ani-structure__cluster" data-reveal>
+          <div class="ani-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para todas as idades</h3>
             <ul>
               <li>Espaço Kids</li>
               <li>Serviço de segurança</li>
             </ul>
           </div>
-          <div class="ani-structure__cluster" data-reveal>
+          <div class="ani-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para a comemoração</h3>
             <ul>
               <li>Sistema de som e iluminação</li>
@@ -300,7 +307,7 @@
                  confirmada — não inventar (ver docs/ANNIVERSARIOS_PAGE_WIREFRAME.md
                  § Seção 6 e § FAQ, pergunta 2). -->
           </div>
-          <div class="ani-structure__cluster" data-reveal>
+          <div class="ani-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para o sabor</h3>
             <ul>
               <li>Cozinha equipada</li>
@@ -418,7 +425,7 @@
          fricção desta persona. Sem urgência artificial (ver
          docs/ANNIVERSARIOS_PAGE_STRATEGY.md §7). Ver wireframe § Seção 9. -->
     <section class="ani-cta" aria-labelledby="ani-cta-heading">
-      <div class="container ani-cta__inner" data-reveal>
+      <div class="container ani-cta__inner cta-final__inner" data-reveal>
         <header>
           <p class="section-eyebrow">Vamos conversar</p>
           <h2 id="ani-cta-heading">Reúna quem você ama, do jeito certo.</h2>

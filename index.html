@@ -11,12 +11,12 @@
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Speranza Eventos" />
   <meta property="og:title" content="Speranza Eventos | Salão de Festas em Jundiaí" />
-  <meta property="og:description" content="Sofisticação de espaço de grande cidade em Jundiaí, sem sair da região. Casamentos, debutantes, corporativo e eventos sociais." />
+  <meta property="og:description" content="Casamentos, debutantes, eventos corporativos e comemorações em um espaço de 450m² no Bairro Caxambú, Jundiaí." />
   <meta property="og:url" content="https://www.speranzaeventos.com.br/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Speranza Eventos | Salão de Festas em Jundiaí" />
-  <meta name="twitter:description" content="Sofisticação de espaço de grande cidade em Jundiaí, sem sair da região. Casamentos, debutantes, corporativo e eventos sociais." />
+  <meta name="twitter:description" content="Casamentos, debutantes, eventos corporativos e comemorações em um espaço de 450m² no Bairro Caxambú, Jundiaí." />
   <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
@@ -150,11 +150,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/" aria-current="page">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/">Contato</a></li>
         </ul>
@@ -174,7 +181,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/" aria-current="page">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
@@ -665,7 +671,7 @@
          data"/"últimas vagas"/"aproveite". Sem fotografia, textura, caixa ou
          sombra: só tipografia e espaço em branco, container estreito centralizado. -->
     <section class="final-cta" aria-labelledby="final-cta-heading">
-      <div class="container final-cta__inner" data-reveal>
+      <div class="container final-cta__inner cta-final__inner" data-reveal>
         <header>
           <p class="section-eyebrow">Visite o Speranza</p>
           <h2 id="final-cta-heading">O melhor jeito de conhecer um espaço é caminhar por ele.</h2>

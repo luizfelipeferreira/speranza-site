@@ -287,7 +287,9 @@
   font-family: var(--font-heading);
   font-size: var(--step-3);
   /* accent-strong, não accent: o sage claro reprova contraste AA em texto
-     (ver docs/DESIGN_SYSTEM.md § Acessibilidade, tabela de contraste). */
+     (ver docs/DESIGN_SYSTEM.md § Acessibilidade, tabela de contraste). Já
+     corrigido antes desta auditoria — docs/REFACTOR_ROADMAP.md 3.5 estava
+     desatualizado nesse ponto (ver docs/PROJECT_AUDIT.md § Dívida técnica). */
   color: var(--color-accent-strong);
 }
 
@@ -394,6 +396,65 @@
 .faq-item__answer {
   padding-top: var(--space-sm);
   color: var(--color-text-soft);
+}
+
+/* Grid de 4 clusters temáticos — seção de reassurance factual (Estrutura/
+   Infraestrutura), reutilizada em /espaco/, /casamentos/, /corporativo/,
+   /debutantes/ e /aniversarios/. Consolidado de 5 implementações idênticas
+   espalhadas por espaco.css/casamentos.css/corporativo.css/debutantes.css/
+   aniversarios.css — ver docs/PROJECT_AUDIT.md § Dívida técnica. Cada página
+   mantém sua própria classe de contexto (ex. .corp-structure) só para
+   background-color e vocabulário; o grid e os clusters em si vivem só aqui. */
+.reassurance-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  .reassurance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .reassurance-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.reassurance-cluster h3 {
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-gold);
+}
+
+.reassurance-cluster ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.reassurance-cluster li {
+  color: var(--color-text-soft);
+  font-size: var(--step--1);
+}
+
+/* CTA Final tipográfico — container estreito e centralizado, reutilizado em
+   Home e nas cinco páginas de segmento. Consolidado de 6 implementações
+   idênticas — ver docs/PROJECT_AUDIT.md § Dívida técnica. Cada página mantém
+   sua própria classe de contexto (ex. .corp-cta) só para background-color. */
+.cta-final__inner {
+  max-width: 38rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cta-final__inner .cta-group {
+  justify-content: center;
+  margin-top: var(--space-xl);
 }
 
 /* Badges / selos de confiança */

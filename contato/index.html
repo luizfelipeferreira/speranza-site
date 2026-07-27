@@ -71,11 +71,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/" aria-current="page">Contato</a></li>
         </ul>
@@ -95,7 +102,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>

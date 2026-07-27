@@ -268,42 +268,8 @@ body.page-debutantes .deb-structure {
 
 /* Espaçamento em .section-intro (components.css) — classe já aplicada no HTML. */
 
-body.page-debutantes .deb-structure__grid {
-  display: grid;
-  gap: var(--space-xl);
-}
-
-@media (min-width: 640px) {
-  body.page-debutantes .deb-structure__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  body.page-debutantes .deb-structure__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-body.page-debutantes .deb-structure__cluster h3 {
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-gold);
-}
-
-body.page-debutantes .deb-structure__cluster ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-body.page-debutantes .deb-structure__cluster li {
-  color: var(--color-text-soft);
-  font-size: var(--step--1);
-}
+/* Grid/clusters em .reassurance-grid/.reassurance-cluster (components.css) —
+   classes já aplicadas no HTML. */
 
 /* Identidade visual em .link-arrow (components.css) — só posicionamento aqui. */
 body.page-debutantes .deb-structure__cta {
@@ -422,18 +388,10 @@ body.page-debutantes .deb-cta {
   background-color: var(--color-bg-alt);
 }
 
-body.page-debutantes .deb-cta__inner {
-  max-width: 38rem;
-  margin-inline: auto;
-  text-align: center;
-}
+/* max-width/centralização/.cta-group em .cta-final__inner (components.css) —
+   classe já aplicada no HTML. */
 
 body.page-debutantes .deb-cta__inner header p {
   margin-top: var(--space-sm);
   color: var(--color-text-soft);
-}
-
-body.page-debutantes .deb-cta__inner .cta-group {
-  justify-content: center;
-  margin-top: var(--space-xl);
 }

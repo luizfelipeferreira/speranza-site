@@ -81,11 +81,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/" aria-current="page">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/">Contato</a></li>
         </ul>
@@ -105,7 +112,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
@@ -127,6 +133,7 @@
       <!-- TODO foto real: plano geral arquitetural do salão principal vazio, luz de fim
            de tarde/manhã entrando pelos vãos. Lente 35mm equiv., composição assimétrica
            com linha de fuga real, muito espaço negativo no terço onde o texto repousa.
+           Profundidade de campo fechada (f/5.6–f/8).
            Proporção 21:9 (desktop) / 4:5 (mobile). Ver docs/SPACE_PAGE_WIREFRAME.md § Seção 1
            e docs/ART_DIRECTION.md §1.2–1.5. -->
       <div class="space-hero__media grain-overlay" aria-hidden="true"></div>
@@ -163,11 +170,13 @@
           <li class="space-tour__block" data-reveal>
             <div class="space-tour__media space-tour__media--3-4">
               <!-- TODO foto real: plano geral arquitetural do salão, ângulo diferente do
-                   Hero (mostrando profundidade/lateral). Lente 35–50mm, proporção 4:3.
+                   Hero (mostrando profundidade/lateral). Lente 35–50mm, profundidade de
+                   campo fechada (f/5.6–f/8), proporção 4:3.
                    Ver docs/SPACE_PAGE_WIREFRAME.md § 3.1. -->
               <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
               <!-- TODO foto real (insert): detalhe do salão — luminária, piso ou
-                   pé-direito. Lente 85mm, proporção 1:1. -->
+                   pé-direito. Lente 85mm, profundidade de campo aberta (f/1.8–f/2.8),
+                   proporção 1:1. -->
               <div class="space-tour__media-inset grain-overlay" aria-hidden="true"></div>
             </div>
             <div class="space-tour__caption">
@@ -184,7 +193,8 @@
             <div class="space-tour__media space-tour__media--16-9">
               <!-- TODO foto real: plano geral ao ar livre, luz de fim de tarde/dourada.
                    Lente 35mm, linha de fuga real (caminho/arco/fileira de assentos),
-                   muito céu/espaço negativo acima. Proporção 16:9. -->
+                   muito céu/espaço negativo acima. Profundidade de campo fechada
+                   (f/5.6–f/8). Proporção 16:9. -->
               <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
             </div>
             <div class="space-tour__caption">
@@ -202,7 +212,7 @@
             <div class="space-tour__media space-tour__media--3-4">
               <!-- TODO foto real: plano médio ambientado, mais fechado/aconchegante.
                    Lente 50–85mm, composição intimista, pouco espaço negativo.
-                   Proporção 3:4 (retrato). -->
+                   Profundidade de campo intermediária (f/2.8–f/4). Proporção 3:4 (retrato). -->
               <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
             </div>
             <div class="space-tour__caption">
@@ -219,7 +229,8 @@
             <div class="space-tour__media space-tour__media--4-3">
               <!-- TODO foto real: plano médio ambientado, luz clara e alegre, sem
                    infantilizar (nada de cor berrante/decoração de festa infantil
-                   genérica — ver docs/ART_DIRECTION.md §4). Lente 35–50mm, proporção 4:3. -->
+                   genérica — ver docs/ART_DIRECTION.md §4). Lente 35–50mm, profundidade
+                   de campo intermediária (f/2.8–f/4), proporção 4:3. -->
               <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
             </div>
             <div class="space-tour__caption">
@@ -235,10 +246,12 @@
                direta para o still-life da Seção 4. -->
           <li class="space-tour__block" data-reveal>
             <div class="space-tour__media space-tour__media--4-3">
-              <!-- TODO foto real: plano médio da cozinha equipada. Lente 50mm, proporção 4:3. -->
+              <!-- TODO foto real: plano médio da cozinha equipada. Lente 50mm, profundidade de
+                   campo intermediária (f/2.8–f/4), proporção 4:3. -->
               <div class="space-tour__media-fill grain-overlay" aria-hidden="true"></div>
               <!-- TODO foto real (insert, ponte para a Seção 4): still-life de um
-                   prato/travessa do buffet. Lente 85–105mm, proporção 1:1. -->
+                   prato/travessa do buffet. Lente 85–105mm, profundidade de campo
+                   aberta (f/1.8–f/2.8), proporção 1:1. -->
               <div class="space-tour__media-inset grain-overlay" aria-hidden="true"></div>
             </div>
             <div class="space-tour__caption">
@@ -322,8 +335,8 @@
       </div>
 
       <div class="container">
-        <div class="space-structure__grid">
-          <div class="space-structure__cluster" data-reveal>
+        <div class="space-structure__grid reassurance-grid">
+          <div class="space-structure__cluster reassurance-cluster" data-reveal>
             <h3>Conforto</h3>
             <ul>
               <li>Climatização em todo o salão</li>
@@ -331,7 +344,7 @@
               <li>Decoração</li>
             </ul>
           </div>
-          <div class="space-structure__cluster" data-reveal>
+          <div class="space-structure__cluster reassurance-cluster" data-reveal>
             <h3>Cerimônia e festa</h3>
             <ul>
               <li>Área para cerimônia externa</li>
@@ -339,7 +352,7 @@
               <li>Camarim privativo</li>
             </ul>
           </div>
-          <div class="space-structure__cluster" data-reveal>
+          <div class="space-structure__cluster reassurance-cluster" data-reveal>
             <h3>Apoio</h3>
             <ul>
               <li>Espaço Kids</li>
@@ -347,7 +360,7 @@
               <li>Serviço de segurança</li>
             </ul>
           </div>
-          <div class="space-structure__cluster" data-reveal>
+          <div class="space-structure__cluster reassurance-cluster" data-reveal>
             <h3>Praticidade</h3>
             <ul>
               <li>Estacionamento gratuito e exclusivo</li>
@@ -383,7 +396,8 @@
         <div class="space-location__side" data-reveal>
           <!-- TODO foto real: fachada/exterior do prédio, de preferência ao
                entardecer. Lente 35mm, composição simétrica (exceção deliberada — ver
-               docs/SPACE_PAGE_WIREFRAME.md § Seção 6), proporção 16:9. -->
+               docs/SPACE_PAGE_WIREFRAME.md § Seção 6), profundidade de campo fechada
+               (f/5.6–f/8), proporção 16:9. -->
           <div class="space-location__media grain-overlay" aria-hidden="true"></div>
           <address class="space-location__address">
             Av. Humberto Cereser, nº 3970<br />
@@ -397,7 +411,7 @@
     <!-- 7. CTA final — fecha a jornada emocional inteira. Sem foto, sem gatilho de
          urgência artificial, mesma régua do CTA Final da Home. Ver wireframe § Seção 7. -->
     <section class="space-cta" aria-labelledby="space-cta-heading">
-      <div class="container space-cta__inner" data-reveal>
+      <div class="container space-cta__inner cta-final__inner" data-reveal>
         <header>
           <p class="section-eyebrow">Agende sua visita</p>
           <h2 id="space-cta-heading">Fotografia mostra o espaço. Só uma visita mostra como ele combina com o seu evento.</h2>

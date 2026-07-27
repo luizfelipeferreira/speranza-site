@@ -2,6 +2,12 @@
 // Os hrefs `wa.me` no HTML são escritos estaticamente (ver assets/js/whatsapp.js) —
 // este mapa é a referência usada ao autorar/revisar esses links manualmente,
 // para que os 7 templates nunca fiquem com o número ou o texto fora de sincronia.
+//
+// Decisão registrada (ver docs/PROJECT_AUDIT.md § Dívida técnica): este arquivo
+// NÃO é importado por nenhum outro módulo, de propósito — o stack é estático sem
+// build step, então gerar os `href` a partir daqui exigiria um passo de build que
+// o projeto não tem. Continua existindo só como referência de leitura/revisão, não
+// é código morto por descuido.
 
 export const WHATSAPP_NUMBER = "5511971758298";
 

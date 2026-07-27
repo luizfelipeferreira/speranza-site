@@ -124,11 +124,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/" aria-current="page">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" aria-current="true" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/" aria-current="page">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/">Contato</a></li>
         </ul>
@@ -148,7 +155,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/" aria-current="page">Corporativo</a></li>
@@ -171,14 +177,13 @@
 
     <!-- 1. Hero — competência silenciosa, sem argumento ainda. Ver wireframe § Seção 1. -->
     <section class="corp-hero" aria-labelledby="corp-hero-heading">
-      <!-- TODO foto real: plano geral do salão principal montado em formato plenária —
-           cadeiras alinhadas com pequena variação humana real (não perfeitamente em
-           fileira, como se alguém tivesse acabado de ajustar a última), luz natural de
-           manhã entrando pelas janelas, nenhuma pessoa em cena. Lente 35mm equivalente,
-           composição assimétrica com linha de fuga real, profundidade de campo fechada
-           (f/5.6–f/8). Proporção 16:9 (desktop) / 4:5 (mobile). Ver
-           docs/CORPORATE_PAGE_WIREFRAME.md § Seção 1 e docs/ART_DIRECTION.md §1.2–1.5. -->
-      <div class="corp-hero__media grain-overlay" aria-hidden="true"></div>
+      <!-- Placeholder temporário do Unsplash — ver docs/PROJECT_AUDIT.md § Dívida
+           fotográfica. Substituir pela foto real descrita em
+           docs/CORPORATE_PAGE_WIREFRAME.md § Seção 1 assim que a sessão profissional
+           existir (35mm, f/5.6–f/8, 16:9/4:5, sem pessoas). -->
+      <div class="corp-hero__media grain-overlay">
+        <img src="https://images.unsplash.com/photo-1762765685329-97e0af04050c?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Salão amplo com mesas longas e cadeiras douradas sob claraboias arqueadas (imagem temporária)" loading="lazy" />
+      </div>
       <div class="container corp-hero__content">
         <p class="corp-hero__eyebrow">Corporativo</p>
         <h1 id="corp-hero-heading">Estrutura pronta para reunir sua empresa.</h1>
@@ -216,11 +221,10 @@
           <!-- 3.1 Plenária/Palestra — o formato mais formal, abre a sequência. -->
           <li class="corp-format" data-reveal>
             <div class="corp-format__media corp-format__media--16-9">
-              <!-- TODO foto real: plano geral do salão em fileiras voltadas para uma
-                   frente, tela desligada mas visível, luz de manhã, sem pessoas. Lente
-                   35mm, composição assimétrica, linha de fuga real, profundidade de
-                   campo fechada. Proporção 16:9. Ver docs/CORPORATE_PAGE_WIREFRAME.md § 3.1. -->
-              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+              <!-- Placeholder temporário — substituir pela foto descrita em
+                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.1 (fileiras voltadas para a
+                   frente, tela visível, sem pessoas). -->
+              <img class="corp-format__media-fill grain-overlay" src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Fileiras de cadeiras de auditório em madeira clara, vazias (imagem temporária)" loading="lazy" />
             </div>
             <h3 class="corp-format__title">Plenária</h3>
             <p class="corp-format__text">Fileiras para palestras e convenções, com som e projeção prontos.</p>
@@ -229,11 +233,9 @@
           <!-- 3.2 Treinamento/Workshop — mesmo espaço, mesas em ilha. -->
           <li class="corp-format" data-reveal>
             <div class="corp-format__media">
-              <!-- TODO foto real: mesmo salão, mesas agrupadas em ilhas, cadeiras ao
-                   redor, material de apoio discreto sobre a mesa, sem pessoas. Lente
-                   35–50mm, ângulo levemente distinto de 3.1. Proporção 4:3. Ver
-                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.2. -->
-              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+              <!-- Placeholder temporário — substituir pela foto descrita em
+                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.2 (mesas em ilha, sem pessoas). -->
+              <img class="corp-format__media-fill grain-overlay" src="https://images.unsplash.com/photo-1778041738460-3e5225360d68?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Sala iluminada por luz natural, mesa longa de madeira com cadeiras (imagem temporária)" loading="lazy" />
             </div>
             <h3 class="corp-format__title">Treinamento</h3>
             <p class="corp-format__text">Mesas em grupo, espaço para dinâmica e luz natural o dia inteiro.</p>
@@ -242,12 +244,10 @@
           <!-- 3.3 Lançamento de produto — registro mais cenográfico, ainda contido. -->
           <li class="corp-format" data-reveal>
             <div class="corp-format__media corp-format__media--1-1">
-              <!-- TODO foto real: ambiente com iluminação cenográfica discreta (nunca
-                   neon/azul), um elemento de destaque centralizado (mesa/pedestal vazio),
-                   luz quente-neutra, sem pessoas. Lente 35–50mm, composição mais
-                   centralizada (exceção deliberada). Proporção 1:1. Ver
-                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.3. -->
-              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
+              <!-- Placeholder temporário — substituir pela foto descrita em
+                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.3 (iluminação cênica discreta e
+                   quente, sem pessoas). -->
+              <img class="corp-format__media-fill grain-overlay" src="https://images.unsplash.com/photo-1559924508-1461423083c5?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Luminária pendente acesa com luz quente em ambiente minimalista (imagem temporária)" loading="lazy" />
             </div>
             <h3 class="corp-format__title">Lançamento</h3>
             <p class="corp-format__text">Um ponto de destaque, iluminação sob controle, sem depender de improviso.</p>
@@ -257,13 +257,12 @@
                para o still-life da Seção 4 via o insert. -->
           <li class="corp-format" data-reveal>
             <div class="corp-format__media">
-              <!-- TODO foto real: área externa ou salão em configuração de coquetel,
-                   mesas altas, sem toalha decorativa exagerada, luz de fim de tarde, sem
-                   pessoas. Lente 35mm. Proporção 4:3. Ver docs/CORPORATE_PAGE_WIREFRAME.md § 3.4. -->
-              <div class="corp-format__media-fill grain-overlay" aria-hidden="true"></div>
-              <!-- TODO foto real (insert, ponte para a Seção 4): still-life de
-                   copos/aparador organizado, sem pessoas. Lente 85mm, proporção 1:1. -->
-              <div class="corp-format__media-inset grain-overlay" aria-hidden="true"></div>
+              <!-- Placeholder temporário — substituir pela foto descrita em
+                   docs/CORPORATE_PAGE_WIREFRAME.md § 3.4 (área externa/coquetel, sem
+                   pessoas). -->
+              <img class="corp-format__media-fill grain-overlay" src="https://images.unsplash.com/photo-1777370537280-94e8796c243a?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Mesas altas de área externa ao entardecer, vazias (imagem temporária)" loading="lazy" />
+              <!-- Placeholder temporário (insert, ponte para a Seção 4). -->
+              <img class="corp-format__media-inset grain-overlay" src="https://images.unsplash.com/photo-1745827217030-32829e3ebeae?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Taças de vidro variadas sobre superfície clara (imagem temporária)" loading="lazy" />
             </div>
             <h3 class="corp-format__title">Confraternização</h3>
             <p class="corp-format__text">Área externa ou salão, num só endereço, para reunir a equipe.</p>
@@ -285,28 +284,23 @@
       <div class="container">
         <ul class="gallery-grid corp-detail__grid">
           <li class="gallery-grid__item corp-detail__item" data-reveal>
-            <!-- TODO foto real: cabo de energia organizado ao lado de um assento.
-                 Lente 85–105mm, profundidade de campo aberta (f/1.8–f/2.8), muito
-                 espaço negativo. Proporção 1:1. -->
-            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <!-- Placeholder temporário — foto final descrita em docs/CORPORATE_PAGE_WIREFRAME.md § Seção 4. -->
+            <img class="corp-detail__media grain-overlay" src="https://images.unsplash.com/photo-1508920291026-c344bbfca1ab?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Tomada elétrica branca sobre parede em padrão chevron cinza (imagem temporária)" loading="lazy" />
             <span class="corp-detail__label">Energia</span>
           </li>
           <li class="gallery-grid__item corp-detail__item" data-reveal>
-            <!-- TODO foto real: tomada disponível ao lado de uma cadeira, material do
-                 mobiliário em foco. Lente 85–105mm, proporção 1:1. -->
-            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <!-- Placeholder temporário — foto final descrita em docs/CORPORATE_PAGE_WIREFRAME.md § Seção 4. -->
+            <img class="corp-detail__media grain-overlay" src="https://images.unsplash.com/photo-1610056494052-6a4f83a8368c?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Mão segurando um plugue elétrico próximo a uma tomada (imagem temporária)" loading="lazy" />
             <span class="corp-detail__label">Preparo</span>
           </li>
           <li class="gallery-grid__item corp-detail__item" data-reveal>
-            <!-- TODO foto real: luz natural sobre uma superfície de trabalho limpa.
-                 Lente 85–105mm, proporção 1:1. -->
-            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <!-- Placeholder temporário — foto final descrita em docs/CORPORATE_PAGE_WIREFRAME.md § Seção 4. -->
+            <img class="corp-detail__media grain-overlay" src="https://images.unsplash.com/photo-1515511856280-7b23f68d2996?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Ambiente branco e minimalista iluminado por luz natural (imagem temporária)" loading="lazy" />
             <span class="corp-detail__label">Luz</span>
           </li>
           <li class="gallery-grid__item corp-detail__item" data-reveal>
-            <!-- TODO foto real: textura de material do mobiliário (madeira, linho,
-                 metal escovado). Lente 85–105mm, proporção 1:1. -->
-            <div class="corp-detail__media grain-overlay" aria-hidden="true"></div>
+            <!-- Placeholder temporário — foto final descrita em docs/CORPORATE_PAGE_WIREFRAME.md § Seção 4. -->
+            <img class="corp-detail__media grain-overlay" src="https://images.unsplash.com/photo-1591195854242-8804547cdcab?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Textura de tecido de linho marrom claro, close-up (imagem temporária)" loading="lazy" />
             <span class="corp-detail__label">Material</span>
           </li>
         </ul>
@@ -319,12 +313,12 @@
     <section class="corp-structure" aria-labelledby="corp-structure-heading" data-scroll-depth="infraestrutura">
       <div class="container section-intro corp-structure__intro" data-reveal>
         <p class="section-eyebrow">Infraestrutura completa</p>
-        <h2 id="corp-structure-heading">Tudo já resolvido, antes mesmo de você perguntar.</h2>
+        <h2 id="corp-structure-heading">Cada detalhe já tem uma resposta pronta.</h2>
       </div>
 
       <div class="container">
-        <div class="corp-structure__grid">
-          <div class="corp-structure__cluster" data-reveal>
+        <div class="corp-structure__grid reassurance-grid">
+          <div class="corp-structure__cluster reassurance-cluster" data-reveal>
             <h3>Apoio técnico</h3>
             <ul>
               <li>Sistema de som e imagem</li>
@@ -335,7 +329,7 @@
                  docs/CORPORATE_PAGE_WIREFRAME.md § Seção 5 e docs/WIREFRAME.md §
                  Dados a validar). Se confirmado, adicionar como item deste cluster. -->
           </div>
-          <div class="corp-structure__cluster" data-reveal>
+          <div class="corp-structure__cluster reassurance-cluster" data-reveal>
             <h3>Logística</h3>
             <ul>
               <li>Estacionamento gratuito e exclusivo</li>
@@ -344,14 +338,14 @@
             <!-- TODO validar com o cliente: acessibilidade (rampas, banheiro
                  adaptado) ainda não confirmada — não inventar. -->
           </div>
-          <div class="corp-structure__cluster" data-reveal>
+          <div class="corp-structure__cluster reassurance-cluster" data-reveal>
             <h3>Conforto</h3>
             <ul>
               <li>Climatização em todo o salão</li>
               <li>Mobiliário incluso (mesas e cadeiras)</li>
             </ul>
           </div>
-          <div class="corp-structure__cluster" data-reveal>
+          <div class="corp-structure__cluster reassurance-cluster" data-reveal>
             <h3>Alimentação</h3>
             <ul>
               <li>Cozinha equipada</li>
@@ -421,10 +415,9 @@
         </div>
 
         <div class="corp-location__side" data-reveal>
-          <!-- TODO foto real: fachada/exterior do prédio, de preferência ao
-               entardecer. Lente 35mm, composição simétrica (exceção deliberada, mesma
-               lógica de /espaco/ § Localização), proporção 16:9. -->
-          <div class="corp-location__media grain-overlay" aria-hidden="true"></div>
+          <!-- Placeholder temporário — foto final descrita em
+               docs/CORPORATE_PAGE_WIREFRAME.md § Seção 7 (fachada ao entardecer). -->
+          <img class="corp-location__media grain-overlay" src="https://images.unsplash.com/photo-1543892607-04657ef3a279?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Fachada de prédio comercial com janelas em fileira (imagem temporária)" loading="lazy" />
           <address class="corp-location__address">
             Av. Humberto Cereser, nº 3970<br />
             Bairro Caxambú — Jundiaí/SP
@@ -496,7 +489,7 @@
          site com telefone e e-mail expostos ao lado do WhatsApp (ver
          docs/CORPORATE_PAGE_STRATEGY.md §12). Ver wireframe § Seção 9. -->
     <section class="corp-cta" aria-labelledby="corp-cta-heading">
-      <div class="container corp-cta__inner" data-reveal>
+      <div class="container corp-cta__inner cta-final__inner" data-reveal>
         <header>
           <p class="section-eyebrow">Vamos conversar</p>
           <h2 id="corp-cta-heading">O evento da sua empresa, sem improviso.</h2>

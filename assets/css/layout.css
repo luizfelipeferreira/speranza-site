@@ -24,6 +24,7 @@ section {
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
   --header-invert: var(--color-bg-elevated);
+  --header-invert-border: var(--color-border);
   position: sticky;
   top: 0;
   z-index: var(--z-header);
@@ -58,6 +59,7 @@ section {
   --header-logo-color: var(--color-cream);
   --header-underline: var(--color-gold);
   --header-invert: var(--color-ink);
+  --header-invert-border: rgba(248, 247, 244, 0.14);
 }
 
 /* Só troca a paleta de cores do lockup — o fundo translúcido/blur já vem da
@@ -67,6 +69,7 @@ section {
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
   --header-invert: var(--color-bg-elevated);
+  --header-invert-border: var(--color-border);
 }
 
 /* Sem JS não há troca de estado no scroll — parte direto do fundo sólido e seguro. */
@@ -77,6 +80,7 @@ section {
   --header-logo-color: var(--color-accent-strong);
   --header-underline: var(--color-accent);
   --header-invert: var(--color-bg-elevated);
+  --header-invert-border: var(--color-border);
 }
 
 .site-header__bar {
@@ -162,7 +166,9 @@ section {
   }
 
   /* Sublinhado que "desenha" da esquerda no hover, em vez de só trocar de cor —
-     a mesma ideia do preenchimento dos botões outline, aplicada à navegação. */
+     a mesma ideia do preenchimento dos botões outline, aplicada à navegação.
+     [aria-current] (sem valor) cobre tanto o link da própria página ("page")
+     quanto o gatilho "Eventos" quando uma das 4 páginas-filhas está ativa ("true"). */
   .site-nav__link::after {
     content: "";
     position: absolute;
@@ -177,8 +183,98 @@ section {
   }
 
   .site-nav__link:hover::after,
-  .site-nav__link[aria-current="page"]::after {
+  .site-nav__link[aria-current]::after {
     transform: scaleX(1);
+  }
+
+  /* Item "Eventos" — agrupa Casamentos/Debutantes/Corporativo/Aniversários &
+     Bodas atrás de um disclosure, em vez de 4 itens soltos na barra (ver
+     docs/SITE_REVIEW.md § Navegação). */
+  .site-nav__item--dropdown {
+    position: relative;
+  }
+
+  .site-nav__trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    background: none;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .site-nav__caret {
+    display: block;
+    width: 6px;
+    height: 6px;
+    margin-top: -0.15em;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform var(--duration-base) var(--ease-standard);
+  }
+
+  .site-nav__trigger[aria-expanded="true"] .site-nav__caret {
+    transform: rotate(-135deg);
+    margin-top: 0.15em;
+  }
+
+  .site-nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: var(--space-sm);
+    width: max-content;
+    max-width: 280px;
+    list-style: none;
+    padding-block: var(--space-xs);
+    background-color: var(--header-invert);
+    border: 1px solid var(--header-invert-border);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity var(--duration-base) var(--ease-standard),
+      transform var(--duration-base) var(--ease-standard),
+      visibility 0s var(--duration-base);
+  }
+
+  .site-nav__trigger[aria-expanded="true"] + .site-nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity var(--duration-base) var(--ease-standard),
+      transform var(--duration-base) var(--ease-standard),
+      visibility 0s;
+  }
+
+  /* Progressive enhancement: sem JS, aria-expanded nunca muda — :hover/:focus-within
+     nativos abrem o painel para que os 4 links continuem alcançáveis. */
+  .no-js .site-nav__item--dropdown:hover .site-nav__dropdown,
+  .no-js .site-nav__item--dropdown:focus-within .site-nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .site-nav__dropdown-link {
+    display: block;
+    padding: var(--space-xs) var(--space-lg) var(--space-xs) var(--space-md);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    white-space: nowrap;
+    color: var(--header-fg);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+
+  .site-nav__dropdown-link:hover,
+  .site-nav__dropdown-link[aria-current="page"] {
+    color: var(--header-underline);
   }
 }
 
@@ -304,7 +400,6 @@ section {
 .site-nav--mobile .site-nav__list li:nth-child(4) { animation-delay: 160ms; }
 .site-nav--mobile .site-nav__list li:nth-child(5) { animation-delay: 200ms; }
 .site-nav--mobile .site-nav__list li:nth-child(6) { animation-delay: 240ms; }
-.site-nav--mobile .site-nav__list li:nth-child(7) { animation-delay: 280ms; }
 
 .site-nav--mobile .site-nav__link {
   display: block;

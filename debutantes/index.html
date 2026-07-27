@@ -11,12 +11,12 @@
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Speranza Eventos" />
   <meta property="og:title" content="Festa de 15 Anos em Jundiaí | Speranza Eventos" />
-  <meta property="og:description" content="Sofisticação e diversão na medida certa para a festa de 15 anos, em Jundiaí." />
+  <meta property="og:description" content="Estrutura completa para a festa de 15 anos, no Bairro Caxambú, Jundiaí." />
   <meta property="og:url" content="https://www.speranzaeventos.com.br/debutantes/" />
   <meta property="og:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Festa de 15 Anos em Jundiaí | Speranza Eventos" />
-  <meta name="twitter:description" content="Sofisticação e diversão na medida certa para a festa de 15 anos, em Jundiaí." />
+  <meta name="twitter:description" content="Estrutura completa para a festa de 15 anos, no Bairro Caxambú, Jundiaí." />
   <meta name="twitter:image" content="https://www.speranzaeventos.com.br/assets/images/brand/og-image.jpg" />
 
   <link rel="icon" href="/assets/images/brand/favicon.svg" type="image/svg+xml" />
@@ -133,11 +133,18 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
-          <li><a class="site-nav__link" href="/debutantes/" aria-current="page">Debutantes</a></li>
-          <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
-          <li><a class="site-nav__link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+          <li class="site-nav__item site-nav__item--dropdown">
+            <button type="button" class="site-nav__link site-nav__trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-eventos-menu" aria-current="true" data-nav-dropdown-trigger>
+              Eventos
+              <span class="site-nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-eventos-menu" data-nav-dropdown>
+              <li><a class="site-nav__dropdown-link" href="/casamentos/">Casamentos</a></li>
+              <li><a class="site-nav__dropdown-link" href="/debutantes/" aria-current="page">Debutantes</a></li>
+              <li><a class="site-nav__dropdown-link" href="/corporativo/">Corporativo</a></li>
+              <li><a class="site-nav__dropdown-link" href="/aniversarios/">Aniversários &amp; Bodas</a></li>
+            </ul>
+          </li>
           <li><a class="site-nav__link" href="/espaco/">O Espaço</a></li>
           <li><a class="site-nav__link" href="/contato/">Contato</a></li>
         </ul>
@@ -157,7 +164,6 @@
 
     <nav class="site-nav--mobile" id="nav-mobile" data-nav-menu hidden aria-label="Navegação principal (mobile)">
       <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="/">Home</a></li>
         <li><a class="site-nav__link" href="/casamentos/">Casamentos</a></li>
         <li><a class="site-nav__link" href="/debutantes/" aria-current="page">Debutantes</a></li>
         <li><a class="site-nav__link" href="/corporativo/">Corporativo</a></li>
@@ -316,29 +322,29 @@
       </div>
 
       <div class="container">
-        <div class="deb-structure__grid">
-          <div class="deb-structure__cluster" data-reveal>
+        <div class="deb-structure__grid reassurance-grid">
+          <div class="deb-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para a entrada</h3>
             <ul>
               <li>Sistema de som e iluminação</li>
               <li>Camarim privativo</li>
             </ul>
           </div>
-          <div class="deb-structure__cluster" data-reveal>
+          <div class="deb-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para os convidados</h3>
             <ul>
               <li>Serviço de segurança</li>
               <li>Estacionamento gratuito e exclusivo</li>
             </ul>
           </div>
-          <div class="deb-structure__cluster" data-reveal>
+          <div class="deb-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para o conforto</h3>
             <ul>
               <li>Climatização em todo o salão</li>
               <li>Mobiliário incluso (mesas e cadeiras)</li>
             </ul>
           </div>
-          <div class="deb-structure__cluster" data-reveal>
+          <div class="deb-structure__cluster reassurance-cluster" data-reveal>
             <h3>Para o sabor</h3>
             <ul>
               <li>Cozinha equipada</li>
@@ -459,7 +465,7 @@
          dirigido às duas partes da decisão (debutante + pais). Ver
          wireframe § Seção 9. -->
     <section class="deb-cta" aria-labelledby="deb-cta-heading">
-      <div class="container deb-cta__inner" data-reveal>
+      <div class="container deb-cta__inner cta-final__inner" data-reveal>
         <header>
           <p class="section-eyebrow">Vamos conversar</p>
           <h2 id="deb-cta-heading">A estreia dela merece ser vista de perto.</h2>

@@ -1,7 +1,7 @@
 // Único ponto de entrada carregado por todas as páginas:
 // <script type="module" src="/assets/js/main.js"></script>
 
-import { initNav } from "./nav.js";
+import { initNav, initNavDropdown } from "./nav.js";
 import { initScrollObserver } from "./scroll-observer.js";
 import { initWhatsAppTracking } from "./whatsapp.js";
 import { initHero } from "./hero.js";
@@ -10,6 +10,7 @@ document.documentElement.classList.remove("no-js");
 document.documentElement.classList.add("js");
 
 initNav();
+initNavDropdown();
 initScrollObserver();
 initWhatsAppTracking();
 initHero();

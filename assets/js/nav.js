@@ -40,3 +40,65 @@ export function initNav() {
     if (event.target.closest("a")) closeMenu();
   });
 }
+
+// Dropdown desktop "Eventos" (disclosure, não menu/menuitem — ver WAI-ARIA
+// Authoring Practices: menu/menuitem é para menus de aplicação, não navegação).
+export function initNavDropdown() {
+  const trigger = document.querySelector("[data-nav-dropdown-trigger]");
+  const dropdown = document.querySelector("[data-nav-dropdown]");
+  const item = trigger?.closest(".site-nav__item--dropdown");
+
+  if (!trigger || !dropdown || !item) return;
+
+  let closeTimer;
+  // Marca se a abertura atual veio do hover — sem isso, o clique que confirma
+  // o hover (mouseenter abre, depois o próprio clique chega) fecharia de novo
+  // no mesmo gesto, porque o toggle veria "já aberto" e inverteria.
+  let openedByHover = false;
+
+  const close = () => {
+    clearTimeout(closeTimer);
+    openedByHover = false;
+    trigger.setAttribute("aria-expanded", "false");
+  };
+
+  const open = (viaHover = false) => {
+    clearTimeout(closeTimer);
+    openedByHover = viaHover;
+    trigger.setAttribute("aria-expanded", "true");
+  };
+
+  const scheduleClose = () => {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(close, 150);
+  };
+
+  trigger.addEventListener("click", () => {
+    const isOpen = trigger.getAttribute("aria-expanded") === "true";
+    if (isOpen && !openedByHover) {
+      close();
+    } else {
+      open(false);
+    }
+  });
+
+  item.addEventListener("mouseenter", () => open(true));
+  item.addEventListener("mouseleave", scheduleClose);
+
+  item.addEventListener("focusout", (event) => {
+    if (!item.contains(event.relatedTarget)) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && trigger.getAttribute("aria-expanded") === "true") {
+      close();
+      trigger.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (trigger.getAttribute("aria-expanded") !== "true") return;
+    if (item.contains(event.target)) return;
+    close();
+  });
+}
