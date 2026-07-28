@@ -1,4 +1,66 @@
-/* Específico de Contato — bloco de NAP + mapa */
+/* Específico de Contato — hero curto + bloco de NAP + mapa */
+
+body.page-contato .contato-hero {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+body.page-contato .contato-hero__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+}
+
+@media (min-width: 768px) {
+  body.page-contato .contato-hero__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Placeholder temporário do Unsplash como <img> real dentro do wrapper — mesma técnica de
+   home.css § Galeria: object-fit:cover preenche o aspect-ratio do wrapper, background-color
+   do wrapper permanece como fallback de carregamento. */
+body.page-contato .contato-hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
+
+body.page-contato .contato-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(36, 36, 36, 0.78) 0%, rgba(36, 36, 36, 0.5) 45%, transparent 85%);
+}
+
+body.page-contato .contato-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding-bottom: var(--space-xl);
+  color: var(--color-white);
+}
+
+body.page-contato .contato-hero__eyebrow {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+body.page-contato .contato-hero__content h1 {
+  color: var(--color-white);
+}
 
 body.page-contato .contact-layout {
   display: grid;

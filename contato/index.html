@@ -23,6 +23,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Placeholder temporário do Hero vem do Unsplash (ver TODO no <img>) — preconnect evita
+       pagar DNS/TLS na primeira imagem carregada, mesma lógica de index.html. -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700&display=swap"
     rel="stylesheet"
@@ -115,15 +118,28 @@
 
   <main id="main">
     <!-- Conteúdo pendente — página de Contato consolida NAP + mapa + horário (ver docs/ESTRATEGIA.md §4, item 10):
-      1. Hero/intro curto
-      2. NAP completo + mapa incorporado (Google Maps, substituindo o link único para Waze do site atual)
-      3. Como chegar
+      1. Hero/intro curto ✓
+      2. NAP completo + mapa incorporado (Google Maps, substituindo o link único para Waze do site atual) ✓
+      3. Como chegar ✓ (link do Waze já presente no NAP)
       4. CTA final de WhatsApp
     -->
+    <section class="contato-hero" aria-labelledby="contato-hero-heading">
+      <!-- TODO foto real: still-life/detalhe da entrada do Speranza — porta, camarim ou
+           corredor de acesso, luz natural quente, sem pessoas. Lente 50–85mm, profundidade
+           de campo intermediária (f/2.8–f/4). Proporção 16:9 (desktop) / 4:5 (mobile). Ver
+           docs/ART_DIRECTION.md §1.2–1.5. -->
+      <div class="contato-hero__media grain-overlay">
+        <img src="https://images.unsplash.com/photo-1749911775037-3c65053d2c55?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Porta de madeira ripada em tom escuro, emoldurada por parede branca e luz natural suave (imagem temporária)" loading="eager" />
+      </div>
+      <div class="container contato-hero__content">
+        <p class="contato-hero__eyebrow">Contato</p>
+        <h1 id="contato-hero-heading">Fale com o Speranza</h1>
+      </div>
+    </section>
+
     <section data-reveal>
       <div class="container contact-layout">
         <div>
-          <h1>Fale com o Speranza</h1>
           <dl class="nap-list">
             <div>
               <dt>Endereço</dt>
@@ -153,8 +169,12 @@
           </dl>
         </div>
         <div class="map-embed">
-          <!-- TODO: incorporar <iframe> do Google Maps (endereço acima) quando a URL de embed for confirmada.
-               Não deixar src="" — um iframe com src vazio recarrega a própria página. -->
+          <iframe
+            src="https://www.google.com/maps?q=Av.%20Humberto%20Cereser%2C%203970%2C%20Bairro%20Caxamb%C3%BA%2C%20Jundia%C3%AD%20-%20SP&output=embed"
+            title="Mapa com a localização do Speranza Eventos"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </section>
