@@ -34,6 +34,17 @@ body.page-aniversarios .ani-hero__media {
   }
 }
 
+/* Placeholder temporário do Unsplash como <img> real dentro do wrapper — mesma
+   técnica de corporativo.css § Hero: object-fit:cover preenche o aspect-ratio
+   do wrapper, background-color do wrapper permanece como fallback de carregamento. */
+body.page-aniversarios .ani-hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
 
 body.page-aniversarios .ani-hero__media::before {
@@ -129,6 +140,8 @@ body.page-aniversarios .ani-gesture__media {
   background-color: var(--color-surface-alt);
 }
 
+body.page-aniversarios .ani-gesture__media { width: 100%; height: 100%; object-fit: cover; }
+
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
 
 body.page-aniversarios .ani-gesture__caption h2 {
@@ -167,6 +180,8 @@ body.page-aniversarios .ani-group__media {
   background-color: var(--color-surface-alt);
 }
 
+body.page-aniversarios .ani-group__media { width: 100%; height: 100%; object-fit: cover; }
+
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
 
 body.page-aniversarios .ani-group__caption h2 {
@@ -202,6 +217,16 @@ body.page-aniversarios .ani-hall__media {
   body.page-aniversarios .ani-hall__media {
     aspect-ratio: 16 / 9;
   }
+}
+
+/* Placeholder temporário do Unsplash como <img> real dentro do wrapper — mesma
+   técnica do Hero desta folha. */
+body.page-aniversarios .ani-hall__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -291,6 +316,8 @@ body.page-aniversarios .ani-gallery__plate {
   background-color: var(--color-surface-alt);
   aspect-ratio: 1 / 1;
 }
+
+body.page-aniversarios .ani-gallery__plate { width: 100%; height: 100%; object-fit: cover; }
 
 body.page-aniversarios .ani-gallery__plate--wide {
   grid-column: 1 / -1;

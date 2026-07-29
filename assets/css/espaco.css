@@ -33,6 +33,14 @@ body.page-espaco .space-hero__media {
   }
 }
 
+body.page-espaco .space-hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Grain sutil — mesmo padrão usado em todo placeholder de foto do site (Hero/Estrutura
    da Home), enquanto não há sessão fotográfica profissional (ver docs/ART_DIRECTION.md). */
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -164,6 +172,12 @@ body.page-espaco .space-tour__media--3-4 .space-tour__media-fill {
   aspect-ratio: 3 / 4;
 }
 
+body.page-espaco .space-tour__media-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
 
 /* Insert — segunda foto (detalhe), só nos blocos 3.1 e 3.5. Ancorada no canto inferior
@@ -178,6 +192,10 @@ body.page-espaco .space-tour__media-inset {
   overflow: hidden;
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
+}
+
+body.page-espaco .space-tour__media-inset {
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -277,6 +295,12 @@ body.page-espaco .space-location__media {
   overflow: hidden;
   margin-bottom: var(--space-lg);
   background-color: var(--color-surface-alt);
+}
+
+body.page-espaco .space-location__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */

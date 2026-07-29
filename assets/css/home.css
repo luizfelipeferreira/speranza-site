@@ -81,11 +81,11 @@ body.page-home .hero__cta-group {
    diretamente no HTML (components.css) — não precisa de classe/CSS próprios aqui. */
 
 /* Fotografia — domina a composição a partir de 1024px (7 das 12 frações do grid).
-   Sem sessão fotográfica profissional ainda (ver docs/ESTRATEGIA.md §5): placeholder
-   em Surface Alt com o mesmo grain sutil já usado na Galeria, nunca cor saturada da
-   marca preenchendo uma área tão grande. order:-1 no mobile traz a foto para cima do
-   texto (a mídia é decorativa/aria-hidden, então reordenar visualmente não afeta
-   leitor de tela nem a ordem real do documento). */
+   Placeholder temporário do Unsplash (ver TODO no HTML) como <img> real: object-fit:
+   cover preenche o aspect-ratio abaixo, background-color permanece como fallback de
+   carregamento — mesma técnica de home.css § Galeria. order:-1 no mobile traz a foto
+   para cima do texto; a ordem real do documento (texto → foto) não muda para quem
+   usa leitor de tela. */
 body.page-home .hero__media {
   order: -1;
   position: relative;
@@ -94,6 +94,12 @@ body.page-home .hero__media {
   background-color: var(--color-surface-alt);
   animation: hero-fade-up var(--duration-slow) var(--ease-standard) both;
   animation-delay: 40ms;
+}
+
+body.page-home .hero__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -177,6 +183,12 @@ body.page-home .structure__lead-media {
   margin-bottom: var(--space-lg);
 }
 
+body.page-home .structure__lead-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
 
 body.page-home .structure__list {
@@ -198,6 +210,12 @@ body.page-home .structure__media {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background-color: var(--color-surface-alt);
+}
+
+body.page-home .structure__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */
@@ -403,6 +421,19 @@ body.page-home .gallery-editorial__label {
 /* Escolha seu tipo de evento — grid de 4 "convites" (.event-card, ver
    components.css). Fica 2×2 do Tablet ao Desktop, nunca 4 colunas: cada card
    precisa de largura e respiro reais, não uma faixa estreita de menu. */
+
+/* .event-card__media-fill (components.css) era um div de cor sólida; agora <img>
+   real (placeholder temporário do Unsplash — ver comentário no HTML). A regra
+   base em components.css só define position/inset/background-color/transition —
+   sem width/height/object-fit, que precisam viver aqui (home.css) porque
+   components.css é compartilhado entre páginas e não deve ganhar uma regra
+   pensada só para o placeholder da Home. alt="" nas quatro imagens: o link já
+   tem nome acessível pela categoria/título/texto visíveis, a foto é decorativa. */
+body.page-home .event-card__media-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 body.page-home .event-types__intro {
   max-width: 36rem;
