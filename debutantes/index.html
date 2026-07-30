@@ -216,16 +216,19 @@
     <section class="deb-backstage" aria-labelledby="deb-backstage-heading">
       <div class="container deb-backstage__grid">
         <div class="deb-backstage__media" data-reveal>
-          <!-- TODO foto real: plano médio ambientado do camarim, luz de janela
-               suave, gesto candid de preparação (mão ajustando algo, reflexo
-               parcial em espelho — nunca rosto de frente). Lente 50–85mm,
-               profundidade de campo intermediária (f/2.8–f/4). Proporção 3:4. -->
-          <div class="deb-backstage__media-fill grain-overlay" aria-hidden="true"></div>
+          <!-- Placeholder temporário do Unsplash (decisão explícita do cliente,
+               reafirmada: reenquadrado como puro ambiente do camarim — mesa,
+               espelho, luz de janela — sem gesto de preparação nem reflexo de
+               pessoa, para manter zero implicação da protagonista. Trocar por
+               foto real do camarim assim que possível. -->
+          <img class="deb-backstage__media-fill grain-overlay" src="https://images.unsplash.com/photo-1784651859240-f24e499f9531?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Cantinho de penteadeira com espelho redondo iluminado, planta e quadro floral, sem nenhuma pessoa (imagem temporária)" loading="lazy" />
           <!-- TODO foto real (insert): still-life de um objeto pessoal dela —
                joia ou sapato — nunca o mesmo objeto que aparecerá em Os
                Detalhes (Seção 5). Lente 85–105mm, profundidade de campo aberta
-               (f/1.8–f/2.8). Proporção 1:1. -->
-          <div class="deb-backstage__media-inset grain-overlay" aria-hidden="true"></div>
+               (f/1.8–f/2.8). Proporção 1:1.
+               Placeholder temporário do Unsplash preenchido aqui: still-life puro
+               de objeto, sem pessoa. -->
+          <img class="deb-backstage__media-inset grain-overlay" src="https://images.unsplash.com/photo-1782787231655-133f673114ae?q=80&amp;w=600&amp;auto=format&amp;fit=crop" alt="Par de sapatos brancos e frasco de perfume sobre tecido transparente, still-life sem pessoas (imagem temporária)" loading="lazy" />
         </div>
         <div class="deb-backstage__caption" data-reveal>
           <p class="section-eyebrow">Antes de todos verem</p>
@@ -241,8 +244,13 @@
       <!-- TODO foto real: plano geral com ela em movimento de entrada —
            silhueta ou movimento de virada, nunca de frente parada olhando para
            a câmera. Lente 35–50mm, profundidade de campo intermediária
-           (f/2.8–f/4). Proporção 21:9 (desktop) / 16:9 (tablet) / 4:5 (mobile). -->
-      <div class="deb-entrance__media grain-overlay" aria-hidden="true"></div>
+           (f/2.8–f/4). Proporção 21:9 (desktop) / 16:9 (tablet) / 4:5 (mobile).
+           Placeholder temporário do Unsplash preenchido aqui: reenquadrado como
+           corredor cinematográfico vazio (sem silhueta, sem ninguém), para
+           manter a decisão do cliente de zero pessoas nesta seção. -->
+      <div class="deb-entrance__media grain-overlay">
+        <img src="https://images.unsplash.com/photo-1771911655428-3c8e92cebd44?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Corredor contemporâneo iluminado com colunas estriadas em pedra, teto com spots dourados e parede de vidro para o jardim, sem nenhuma pessoa (imagem temporária)" loading="lazy" />
+      </div>
       <div class="container deb-entrance__content">
         <p class="deb-entrance__eyebrow">A entrada</p>
         <h2 id="deb-entrance-heading">O salão inteiro se vira para ela.</h2>
@@ -260,17 +268,25 @@
       </div>
 
       <div class="container deb-celebration__grid">
-        <div class="deb-celebration__media deb-celebration__media--dominant grain-overlay" aria-hidden="true" data-reveal>
+        <div class="deb-celebration__media deb-celebration__media--dominant grain-overlay" data-reveal>
           <!-- TODO foto real: plano médio candid da pista/plateia respondendo,
                luz quente de ambiente noturno (nunca flash direto). Lente
                35–50mm, profundidade de campo intermediária (f/2.8–f/4).
-               Proporção 4:3. -->
+               Proporção 4:3.
+               Placeholder temporário do Unsplash preenchido aqui: reenquadrado
+               como bokeh dourado abstrato (sem plateia, sem pessoa), para manter
+               a decisão do cliente de zero pessoas nesta seção. -->
+          <img src="https://images.unsplash.com/photo-1765481786958-f66f8eefe513?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Bokeh dourado abstrato de luzes desfocadas contra fundo escuro, sem nenhuma pessoa (imagem temporária)" loading="lazy" />
         </div>
         <div data-reveal>
-          <div class="deb-celebration__media deb-celebration__media--insert grain-overlay" aria-hidden="true">
+          <div class="deb-celebration__media deb-celebration__media--insert grain-overlay">
             <!-- TODO foto real: plano fechado do gesto intergeracional específico
                  (valsa ou brinde entre pais e filha). Lente 50–85mm,
-                 profundidade de campo intermediária. Proporção 4:5. -->
+                 profundidade de campo intermediária. Proporção 4:5.
+                 Placeholder temporário do Unsplash preenchido aqui: reenquadrado
+                 como still-life de taça de espumante (o brinde em si, sem mãos
+                 nem pessoas), mantendo a decisão do cliente. -->
+            <img src="https://images.unsplash.com/photo-1613477581402-306fa9dc6b95?q=80&amp;w=700&amp;auto=format&amp;fit=crop" alt="Taça de espumante em still-life com fundo desfocado, sem pessoas nem mãos (imagem temporária)" loading="lazy" />
           </div>
           <p class="deb-celebration__insert-caption">Um brinde, só entre os dois.</p>
         </div>
@@ -376,30 +392,36 @@
       </div>
 
       <div class="container">
-        <!-- ATENÇÃO — sem fotografia real validada ainda: placeholders em CSS
-             puro (grain-overlay), propositalmente sem foto de banco de imagens,
-             dado o cuidado adicional exigido pela protagonista ser menor de idade
-             (ver relatório de implementação). Decisão explícita do cliente: manter
-             SEM foto qualquer bloco que mostre (ou implique) a protagonista —
-             Bastidores, Entrada, Celebração e esta Galeria — mesmo com o Hero e
-             Os Detalhes (Seção 5) já preenchidos com placeholders só de
-             ambiente/objeto, sem nenhuma pessoa. -->
+        <!-- Placeholders temporários do Unsplash preenchidos aqui (decisão do
+             cliente reafirmada): as 5 pranchas foram reenquadradas como
+             ambiente/objeto/detalhe puros — nenhuma mostra ou implica a
+             protagonista (ou qualquer pessoa), mesma regra já aplicada em
+             Bastidores, Entrada e Celebração. Trocar por fotografia real de
+             outras famílias assim que houver material validado com os clientes
+             retratados. -->
         <ul class="deb-gallery__grid">
-          <li class="deb-gallery__plate deb-gallery__plate--a grain-overlay" aria-hidden="true" data-reveal>
+          <li class="deb-gallery__plate deb-gallery__plate--a grain-overlay" data-reveal>
             <!-- TODO foto real: outra família, plano geral do salão montado para
                  uma estreia diferente. -->
+            <img src="https://images.unsplash.com/photo-1769230361493-f1f365a99878?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Mesa redonda posta com toalha branca, faixa preta, pratos de cristal e centro floral branco e verde, sem pessoas (imagem temporária)" loading="lazy" />
           </li>
-          <li class="deb-gallery__plate deb-gallery__plate--b grain-overlay" aria-hidden="true" data-reveal>
+          <li class="deb-gallery__plate deb-gallery__plate--b grain-overlay" data-reveal>
             <!-- TODO foto real: still-life de detalhe de outra celebração. -->
+            <img src="https://images.unsplash.com/photo-1435783459217-ee7fe5414abe?q=80&amp;w=700&amp;auto=format&amp;fit=crop" alt="Peônias rosa em vaso de cerâmica contra fundo texturizado, still-life sem pessoas (imagem temporária)" loading="lazy" />
           </li>
-          <li class="deb-gallery__plate deb-gallery__plate--c grain-overlay" aria-hidden="true" data-reveal>
-            <!-- TODO foto real: detalhe de preparação parcial (mão, reflexo). -->
+          <li class="deb-gallery__plate deb-gallery__plate--c grain-overlay" data-reveal>
+            <!-- TODO foto real: detalhe de preparação parcial (mão, reflexo).
+                 Reenquadrado como still-life puro de joia, sem mão nem reflexo
+                 de pessoa, para manter a decisão do cliente. -->
+            <img src="https://images.unsplash.com/photo-1595345705177-ffe090eb0784?q=80&amp;w=700&amp;auto=format&amp;fit=crop" alt="Colar de pérolas em still-life sobre tecido, sem pessoas (imagem temporária)" loading="lazy" />
           </li>
-          <li class="deb-gallery__plate deb-gallery__plate--d grain-overlay" aria-hidden="true" data-reveal>
+          <li class="deb-gallery__plate deb-gallery__plate--d grain-overlay" data-reveal>
             <!-- TODO foto real: plano médio de celebração/convivência. -->
+            <img src="https://images.unsplash.com/photo-1781888697848-e4b99d71f325?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Mesa de doces com bolo decorado e docinhos sobre balcão de madeira, sem pessoas (imagem temporária)" loading="lazy" />
           </li>
-          <li class="deb-gallery__plate deb-gallery__plate--wide grain-overlay" aria-hidden="true" data-reveal>
+          <li class="deb-gallery__plate deb-gallery__plate--wide grain-overlay" data-reveal>
             <!-- TODO foto real: tira panorâmica do salão em uso, outra família. -->
+            <img src="https://images.unsplash.com/photo-1774021793488-f2902f8e1321?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Salão amplo contemporâneo com piso reflexivo e iluminação geométrica no teto, sem pessoas (imagem temporária)" loading="lazy" />
           </li>
         </ul>
       </div>
