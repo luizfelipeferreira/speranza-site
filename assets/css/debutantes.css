@@ -24,6 +24,14 @@ body.page-debutantes .deb-hero__media {
   background-color: var(--color-surface-alt);
 }
 
+body.page-debutantes .deb-hero__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media (min-width: 768px) {
   body.page-debutantes .deb-hero__media {
     aspect-ratio: 16 / 9;
@@ -243,6 +251,9 @@ body.page-debutantes .deb-details__item {
 body.page-debutantes .deb-details__media {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Grain via .grain-overlay (components.css) — classe já aplicada no HTML. */

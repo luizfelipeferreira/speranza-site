@@ -185,8 +185,12 @@
          protagonista nunca aparece antes da Seção 3 (A Entrada) — nem sequer
          como silhueta — a ocultação total sustenta a tensão da metáfora. -->
 
-    <!-- 1. Hero — silêncio absoluto, zero pessoas em qualquer placeholder.
-         Ver wireframe § Seção 1. -->
+    <!-- 1. Hero — silêncio absoluto. Ver wireframe § Seção 1.
+         Placeholder temporário do Unsplash (decisão explícita do cliente: preencher só
+         blocos de ambiente/objeto nesta página, nunca os que mostram a protagonista —
+         ver nota da Seção 7/Galeria). ATENÇÃO — compromisso conhecido: há uma figura
+         humana pequena e incidental na borda direita do quadro, quando o briefing pedia
+         zero pessoas; trocar por foto real assim que possível resolve isso. -->
     <section class="deb-hero" aria-labelledby="deb-hero-heading">
       <!-- TODO foto real: plano geral do salão principal montado para uma festa
            de debutante — mesas montadas, iluminação de destaque testada mas
@@ -195,7 +199,9 @@
            composição assimétrica com linha de fuga real, profundidade de campo
            fechada (f/5.6–f/8). Proporção 16:9 (desktop) / 4:5 (mobile). Ver
            docs/DEBUTANTES_PAGE_WIREFRAME.md § Seção 1 e docs/ART_DIRECTION.md §1.2–1.5. -->
-      <div class="deb-hero__media grain-overlay" aria-hidden="true"></div>
+      <div class="deb-hero__media grain-overlay">
+        <img src="https://images.unsplash.com/photo-1775476793931-cb484f197760?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Tenda de festa com mesas redondas montadas, toalhas claras e lustres pendentes, vista através das paredes de vidro (imagem temporária)" loading="eager" />
+      </div>
       <div class="container deb-hero__content">
         <p class="deb-hero__eyebrow">Debutantes</p>
         <h1 id="deb-hero-heading">Uma estreia começa aqui.</h1>
@@ -275,7 +281,10 @@
          Reaproveita só o layout de .gallery-grid, sem lightbox: nenhuma
          fotografia real validada ainda para esta página. Objetos da produção
          da festa (mesa, flores, vestido em exibição) — nunca os mesmos
-         objetos pessoais de Bastidores. Ver wireframe § Seção 5. -->
+         objetos pessoais de Bastidores. Ver wireframe § Seção 5.
+         Placeholders temporários do Unsplash preenchidos aqui (decisão explícita do
+         cliente): esta seção é só objeto/ambiente, sem nenhuma pessoa, então não
+         conflita com a restrição de banco de imagens da página — ver nota da Seção 7. -->
     <section class="deb-details" aria-labelledby="deb-details-heading">
       <div class="container section-intro" data-reveal>
         <p class="section-eyebrow">Os detalhes</p>
@@ -287,25 +296,25 @@
           <li class="gallery-grid__item deb-details__item" data-reveal>
             <!-- TODO foto real: vestido em exibição (não sendo vestido), still-life
                  de perto. Lente 85–105mm, profundidade de campo aberta. Proporção 1:1. -->
-            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <img class="deb-details__media grain-overlay" src="https://images.unsplash.com/photo-1781624274278-d73085267b62?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Vestido de festa rosa bordado, em exibição sobre manequim sem rosto, em vitrine com luz quente (imagem temporária)" loading="lazy" />
             <span class="deb-details__label">Vestido</span>
           </li>
           <li class="gallery-grid__item deb-details__item" data-reveal>
             <!-- TODO foto real: mesa posta da festa, still-life de perto.
                  Lente 85–105mm, proporção 1:1. -->
-            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <img class="deb-details__media grain-overlay" src="https://images.unsplash.com/photo-1780337091866-bc2d21d5fd0a?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Orquídea branca sobre guardanapo de linho e prato claro, com taças desfocadas ao fundo (imagem temporária)" loading="lazy" />
             <span class="deb-details__label">Mesa</span>
           </li>
           <li class="gallery-grid__item deb-details__item" data-reveal>
             <!-- TODO foto real: arranjo floral discreto, still-life de perto.
                  Lente 85–105mm, proporção 1:1. -->
-            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <img class="deb-details__media grain-overlay" src="https://images.unsplash.com/photo-1615569033553-231fe5cef522?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Arranjo floral em tons rosa e roxo, com rosas e ranúnculos, contra fundo neutro (imagem temporária)" loading="lazy" />
             <span class="deb-details__label">Flores</span>
           </li>
           <li class="gallery-grid__item deb-details__item" data-reveal>
             <!-- TODO foto real: ponto de luz/iluminação de cena, still-life de
                  perto. Lente 85–105mm, proporção 1:1. -->
-            <div class="deb-details__media grain-overlay" aria-hidden="true"></div>
+            <img class="deb-details__media grain-overlay" src="https://images.unsplash.com/photo-1736895985226-c7c1936cbded?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Vela acesa em close-up contra fundo escuro, com ponto de luz desfocado ao fundo (imagem temporária)" loading="lazy" />
             <span class="deb-details__label">Luz</span>
           </li>
         </ul>
@@ -368,9 +377,13 @@
 
       <div class="container">
         <!-- ATENÇÃO — sem fotografia real validada ainda: placeholders em CSS
-             puro (grain-overlay), nenhum banco de imagens de terceiros usado
-             nesta página, dado o cuidado adicional exigido pela protagonista
-             ser menor de idade (ver relatório de implementação). -->
+             puro (grain-overlay), propositalmente sem foto de banco de imagens,
+             dado o cuidado adicional exigido pela protagonista ser menor de idade
+             (ver relatório de implementação). Decisão explícita do cliente: manter
+             SEM foto qualquer bloco que mostre (ou implique) a protagonista —
+             Bastidores, Entrada, Celebração e esta Galeria — mesmo com o Hero e
+             Os Detalhes (Seção 5) já preenchidos com placeholders só de
+             ambiente/objeto, sem nenhuma pessoa. -->
         <ul class="deb-gallery__grid">
           <li class="deb-gallery__plate deb-gallery__plate--a grain-overlay" aria-hidden="true" data-reveal>
             <!-- TODO foto real: outra família, plano geral do salão montado para
