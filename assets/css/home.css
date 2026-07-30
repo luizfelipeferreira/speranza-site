@@ -53,9 +53,13 @@ body.page-home .hero__eyebrow {
    ~40% do container, não na largura quase total do hero anterior. Usar o token cheio
    faria "Cada evento pede" quebrar de forma imprevisível dentro da coluna estreita em
    telas Notebook (1024–1279px) — testado, é onde o risco de quebra ruim é maior. */
+/* Peso 600 (não o 500 padrão do token Hero) e clamp um pouco maior: Newsreader em
+   500 perde presença na escala do Hero — validado em docs/TYPOGRAPHY_EXPLORATION.md
+   § Fase 7, rodada 2. Mesma correção replicada nas 5 páginas internas com hero
+   próprio (casamentos/debutantes/corporativo/aniversarios/espaco). */
 body.page-home .hero h1 {
-  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.4rem);
-  font-weight: 500;
+  font-size: clamp(2.3rem, 1.7rem + 2.2vw, 3.6rem);
+  font-weight: 600;
   line-height: 1.15;
   color: var(--color-text);
 }

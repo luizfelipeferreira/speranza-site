@@ -29,14 +29,13 @@
   <!-- Placeholders temporários da Galeria vêm do Unsplash (ver TODOs em cada
        <img>) — preconnect evita pagar DNS/TLS na primeira imagem carregada. -->
   <link rel="preconnect" href="https://images.unsplash.com" />
-  <!-- Eixo "ital" adicionado ao Fraunces: .structure__index/.how-it-works__index/
+  <!-- Newsreader + Karla ("Hotel Boutique" — ver docs/TYPOGRAPHY_EXPLORATION.md).
+       Eixo "ital" no Newsreader: .structure__index/.how-it-works__index/
        .testimonial__quote usam font-style:italic, mas sem este eixo o navegador
        nunca baixa o itálico real — sintetiza um itálico falso (oblíquo) a partir
-       do peso 400 reto. Peso 500 do Manrope removido: não há nenhum uso de
-       font-weight:500 em texto com --font-body no CSS atual (só Fraunces usa
-       500 — Hero h1, H3, nav mobile), então esse peso nunca era servido à toa. -->
+       do peso 400 reto. Peso 600 incluído para H1/H2/hero (ver base.css/home.css). -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Karla:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet"
   />
 

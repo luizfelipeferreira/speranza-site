@@ -465,6 +465,12 @@ section {
   color: var(--color-ink-on-dark);
 }
 
+/* <address> vem itálico por padrão do navegador — sem isso, o indicador ordinal
+   "nº" perde nitidez em itálico (ver docs/TYPOGRAPHY_EXPLORATION.md § Fase 7). */
+.site-footer address {
+  font-style: normal;
+}
+
 .site-footer__grid {
   display: grid;
   gap: var(--space-xl);

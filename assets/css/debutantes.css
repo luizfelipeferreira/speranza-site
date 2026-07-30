@@ -67,10 +67,12 @@ body.page-debutantes .deb-hero__eyebrow {
   margin-bottom: var(--space-md);
 }
 
+/* Peso 600 (não 500) e clamp maior — Newsreader perde presença em 500 no tamanho
+   de Hero (ver docs/TYPOGRAPHY_EXPLORATION.md § Fase 7, rodada 2). */
 body.page-debutantes .deb-hero h1 {
   max-width: 18ch;
-  font-size: clamp(2.2rem, 1.7rem + 2vw, 3.4rem);
-  font-weight: 500;
+  font-size: clamp(2.3rem, 1.8rem + 2.2vw, 3.6rem);
+  font-weight: 600;
   line-height: 1.15;
   color: var(--color-cream);
 }
